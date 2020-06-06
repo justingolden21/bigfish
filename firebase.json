@@ -3,6 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "site": "bigfishgame",
     "public": "public",
     "ignore": [
       "firebase.json",
