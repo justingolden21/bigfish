@@ -1,0 +1,532 @@
+/* generic */
+
+body {
+	color: hsl(220, 90%, 10%);
+	margin: 2rem;
+	/*margin-top: 0.5rem;*/
+	margin-top: 0;
+	line-height: 2;
+
+	/*border-right: 2px solid hsl(220, 50%, 90%);*/
+
+	/*https://leaverou.github.io/css3patterns/#lined-paper*/
+	background-color: #fff;
+	background-image:
+	linear-gradient(90deg, transparent 31px, hsl(180, 30%, 80%) 31px, hsl(180, 30%, 80%) 33px, transparent 33px),
+	linear-gradient(hsl(220, 50%, 90%) .1rem, transparent .1rem);
+	background-size: 100% 2rem;
+}
+
+::-moz-selection {
+	background: hsl(220, 90%, 90%) !important;
+}
+::selection {
+	background: hsl(220, 90%, 90%) !important;
+}
+
+#title {
+	padding: 0.25rem;
+
+/*	color: #fff;
+	background-color: hsl(220, 90%, 30%);*/
+	
+	color: hsl(220, 90%, 30%);
+
+	/*border: 2px solid hsl(220, 90%, 30%);*/
+	/*border-bottom: 2px solid hsl(220, 90%, 30%);*/
+	/*border-radius: 0.5rem;*/
+
+	/*background-color: #fff;*/
+
+	/*box-shadow: 4px 4px 0px hsl(190, 90%, 30%);*/
+
+	/*background-color: hsl(220, 50%, 50%);*/
+	/*background-color: hsl(205, 50%, 50%);*/
+	/*color: #fff;*/
+}
+#title-span {
+	font-weight: 900;
+	font-size: 150%;
+	letter-spacing: 0.25em;
+
+}
+.description-aquarium {
+	margin-bottom: 0;
+	font-style: italic;
+}
+#fullscreen-btn {
+	float: right !important;
+}
+
+#multiplier-info-btn:hover {
+	color: hsl(220, 90%, 30%);
+}
+
+.info-toggle-btn {
+	float: right;
+	margin-left: 0.5rem;
+}
+
+.nav-link {
+	color: hsl(220, 90%, 30%);
+}
+a {
+	color: hsl(220, 90%, 30%) !important;
+}
+
+hr {
+	border: 1px solid hsl(190, 90%, 30%);
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.card {
+	border-color: hsl(220, 50%, 90%);
+}
+
+/* sticky top */
+/* maybe: make this a setting, separate stylesheet */
+
+#info-row, #top-hr {
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 99;
+}
+#info-row {
+	top: 16px; /*height of #top-hr*/
+}
+#top-hr {
+	top: 0;
+}
+
+/* pills */
+
+.nav-pills .nav-link {
+	padding: 1rem 1rem !important;
+	margin: 0rem 0rem !important;
+	border-radius: 0.5rem !important;
+}
+.nav-pills .nav-link:hover {
+	background-color: hsl(220, 90%, 95%);
+}
+.nav-pills .nav-link.active {
+	color: #fff !important;
+	background-color: hsl(220, 90%, 30%);
+}
+
+/* tabs */
+
+.nav-tabs .nav-link {
+	padding: 0.5rem 1rem !important;
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+	/*border-width: 2px;*/
+	border-bottom: 0;
+}
+.nav-tabs .nav-link:hover {
+	border-color: hsl(220, 50%, 90%);
+}
+.nav-tabs .nav-link.active {
+	border-color: hsl(220, 50%, 90%);
+	color: #fff !important;
+	background-color: hsl(220, 90%, 30%);
+	border-color: hsl(220, 90%, 30%);
+}
+.nav-tabs {
+	border-color: hsl(220, 50%, 90%);	
+	border-width: 2px;
+
+	/* maybe */
+	/*border-bottom: 0;*/
+}
+.nav-tabs + .tab-content {
+	margin-top: 1rem;
+}
+
+/* accordion */
+
+.accordion .card {
+	border-radius: 0;
+	
+	/* maybe */
+	/*border-width: 0;*/
+	/*border-bottom-width: 1px;*/
+}
+.accordion>.card:first-of-type {
+	border-top-left-radius: 0.5rem !important;
+	border-top-right-radius: 0.5rem !important;
+}
+.accordion .card-header {
+	background-color: hsl(220, 90%, 30%);
+	border-color: hsl(220, 50%, 90%);
+	cursor: pointer;
+
+	/* maybe */
+	/*border: 0;*/
+}
+.accordion .card-body {
+	border-color: hsl(220, 50%, 90%) !important;
+}
+.accordion .card-header .btn {
+	padding: 0.5rem;
+}
+
+/* accordion plus/close icon */
+
+.accordion .card-header:after {
+	content: '+';
+	color: #fff;
+	font-weight: bold;
+	font-size: 200%;
+	cursor: pointer;
+	float: right;
+	margin-top: -4rem;
+	transition: transform 0.15s linear;
+}
+.accordion .card-header.open:after {
+	transform: rotate(45deg);
+}
+
+/* fish canvas */
+
+#main-canvas {
+	width: 100%;
+/*	border: 4px solid hsl(220, 90%, 30%);
+	border-radius: 0.5rem;
+	box-shadow: 0.25rem 0.25rem 0px hsl(220, 50%, 90%);*/
+
+	margin: auto;
+	display: block;
+
+/*	border-top: 0.125rem solid hsl(190, 90%, 30%);
+	border-bottom: 0.125rem solid hsl(190, 90%, 30%);*/
+	margin-bottom: 0.75rem;
+
+	background-color: rgba(8, 54, 145, 0.8);
+}
+
+#main-canvas, .pixelart {
+	/*https://stackoverflow.com/a/7665647/4907950*/
+	image-rendering: optimizeSpeed;             /* Older versions of FF          */
+	image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+	image-rendering: -webkit-optimize-contrast; /* Safari                        */
+	image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+	image-rendering: pixelated;                 /* Awesome future-browsers       */
+	-ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+}
+
+/* progress */
+
+.progress {
+	height: 0.5rem;
+	width: 16rem;
+}
+.progress-bar {
+	background-color: hsl(205, 90%, 60%);
+}
+
+/* modal */
+.modal-content {
+	border: 0 !important;
+	border-radius: 0.5rem;
+}
+.close {
+	outline: 0 !important;
+	opacity: 1 !important;
+	text-shadow: none !important;
+	border-radius: 0.5rem;
+}
+.close:hover {
+	background-color: hsl(220, 50%, 90%);
+}
+.modal-header, .modal-footer {
+	border-color: hsl(220, 90%, 10%);
+}
+.info-toggle-card {
+	/*border-right: 0;*/
+}
+
+/* buttons */
+
+.btn {
+	border: 2px solid hsl(220, 90%, 30%);
+	border-radius: 0.5rem;
+	color: hsl(220, 90%, 30%);
+	background-color: #fff;
+	/*box-shadow: 2px 2px 0px hsl(190, 90%, 30%);*/
+}
+.btn.lighter {
+	/*color: hsl(205, 90%, 60%);*/
+	color: hsl(220, 90%, 30%);
+	/*border-color: hsl(205, 90%, 60%);*/
+	border-color: hsl(250, 90%, 60%);
+}
+.btn:focus, .btn.lighter:focus {
+	color: hsl(190, 90%, 30%);
+	border-color: hsl(190, 90%, 30%);
+}
+.btn:hover {
+	color: #fff;
+	background-color: hsl(220, 90%, 30%);
+	border-color: #fff;
+	cursor: pointer;
+}
+.btn.lighter:hover {
+	color: #fff;
+	background-color: hsl(250, 90%, 60%);
+}
+.btn:active, .btn.lighter:active {
+	color: #fff;
+	background-color: hsl(190, 90%, 30%);
+}
+
+.btn-group .btn:hover {
+	border-color: hsl(220, 90%, 30%);
+}
+.btn-group .btn.lighter:hover {
+	border-color: hsl(250, 90%, 60%);
+}
+
+/* Textareas and Inputs */
+textarea, input {
+	border: 2px solid hsl(220, 90%, 30%) !important;
+	border-radius: 0.5rem !important;
+}
+input.error {
+	border-color: hsl(190, 60%, 60%) !important;
+}
+*:focus {
+	outline: none;
+	border-color: hsl(190, 90%, 30%);
+	box-shadow: 0 0 0 0.25rem rgba(61, 168, 245, 0.5) !important;
+}
+
+/* Checkboxes */
+.custom-control-input:checked~.custom-control-label::before, .custom-switch .custom-control-label::before {
+	background-color: hsl(220, 90%, 30%);
+	border-color: hsl(220, 90%, 30%) !important;
+}
+.custom-switch .custom-control-label::after {
+	background-color: #fff;
+}
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+	border-color: hsl(190, 90%, 30%) !important;
+}
+
+/* Game Logic */
+
+span.highlight {
+	background-color: hsl(205, 90%, 60%);
+	color: #fff;
+}
+.btn.highlight {
+	background-color: hsl(205, 90%, 60%);
+	color: #fff;	
+}
+
+.text-muted {
+	color: hsl(220, 10%, 60%) !important;
+}
+
+#out-of-space-banner {
+	display: none;
+/*	border: 2px solid hsl(205, 60%, 60%);
+	color: hsl(205, 60%, 60%);*/
+	border: 2px solid hsl(190, 90%, 30%);
+	color: hsl(190, 90%, 30%);
+	font-weight: bold;
+	background-color: #fff;
+	margin-left: 2rem;
+	padding: 0.5rem;
+}
+#out-of-space-banner.show {
+	display: inline-block;
+}
+#out-of-space-banner.show:not(.paused) {
+	/*transition: 1s linear all;*/
+	-webkit-animation: shake 0.75s infinite;
+	animation: shake 0.75s infinite;
+}
+
+/* in case we want to go into motionsickness mode later :) */
+*.motionsickness {
+	-webkit-animation: shake 0.75s infinite;
+	animation: shake 0.75s infinite;	
+}
+
+@keyframes shake {
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(-3deg); }
+	50% { transform: rotate(0deg); }
+	75% { transform: rotate(3deg); }
+	100% { transform: rotate(0deg); }
+}
+@-webkit-keyframes shake {
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(-3deg); }
+	50% { transform: rotate(0deg); }
+	75% { transform: rotate(3deg); }
+	100% { transform: rotate(0deg); }
+}
+
+
+/* snackbar */
+#snackbar {
+	visibility: hidden;
+	padding: 1rem;
+	position: fixed;
+	text-align: center;
+	bottom: 2rem;
+	min-width: 12rem;
+	max-width: 36rem;
+	/*background-color: hsl(220, 90%, 95%);*/
+	background-color: #fff;
+	/*border-radius: 0.5rem;*/
+	border: 2px solid hsl(220, 90%, 30%);
+	color: hsl(220, 90%, 30%);
+
+/*	background-color: hsl(220, 90%, 30%);
+	color: #fff;*/
+}
+#snackbar.right {
+	right: 2rem;	
+}
+#snackbar.important {
+	background-color: hsl(220, 90%, 30%);
+	border-color: #fff;
+	color: #fff;
+}
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 2rem; opacity: 1;}
+}
+@keyframes fadein {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 2rem; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	from {bottom: 2rem; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+	from {bottom: 2rem; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+}
+
+/* Carousel */
+.carousel-inner {
+	padding: 0.5rem 2rem !important;
+	overflow-y: auto; /*only when necessary*/
+	-ms-overflow-style: none;
+}
+.carousel-inner::-webkit-scrollbar {
+	display: none;
+}
+.carousel-item {
+	width: 100%;
+	height: 25rem;
+}
+.carousel-control-prev, .carousel-control-next {
+	background-color: hsl(220, 90%, 30%) !important;
+	opacity: 0.15;
+}
+.carousel-control-prev:hover, .carousel-control-prev:focus, .carousel-control-next:hover, .carousel-control-next:focus {
+	opacity: 0.5;
+}
+.carousel-indicators {
+	background-color: hsl(220, 90%, 30%);
+	opacity: 0.5;
+	/*background-color: hsl(220, 50%, 90%);*/
+}
+.carousel-indicators li {
+	/*background-color: hsl(220, 90%, 30%);*/
+}
+
+/* waves */
+#top-hr {
+	border: none;
+	/*https://stackoverflow.com/questions/33759102/wave-border-in-css*/
+	background-repeat: repeat;
+	height: 16px;
+	background-size: 32px 32px;
+	background-image: radial-gradient(circle at 16px -8px, transparent 18px, rgba(8, 54, 145, 0.8) 19px);
+
+	margin: 0;
+}
+#top-hr:not(.paused) {
+	animation: wave 1s linear infinite;
+	-webkit-animation: wave 1s linear infinite;
+}
+
+#info-row {
+	background-color: rgba(8, 54, 145, 0.8);
+	color: #fff;
+	padding: 0.25rem;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+@keyframes wave {
+	0% { background-position: 16px -2px; }
+	50% { background-position: 0px 0px; }
+	100% { background-position: -16px -2px; }
+}
+@-webkit-keyframes wave {
+	0% { background-position: 16px -2px; }
+	50% { background-position: 0px 0px; }
+	100% { background-position: -16px -2px; }
+}
+
+
+/* Ripple */
+
+/*https://codepen.io/nitishkmrk/pen/vaoWye*/
+.ripple {
+	width: 8px;
+	height: 8px;
+	opacity: 0;
+	transform: scale(0);
+	background: rgba(8, 54, 145, 0.5);
+	border-radius: 50%;
+	position: fixed;
+
+	/*clicking a ripple on top of the btn doesn't register the btn. this solves that*/
+	pointer-events: none;
+}
+.animate {
+	animation: ripple-mo 1s cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes ripple-mo {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(10);
+		opacity: 0;
+	}
+}
+
+
+@media (max-width: 576px) {
+	.accordion {
+		margin-top: 1rem;
+	}
+	#out-of-space-banner.show {
+		display: block;
+		margin: 1rem 0;
+	}
+	#fullscreen-btn {
+		margin-bottom: 1rem;
+	}
+	.carousel-item {
+		/*larger because more vertical room, less horizontal room*/
+		height: 30rem;
+	}
+}

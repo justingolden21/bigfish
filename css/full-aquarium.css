@@ -1,0 +1,21 @@
+html, body {
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: hidden;	
+}
+#title, #top-hr, #info-row {
+	display: none;
+}
+#snackbar {
+	/*dispaly, opacity, and z-index won't work...*/
+	background-color: transparent !important;
+	color: transparent !important;
+	border-color: transparent !important;
+}
+#exit-fullscreen-btn {
+	/* displayed only on mousemove for a few sec */
+	position: fixed;
+	top: 2rem;
+	left: 2rem;
+	margin: auto;
+}

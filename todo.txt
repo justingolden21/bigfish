@@ -1,0 +1,328 @@
+important/now stuff:
+bug!: negative values somehow? early game?
+bug: (1T minus 1) coins shows 1000B
+
+think about how to backend this crap...
+
+
+insights ideas:
+Pie chart of your spending in banks as an insight. Insights modal has btns that show different insignts
+Insight for fish production and eating: have x small, y hungry, z eaten, a produced
+Insight for space, showing amount of space used by each. Optional bar widget unlocked below aquarium
+
+
+
+
+bugs maybe (can't replicate them):
+bug!: Selling fish (thorugh normal btns anyway) puts the info pannel eats food per second to negative if selling quickly per tick
+
+
+todo todo (meta):
+import todo from google docs
+
+bugs:
+notifications keep playing when game is paused
+notifications can still step on each other (i think?)
+
+description word ideas:
+neat bonkers nuts crazy insane wacky wild fantastical
+enthralling, fascinating, interesting, captivating
+
+nah:
+
+backend soon:
+
+backend later:
+display total fish worldwide (and coins)
+Leaderboard (For achievements and for total fish, money, space, etc)
+
+multiplayer ideas
+1v1: race to a mil fish, your fish eat your opponent's
+
+ways to play:
+speedrun, idle game, relaxing/calm game, automation game/balance numbers/ratios math game, goes on forever, but also distinct ending
+
+maybe:
+when unlocking new thing, show banner that says click the help button to learn more, and maybe highlight the help button.
+	maybe have link in banner to help modal
+Toggle for larger buttons (10k,100k,1m,10m) unlock after banks
+Maybe: small fish info says net change in fish (small hatch minis med fish)
+Start with banks only fish then banks can buy buildings
+crown achievement which is have exactly 1m of each fish for 10 ticks
+popup when unlocking banks (explain what they do and how to use them?) eh
+multiplier: if no fish are hungry, 2x multiplier? 10x?
+make aquarium give 250 space?
+make all fish use same amount of space?
+Hatcheries and buildings run every 10 ticks
+unlock multiplier before big hatchery
+larger fish eat food too?
+option to distrubte bank purchases by each one, rather than proiritize top
+display the exact number of fish next to the achievement (in achievement modal) to get 1m exactly of each fish
+events (but no rng) so every 100 ticks one happens, every other event is good or bad. if good, then a dialog appears (double your fish, your money, or your aquariums), if bad, choose one to half
+ability to only buy one time for each input
+achievements for multiplier (get certain amount, hold for time, etc)
+Hover over fish top left to see breakdown
+add research for unlocks like bigger banking, improve rates, etc
+	research: universities research stuff at a speed with progress bars to unlock. more universities mean unlock faster. each new university costs 10x more.
+Different fish types have different movement types
+pause hatcheries? unlock abilitiy from research?
+bank toggle to just buy max possible for each item
+research to unlock buying and selling buildings with banks, starts with banks only good for fish
+ratios controller in bank? eh.
+bank factory for 1t coins
+unlock a calculator (modal under tools btn, popout menu like in messegner) after 1b banks
+limit to 10 btn presses per sec?
+spend 1T coins to unlock big banking (ability of banks to buy banks)
+buy unlocks? instead of just getting em
+achievement called "fishy" to have 1T fish
+hatchery display of fish per sec shows if limited by aquarium space
+display coins in more places (where you could purchase something)?
+	<i class="fas fa-coins"></i> <span class="num-coins"></span>
+implement upgrades (modular system of upgrading purchase cost and purchase amount, costs 10x prev cost and reduces by 0.1 up to 5 times)
+	fish upgrades also include: coins earned, space used, food eaten (eh)
+color code number abrev (K, M, B) with different colors
+different difficulties of achievements
+farm factory? hatchery factories?
+unlock hints? hint modal that hints at what you should increase for the next major unlock
+events? half your fish die? etc chaos and rnjesus
+unlock 10k buttons
+faq: order of operations with fish: first buildings (in order of money in banks, then room and money for fish, then fish eat bottom to top)
+buy max amount checkbox adjacent to each input in manage banks
+optimize display so it only updates relevant vals (make specific display functions for buy/sell specific things)
+save bank items buying/selling and bank settings in import/export
+add info to help about idle games: meant to be kept in a browser tab while you do other stuff, can come back to them
+Aquarium munchers eats 1k aquarium per sec and multiplies the amount of money you make by 1.1. each one costs 10x more than the next. Eh.
+
+ui questions:
+Show progress bar with multiplier
+Leaving pill should close info pannel? Option? Option to keep all open always?
+Possible setting or look into: btns if you can't afford, instead of buying up to max, just fail to buy
+Disable buttons you can't afford, lighter opacity on disabled btns. Might be too slow because DOM update
+Show coins and aquarium space progress bar on right side of tabs
+hatchery full banner:
+	"hatcheries cannot produce"
+	"hatcheries full"
+	"aquarium full"
+	"hatcheries out of aquarium space"
+use animate css for a collapse or slide animation for tabs/pills
+	http://jsfiddle.net/2vLjU/1/
+	https://stackoverflow.com/questions/21707982/how-to-do-a-slide-animation-between-two-bootstrap-3-tabs
+	https://animate.style/
+
+
+achievement ideas:
+Achievement(s) for coin rate and other rates
+Chaos: purchase a big fish hatchery
+Achievement: are you stupid? Release the kraken twice in a row
+Achievement more chaos: buy big hatcheries with a bank
+change Lemonade stand to make 500 coins
+"Out of this world" Have more fish than on planet Earth (3.5 T)
+One time achievements like: unlock big fish in under 5min, get 100m big fish in less than a half hour with less than 100 clicks, etc
+Achievement: big farma have 1m farms (not hidden)
+Over 9000 achievement for over 9k fish (or coins or aquarium idk)
+Fishcake: have 1b small, medium, and big fish - not hidden
+Dynamite fishing: sell 1m fish - not hidden
+Gold fish: have 1m fish more fish than coins (not hidden)
+multiplier related achievements:
+	balanced ecosystem achievement (maintain 10k of each type of fish for 5 ticks in a row)
+	"hard mode" have EXACTLY a million of each type of fish for 10 seconds
+
+next:
+add sound settings, redo modal system, add scss to localfish, add charts/progress bars
+sell fish in banks
+show overview in fish tab: pie chart of where coins are coming from, what uses aquarium space etc
+help menu unlock: aquarium keeps going when aquarium is in fullscreen, press esc or click aquarium to quit
+
+gameplay additions:
+minor:
+	food silos / storage? max food storage needs upgrade? sell food?
+major:
+	add filters
+	add land mechanic? TANKS? land shark?
+	add hatchery factories
+	Penguins unlock after 1t fish and eat 1t per sec, polar bears are next level after penguins
+	banks: can enter number of items to buy, toggle for buy every tick or buy once.
+		"big banking" unlocks ability to buy banks and increase or decrease the number of items you buy every tick. drag inputs to reorder buy priority. unlocks after owning 1m banks
+
+
+visual/aesthetic/experience improvements:
+implement charts / progress bar etc
+on smaller screens hide info btns and show info pannels (and/or make it a setting)
+use popovers/popper
+display stats (stats file, loop through properties to see if num or object, then make sections for html to display)
+custom cursor (pixel art :) ) and scroll bar
+css updates
+add audio (music and effects, settings) audio for opening modal
+help modal turns into carousel when unlocking stuff about buildings etc
+add icons next to bank buy inputs (ex. farm icon next to buy farm label)
+
+code improvements:
+make a better way of handling modals (get a default modal template and append the modals to the page in the beginning (with ID) then hook up the btns to show their modals)
+tick its own file (fish tick building tick etc)
+buy/sell script for onclick/banks?
+clean and document code better, plan out future files and organization, make more modular
+
+code improvements maybe:
+implement food like fish etc (display, game, stats, unlock js)
+
+gameplay questions:
+figure out player bankrupting themselves problem: free coin once a min? click btn for free coins every x time? prevent player from being dumb?
+should there be fish banks for buy/sell fish and banks for buy/sell buildings
+should the save data export notifications? prob not because clean and also text size
+missed opportunity achievements only if players have multiple saves and have those achievements attached to profile
+
+visual questions:
+if you have small hatcheries and medium fish, and not enough space, the hatcheries will hatch up to the space limit,
+then the medium fish will eat, and the display will show that there is extra space because the fish have been eaten
+small hatcheries produce the small fish up to the aquarium limit, then the medium fish hatcheries produce none because limit, then the medium fish eat the small fish. this happens each tick the same way, so it displays the same space and doesn't allow anything else to go in. put it under a FAQ section of help?
+help could also have accesibility section / how to use website with tab/shift tab/ enter and space on checkboxes
+
+minor visual questions:
+award or trophy icon for achievement?
+
+unlockables:
+stats and charts as unlockables
+
+later:
+figure out automation (adding a number to the purchased per sec)
+unlock ability to buy and sell other buildings in banks by having enough (must have 10k of building, food farm, to unlock in bank menu)
+Hatchery icons in corner, little animated sprites (need to improve these)
+	Factory icons for your factories on the right of the tabs area
+pause notifications when game is paused
+Hotkeys option
+unlocks inside help modal?
+hover effects on btn icons
+make stats modal even cooler
+Factories should go in their own tab
+	Unlock others after having 100k of each
+
+
+minor bugs:
+holding enter on a button to buy something can run quickly and exceed the maximum call stack
+the drag icon plus medium hatcheries text in the manage bank card can split into two rows right around 998px width
+resizing the canvas doesn't redraw the seaweed
+
+other todo:
+make penguin sprites, switch between canvases, penguins are new tab, then snow buildings
+
+pricing ideas:
+mobile: 99 cents, with free demo version available, goes on sale for 49 cents
+steam: 2.99, goes on sale for 99 cents
+
+possible settings:
+draw fish in order of magnitude. Every power of 10 (or 2)
+turn on/off notifications for not having coins or aquarium space etc, turn on or off error sound if purchased something but not the entier amount just part of it. toggle for sound between default or error
+coin rate: settings checkboxes for gross and net, you can display either, both, or none
+turn off dragable bank items
+option to have banks clear down to what you can afford in each input
+option to choose notification side of screen (css class for left or right)
+Option to display basic numbers on top of aquarium in fullscreen mode (default off)
+play background music when game is paused
+setting to pause game on modal open (and unpause on modal close)
+setting for max number of fish displayed (default 200 per type)
+settings for which snackbars/notifications are shown
+filters in notification history for types of notifications
+settings for how long notifications are on screen
+fullscreen
+import/export cookies or file save, make encoding base 64 string function (https://stackoverflow.com/a/38134374/4907950)
+more display settings like turning off the top display area, moving it to bottom, adding a display of types of fish (and hunger) to top or bottom
+when they unlock banks and have none should it still clear inputs to 0? should it clear focused inputs
+should there be a checkbox for banks clearing focused inputs
+turn off color shift on sprites (performance (or OCD, I suppose...) )
+display top buttons checkbox, display aquarium description checkbox
+SCREENSAVER mode on aquarium :) (choose how many of each type to display, but not more than you own)
+reset aquarium (as in rescale thecanvas to the resized window)
+
+info modal:
+donate, share, copyright
+
+multiplier ideas:
+Multiplier sticks around if over 1 for 30 seconds
+If multiplier of 1.5, double speed of hatcheries?
+
+performance:
+if they purchase or sell a building, only update relevant numbers in display (separate display function for updating specific things)
+investigate fullscreen aquarium lagging
+
+game feel/usage:
+esc to close modal pauses game, check if modal is open on esc key btn down (and setting for if esc should close modal, toggle pause even when modal open, or do both if modal open. when modal is open, esc should : dropdown menu)
+
+future bug fixes:
+importing should find newly implemented keys (new buildings, fish, achievements, unlocks, stats, etc) and check if they exist, if not set to 0
+changing system of how they're implemented (for example changing achievement structure) can cause bug from importing older saves
+
+marketing ideas:
+Ad: " 'The next big thing!' People are racing to get absurd numbers of fish, and competing to stay on the top of the leaderboard"
+
+misc:
+add sublime and sass to localhost bat file:
+	start "C:\Program Files\Sublime Text 3\sublime_text.exe"
+
+
+bigger ideas:
+- prestige feature? yeah
+- Make Bank inputs into range sliders or button group where one is selected or something so it doesn't have to update the val and slow game down? Every 10s do building tick?
+- Kraken gives you pearls. Can be exchanged for 100x aquarium, 100x fish, 100x money, or unlock personal tank, shows up every 15min with prompt modal (if you have at least 10mil fish) and prompt for reward only shows up after it has eaten for a min
+- Aquarium eater fish, makes 50k per eat (1 aquarium). Maybe in deep future there are later aquarium eaters that eat aquarium eaters or that eat more aquariums? Eh
+- Kraken is just an achievement, flies around screen for a min and eats 1m fish per sec, then says you lose (seriously what did you think was gonna happen when you clicked release the kraken) and then says just kidding fade in text ánd gives achievement and a badge next to aquarium (collect more badges late game?)
+
+detailed ideas:
+fish need filters or their health goes down. fish with lower health earn coins slower and can die, fish with greater health earn coins faster and reproduce. health is a number 0-1 or 0-100%, determined by the ratio of fish to filters. a ratio of 1000:1 is considered awful and 100:1 is considered good. this feature isn't unlocked until over 100 fish are owned. specifically, it's the ratio of filters to used fish space, so more needed for larger fish. the percentage is calculated by taking the ratio and then comparing it to 1000, so if there is a ratio of 800 space to filters then fish health is at 20%, and 120 space to filters it's at 1000-120 or 880, so 88%. no randomness and no math for billions of fish, just straight simple math calculations. the coin rate fluctuates between 0% at 0 health and 100% at 100% health. the death rate exists below 50% and birth rate above 50%, and goes on a linear scale up to 2% die/born per tick, which is really fast (i think)
+
+
+animation frame code notes:
+let sprite_tick = 0;
+
+
+function canvasLoaded() {
+	// ...
+	window.requestAnimationFrame(drawAllFish);
+	drawAllFish();
+}
+
+function drawAllFish(override_pause=false) {
+	sprite_tick++;
+	console.log(sprite_tick);
+	if(sprite_tick % 6 != 0) {
+		window.requestAnimationFrame(drawAllFish);
+		return;	
+	}
+
+	if(settings.paused && !override_pause) {
+		window.requestAnimationFrame(drawAllFish);
+		return;
+	}
+
+	// ...
+
+	window.requestAnimationFrame(drawAllFish);
+}
+
+
+stats display:
+<p><b>Fish</b></p>
+<br>line chart of num fish going up/down
+<div id="chart-fish-linechart"></div>
+<br>rate of fish gain/loss per sec
+<br>how many are being hatched per sec by how many hatcheries
+<br>how many are being eaten per sec by how many medium fish
+
+<p><b>Space</b></p>
+<br>pie chart of space used by small fish
+<br>rate space is going up vs rate small fish are hatched
+
+<p><b>Hungry</b></p>
+<br>pie chart of hungry fish
+<br>line chart of food going up/down
+<br>num of food owned and rate of food
+
+<p><b>Coins</b></p>
+<br>pie chart of coins from small fish vs coins earned
+<br>num coins produced by fish
+<br>line chart of coins spent on small fish
+
+<p><b>As Food</b></p>
+<br>line chart of fish eaten per s
+
+
+fishing: minigame, someow interacts with personal aquarium. ripples in water like minecraft/terraria/stardew/pokemon, then play a gun game (like in smash spiritboard) to catch fish (instead of like it is in stardew)fish up random rewards or collectibles. 
