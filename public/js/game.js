@@ -12,7 +12,7 @@ import { playSoundEffect } from './audio.js';
 
 // ==== data ====
 
-const DEBUG = 1;
+const DEBUG = 0;
 const LOG_TIMES = true;
 
 let inventory = {
