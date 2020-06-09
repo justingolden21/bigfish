@@ -34,7 +34,7 @@ $( ()=> {
 
 	$('#multiplier-info-btn').click( ()=> {
 		openModal(
-			`<i class="fas fa-info-circle"></i> Fish Multiplier`,
+			`<i class="fas fa-info-circle"></i> Ecosystem Multiplier`,
 			getMultiplierHTML()
 		);
 	});

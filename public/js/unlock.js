@@ -2,6 +2,7 @@ import { openModal } from './modal.js';
 import { stats, getAquariumsUsed, VALS } from './game.js';
 import { showSnackbar } from './notify.js';
 import { secToStr } from './number.js';
+import { prettyStr, pluralize } from './util.js';
 
 // note: use snackbar for achievements as well and similar system
 // to populate achievements in modal as with notifications and stats etc
@@ -324,7 +325,8 @@ function checkUnlock(unlock_name, pretty_name='') {
 
 		unlock($(`.${unlock_name}-unlock`) ); // html class
 
-		if(pretty_name=='') pretty_name = unlock_name.replace(/-/g,' ');
+		// if(pretty_name=='') pretty_name = unlock_name.replace(/-/g,' ');
+		if(pretty_name=='') pretty_name = prettyStr(pluralize(unlock_name) );
 		showSnackbar(`Unlocked ${pretty_name}`, 'unlock');
 
 		// note: commenting out for now, as players often close it immedatly on accident, may uncomment later

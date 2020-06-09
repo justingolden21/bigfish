@@ -16,7 +16,7 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase
 
 const prettyStr = str => str.split('_').join('-').split('-').map( s => capitalize(s) ).join(' ');
 
-const pluralize = str => str.endsWith('fish') ? str : str[str.length-1] == 'y' ? str.substring(0, str.length-1) + 'ies' : str + 's';
+const pluralize = str => str.endsWith('fish') ? str : str[str.length-1] == 'y' ? str.substring(0, str.length-1) + 'ies' : str[str.length-1] == 's' ? str : str + 's';
 
 // console.log(pluralize('small-fish') );
 // console.log(pluralize('small fish') );

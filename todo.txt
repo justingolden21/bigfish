@@ -1,3 +1,6 @@
+REMINDER:
+don't commit in debug mode... seriously... don't do it...
+
 important/now stuff:
 bug!: negative values somehow? early game?
 bug: (1T minus 1) coins shows 1000B
@@ -43,6 +46,7 @@ ways to play:
 speedrun, idle game, relaxing/calm game, automation game/balance numbers/ratios math game, goes on forever, but also distinct ending
 
 maybe:
+stats for buildings purchased from banks
 when unlocking new thing, show banner that says click the help button to learn more, and maybe highlight the help button.
 	maybe have link in banner to help modal
 Toggle for larger buttons (10k,100k,1m,10m) unlock after banks
@@ -166,6 +170,7 @@ code improvements maybe:
 implement food like fish etc (display, game, stats, unlock js)
 
 gameplay questions:
+should not having enough banks clear the inputs? pros: would be less confusing (players knowing theyre limited by banks) cons: later in game player must keep incrementing values
 figure out player bankrupting themselves problem: free coin once a min? click btn for free coins every x time? prevent player from being dumb?
 should there be fish banks for buy/sell fish and banks for buy/sell buildings
 should the save data export notifications? prob not because clean and also text size

@@ -274,7 +274,10 @@ function buildingTick() {
 			// let num_transaction = verify(parseInt(transaction_input.val() ) );
 			// let num_transaction = verify(parseInt(transaction_input.value) );
 			let transaction_input_val = verify(Math.floor(Number(transaction_input.value) ) );
-			if(transaction_input_val == 0) continue;
+			if(transaction_input_val == 0) {
+				transaction_input.classList.remove('error'); // just in case
+				continue;
+			}
 			let num_transaction = Math.min(transaction_input_val, max_transaction);
 
 			// @note: takes about 15ms per time val is set
@@ -507,6 +510,8 @@ function buyFish(type, amount) {
 		console.log('idiot');
 	}
 
+	highlightIf($('.num-coins'), amount == 0);
+
 	if(amount == 0) {
 		// showSnackbar('Not enough coins', 'error');
 		return 0;
@@ -563,6 +568,8 @@ function buyFood(amount) {
 		console.log('idiot');
 	}
 
+	highlightIf($('.num-coins'), amount == 0);
+
 	if(amount == 0) {
 		// showSnackbar('Not enough coins', 'error');
 	} else {
@@ -577,6 +584,8 @@ function buyFood(amount) {
 
 function buyBuildings(building_name, amount, is_bank=false) {
 	amount = Math.min(amount, maxCanAfford(VALS.costs.buildings[building_name]) );
+
+	highlightIf($('.num-coins'), amount == 0);
 
 	if(amount == 0) {
 		// if(!is_bank) showSnackbar('Not enough coins', 'error');

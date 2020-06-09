@@ -5,6 +5,7 @@ import { updateMultiplierDisplay } from './multiplier.js';
 import { displayNum } from './util.js';
 import { pretty } from './number.js';
 import { unlocks } from './unlock.js';
+import { highlightIf } from './notify.js';
 import { getProgressBar, getMultiBar, updateChartData, updateInsightsDisplay } from './chart.js';
 
 const LOG_TIMES = false;
@@ -78,7 +79,10 @@ function displayTick(inventory, hungry, rates, VALS) {
 
 	displayNum('.bank-spend-rate', rates.coins.bank);
 
-	// @todo: import highlightIf from notify.js and use for spaceUsed==totalSpace
+
+
+	highlightIf($('.num-coins'), false);
+	highlightIf($('.num-space-total'), space_used==space_total);
 
 	// @todo make function in modal for isModalOpen(modal_name)
 
