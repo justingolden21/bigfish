@@ -2,6 +2,7 @@ REMINDER:
 don't commit in debug mode... seriously... don't do it...
 
 important/now stuff:
+save data to google account
 bug!: negative values somehow? early game?
 bug: (1T minus 1) coins shows 1000B
 
@@ -115,6 +116,7 @@ use animate css for a collapse or slide animation for tabs/pills
 
 
 achievement ideas:
+"baby shark": eat a million fish
 Achievement(s) for coin rate and other rates
 Chaos: purchase a big fish hatchery
 Achievement: are you stupid? Release the kraken twice in a row

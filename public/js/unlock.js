@@ -228,7 +228,7 @@ function checkUnlocks(inventory) {
 	let total_fish = inventory.fish.small + inventory.fish.medium + inventory.fish.big;
 
 	if(total_fish > 1e6) {
-		checkUnlock('bank-fish', 'banking with fish');
+		checkUnlock('bank-fish', 'Banking with fish');
 	}
 
 	if(inventory.food >= 20 || total_fish >= 10) {
@@ -303,7 +303,7 @@ function checkUnlocks(inventory) {
 	if(inventory.buildings.bank >= 1) checkAchievement('Small Banking');
 	if(inventory.buildings.bank >= 1e3) checkAchievement('Making Bank');
 	if(inventory.buildings.bank >= 1e5) {
-		checkUnlock('big-banking');
+		checkUnlock('big-banking', 'Big banking');
 		checkAchievement('Big Banking');
 	}
 	if(inventory.buildings.bank >= 1e7) checkAchievement('Fishy Business');
