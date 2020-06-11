@@ -85,10 +85,10 @@ function updateGlobalStats(user) {
 
 		// calculate the difference since last update
 		let diff_stats = {
-			ticks: prev_stats.ticks - stats.ticks,
-			fish: prev_stats.fish - (inventory.fish.small + inventory.fish.medium + inventory.fish.big),
-			buildings: prev_stats.buildings - stats.buildings.purchased, // good anough for now
-			coins: prev_stats.coins - inventory.coins,
+			ticks: stats.ticks - prev_stats.ticks,
+			fish: (inventory.fish.small + inventory.fish.medium + inventory.fish.big) - prev_stats.fish,
+			buildings: stats.buildings.purchased - prev_stats.buildings, // good anough for now
+			coins: inventory.coins - prev_stats.coins,
 		};
 
 		// add the difference to the global data
