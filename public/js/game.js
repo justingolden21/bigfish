@@ -368,8 +368,8 @@ $( ()=> {
 
 	// make fish tabs
 	// https://stackoverflow.com/a/9306228/4907950
-	$('#v-pills-medium-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food-rate/g, 'FOOD-RATE').replace(/(?<!rate\-)food/g, 'small fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
-	$('#v-pills-big-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food-rate/g, 'FOOD-RATE').replace(/(?<!rate\-)food/g, 'medium fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
+	$('#v-pills-medium-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food-rate/g, 'FOOD-RATE').replace(/(<rate\-)food/g, 'small fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
+	$('#v-pills-big-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food-rate/g, 'FOOD-RATE').replace(/(<rate\-)food/g, 'medium fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
 
 	$('#v-pills-medium-hatchery').html($('#v-pills-small-hatchery').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food/g, 'small fish').replace(/capsules/g, 'fish') );
 	$('#v-pills-big-hatchery').html($('#v-pills-small-hatchery').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food/g, 'medium fish').replace(/capsules/g, 'fish') );
