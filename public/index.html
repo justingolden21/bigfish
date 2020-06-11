@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"> -->
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/signin.css">
 <link id="full-aquarium-css" rel="stylesheet" href="">
 
 </head>
@@ -24,6 +25,147 @@
 
 <!-- doesn't matter where this is -->
 <div class="ripple"></div>
+
+<!-- begin signin code -->
+
+<div id="signin-div">
+	<button id="signin-btn" class="btn signin" data-toggle="modal" data-target="#signin-modal">
+		<!--
+			sign-in-alt
+			user
+			user-circle
+			user-plus
+		-->
+		<i class="fas fa-sign-in-alt"></i> Sign In / Up
+	</button>
+	<button id="signout-btn" class="btn signin"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+	<span id="account-info">me@email.com</span>
+</div>
+
+<div id="signin-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Sign In / Up</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false"><i class="fas fa-user-plus"></i> Sign Up</a>
+					</li>
+				</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+
+						<form id="signin-form">
+							<div class="input-group my-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-envelope"></i>
+									</span>
+								</div>
+								<input autofocus id="signin-email-input" class="form-control" type="email" placeholder="Email" required>
+								<div class="invalid-feedback">
+									Please enter your email.
+								</div>
+							</div>
+							<div class="input-group my-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-key"></i>
+									</span>
+								</div>
+								<input id="signin-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
+								<div class="invalid-feedback">
+									Invalid password.
+								</div>
+							</div>
+							<!-- <div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="remember-me-checkbox">
+								<label class="custom-control-label" for="remember-me-checkbox">Remember me</label>
+							</div> -->
+							<button class="btn btn-block"><i class="fas fa-sign-in-alt"></i> Log in</button>
+							<!-- <a href="">Forgot password?</a> -->
+						</form>
+
+
+					</div>
+					<div class="tab-pane" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+
+						<form id="signup-form">
+							<!-- <div class="input-group my-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-user"></i>
+									</span>
+								</div>
+								<input autofocus id="signup-name-input" class="form-control" type="text" placeholder="Name" required>
+								<div class="invalid-feedback">
+									Please enter your name.
+								</div>
+							</div> -->
+							<div class="input-group my-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-envelope"></i>
+									</span>
+								</div>
+								<input autofocus id="signup-email-input" class="form-control" type="email" placeholder="Email" required>
+								<div class="invalid-feedback">
+									Please enter your email.
+								</div>
+							</div>
+							<div class="row my-4">
+								<div class="input-group col-sm-6 align-self-start">
+									<div class="input-group-prepend">
+										<span class="input-group-text">
+											<i class="fas fa-key"></i>
+										</span>
+									</div>
+									<input id="signup-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
+									<div class="invalid-feedback">
+										Password must be at least 8 characters and have a letter, number, and special character.
+									</div>
+								</div>
+								<div class="col-12 d-sm-none"><br></div>
+								<div class="input-group col-sm-6 align-self-start">
+									<div class="input-group-prepend">
+										<span class="input-group-text">
+											<i class="fas fa-key"></i>
+										</span>
+									</div>
+									<input id="signup-password-confirm-input" class="form-control" type="password" placeholder="Confirm Password" required minlength="6">
+									<div class="invalid-feedback">
+										Passwords do not match.
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-block"><i class="fas fa-user-plus"></i> Sign up</button>
+							<!-- <p>By signing up you agree to our <a href="">terms of use</a></p> -->
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- end signin code -->
 
 <button id="exit-fullscreen-btn" class="btn"><i class="fas fa-times"></i></button>
 
@@ -369,7 +511,7 @@
 	<button id="fullscreen-aquarium-btn" class="unlock fullscreen-aquarium-unlock btn m-1 mb-4"><i class="fas fa-external-link-alt"></i> Fullscreen Aquarium</button>
 </div>
 <br>
-<div class="modal" tabindex="-1" role="dialog">
+<div id="default-modal" class="modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -394,6 +536,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js
 "></script>
 
+<!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.15.0/firebase-app.js"></script>
+<script src="/__/firebase/7.15.0/firebase-analytics.js"></script>
+<script src="/__/firebase/7.15.0/firebase-auth.js"></script>
+<script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+<script type="module" src="js/signin.js"></script>
 <script type="module" src="js/ripple.js"></script>
 <script type="module" src="js/chart.js"></script>
 <script type="module" src="js/sprite.js"></script>

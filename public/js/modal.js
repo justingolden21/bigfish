@@ -8,15 +8,15 @@ import { exportData, doImport } from './data.js';
 import { getAchievementHTML, getAchievementSize, getCompletedAchievementSize, unlocks } from './unlock.js';
 
 function openModal(title, body, footer='', is_big=false) {
-	$('.modal-title').html(title);
-	$('.modal-body').html(body);
-	$('.modal-footer').html(footer);
+	$('#default-modal .modal-title').html(title);
+	$('#default-modal .modal-body').html(body);
+	$('#default-modal .modal-footer').html(footer);
 	if(is_big) {
-		$('.modal-dialog').addClass('modal-lg');
+		$('#default-modal .modal-dialog').addClass('modal-lg');
 	} else {
-		$('.modal-dialog').removeClass('modal-lg');
+		$('#default-modal .modal-dialog').removeClass('modal-lg');
 	}
-	$('.modal').modal('show');
+	$('#default-modal.modal').modal('show');
 }
 
 $( ()=> {
