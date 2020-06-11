@@ -5,6 +5,7 @@ import { showSnackbar, showBlink } from './notify.js';
 import { settings, toggleSetting } from './setting.js';
 import { setSound, playSoundEffect, audioHandlePause } from './audio.js';
 import { checkAchievement } from './unlock.js';
+import { signed_in } from './signin.js';
 
 let canvas, ctx;
 
@@ -96,8 +97,10 @@ $( ()=> {
 		if(first_pause) {
 			first_pause = false;
 			$('#pause-btn').click();
-			showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
-			setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 3000);
+			if(!signed_in) {
+				showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
+				setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 2500);
+			}
 		}
 	});
 
@@ -152,10 +155,10 @@ $( ()=> {
 			last_mousemove = new Date();
 			setTimeout( ()=> {
 				// https://stackoverflow.com/a/4944782/4907950
-				if(Math.abs(new Date() - last_mousemove) >= 3000) {
+				if(Math.abs(new Date() - last_mousemove) >= 2000) {
 					$('#exit-fullscreen-btn').hide();
 				}
-			}, 3000);
+			}, 2000);
 		}
 	});
 

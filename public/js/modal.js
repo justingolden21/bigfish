@@ -4,19 +4,20 @@ import { updateStatsDisplay, getStatsHTML } from './stats.js';
 import { updateInsightsDisplay, getInsightsHTML } from './chart.js';
 import { getMultiplierHTML } from './multiplier.js';
 import { showSnackbar, getNotificationHistory } from './notify.js';
-import { exportData, doImport } from './data.js';
+import { deleteAllData } from './database.js';
+import { exportData, importData } from './data.js';
 import { getAchievementHTML, getAchievementSize, getCompletedAchievementSize, unlocks } from './unlock.js';
 
 function openModal(title, body, footer='', is_big=false) {
-	$('.modal-title').html(title);
-	$('.modal-body').html(body);
-	$('.modal-footer').html(footer);
+	$('#default-modal .modal-title').html(title);
+	$('#default-modal .modal-body').html(body);
+	$('#default-modal .modal-footer').html(footer);
 	if(is_big) {
-		$('.modal-dialog').addClass('modal-lg');
+		$('#default-modal .modal-dialog').addClass('modal-lg');
 	} else {
-		$('.modal-dialog').removeClass('modal-lg');
+		$('#default-modal .modal-dialog').removeClass('modal-lg');
 	}
-	$('.modal').modal('show');
+	$('#default-modal.modal').modal('show');
 }
 
 $( ()=> {
@@ -61,7 +62,10 @@ $( ()=> {
 	$('#settings-modal-btn').click( ()=> {
 		openModal(
 			`<i class="fas fa-cog"></i> Settings`,
-			`<b>Import:</b>
+			`<b>Account:</b>
+			<button id="delete-data-btn" class="btn mt-2"><i class="fas fa-trash"></i> Delete All Data</button>
+			<hr>
+			<b>Import:</b>
 			<textarea id="import-textarea" class="form-control"></textarea>
 			<button id="do-import-btn" class="btn mt-2"><i class="fas fa-file-import"></i> Import</button>
 			<hr>
@@ -84,10 +88,10 @@ $( ()=> {
 			// @todo: display copied confirmation (in popover or text below)
 		});
 
-		// @maybe onenter in textarea doImport as well, don't have to click btn to import
+		// @maybe onenter in textarea importData as well, don't have to click btn to import
 		$('#do-import-btn').click( ()=> {
 			// @todo: catch import errors and give notification
-			doImport();
+			importData($('#import-textarea').val() );
 			$('.modal').modal('hide');
 			display();
 			showSnackbar('Game data imported successfully', 'success');
@@ -97,6 +101,23 @@ $( ()=> {
 			toggleSetting('num_abrev');
 			display(); // display changes immedatly, especially if paused
 			$('#export-textarea').val(exportData() ); // update it with new setting
+		});
+
+		$('#delete-data-btn').click( ()=> {
+			openModal(
+				`<i class="fas fa-exclamation-triangle"></i> Are You Sure?`,
+				`<p>Yes, I'm sure I want to delete all data:</p>
+				<p><small>This will delete all data saved to your account, not data on the page now. Refresh to remove this data as well.</small></p>
+				<button id="delete-data-confirm-btn" class="btn mt-2">Yes</button>
+				<button class="btn mt-2" data-dismiss="modal" aria-label="Close">No</button>`
+			);
+
+			$('#delete-data-confirm-btn').click( ()=> {
+				deleteAllData();
+				$('.modal').modal('hide');
+				showSnackbar('All account data has been deleted', 'success');
+				$('#signout-btn').click();
+			});
 		});
 	});
 

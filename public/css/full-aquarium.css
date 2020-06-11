@@ -3,7 +3,7 @@ html, body {
 	padding: 0 !important;
 	overflow: hidden;	
 }
-#title, #top-hr, #info-row {
+#title, #top-hr, #info-row, #signin-div {
 	display: none;
 }
 #snackbar {
