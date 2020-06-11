@@ -31,9 +31,6 @@ $( ()=> {
 	$('#signup-form').on('submit', evt=> {
 		evt.preventDefault();
 
-		// @TODO: pass must be 6 chars
-
-		// @TODO: handle if user exists
 
 		// @TODO: error handle if passwords don't mach, then return
 
@@ -41,28 +38,30 @@ $( ()=> {
 		// user info
 		const email = $('#signup-email-input').val();
 		const pass = $('#signup-password-input').val();
+		const confirm_pass = $('#signup-password-confirm-input').val();
+
+		if(pass != confirm_pass) {
+			$('#error-text').html('Passwords do not match.');
+			return;
+		}
 
 		// sign up
 		$('#signup-loader').css('display', 'block');
+		$('#error-text').html('');
 		auth.createUserWithEmailAndPassword(email, pass).then(user=> {
 			$('#signup-loader').css('display', 'none');
 			console.log('signup success ' + user.uid);
+	
+			$('#error-text').html('');
+			$('#signin-modal').modal('hide');
+			$('#signup-form').trigger('reset');
 		}).catch(err=> {
 			$('#signup-loader').css('display', 'none');
 			console.log('signup error ' + err);
 
-			// if(err.code == 'auth/weak-password') {
-				// alert('The password is too weak.');
-			// } else {
-				alert(err.message);
-			// }
+			$('#error-text').html(err.message);
 		});
 
-		// close the modal
-		$('#signin-modal').modal('hide');
-
-		// clear the form
-		$('#signup-form').trigger('reset');
 	});
 
 	$('#signout-btn').click(evt=> {

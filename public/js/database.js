@@ -72,6 +72,8 @@ function updateData(user) {
 // then update the user's previous stats
 function updateGlobalStats(user) {
 
+	if(!user) return;
+
 	db.collection('users').doc(user.uid).get().then(snapshot=> {
 		console.log(snapshot);
 
