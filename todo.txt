@@ -2,12 +2,11 @@ REMINDER:
 don't commit in debug mode... seriously... don't do it...
 
 important/now stuff:
-save data to google account
 bug!: negative values somehow? early game?
 bug: (1T minus 1) coins shows 1000B
 
-think about how to backend this crap...
-
+todo maybe before launch:
+data.js has importFromEncoded and exportEncoded and also importData and exportData
 
 insights ideas:
 Pie chart of your spending in banks as an insight. Insights modal has btns that show different insignts
@@ -39,6 +38,7 @@ backend soon:
 backend later:
 display total fish worldwide (and coins)
 Leaderboard (For achievements and for total fish, money, space, etc)
+checkbox to say "you can email me occasional updates (no more than once a week) in the future", store bool in account info and option to change it either way
 
 multiplayer ideas
 1v1: race to a mil fish, your fish eat your opponent's

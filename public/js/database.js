@@ -4,7 +4,6 @@ import { inventory, stats } from './game.js';
 const db = firebase.firestore();
 
 // @TODO error handling everywhere
-// @TODO option to delete all data
 // @TODO option to manually update save data before you quit
 
 // make sure that we don't set scores before getting scores
@@ -59,11 +58,11 @@ function updateData(user) {
 	updateGlobalStats(user);
 }
 
-// function deleteAllData() {
-// 	// get empty player data
-// 	// set data locally
-// 	// and on db
-// }
+// empty data in db
+function deleteAllData() {
+	let user = firebase.auth().currentUser;
+	db.collection('users').doc(user.uid).set({});
+}
 
 
 // update global stats
@@ -114,4 +113,4 @@ function updateGlobalStats(user) {
 	});
 }
 
-export { getData, updateData };
+export { getData, updateData, deleteAllData };

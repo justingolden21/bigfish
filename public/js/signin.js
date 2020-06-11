@@ -5,6 +5,8 @@ const auth = firebase.auth();
 
 let update_data_interval;
 
+let signed_in = false;
+
 auth.onAuthStateChanged(user => {
 	if(user) { // logged in
 		$('#account-info').html(user.email);
@@ -19,6 +21,8 @@ auth.onAuthStateChanged(user => {
 	} else { // logged out
 		displayLoggedOut();
 	}
+
+	signed_in = Boolean(user);
 });
 
 $( ()=> {
@@ -26,10 +30,6 @@ $( ()=> {
 
 	$('#signup-form').on('submit', evt=> {
 		evt.preventDefault();
-
-
-		// @TODO: error handle if passwords don't mach, then return
-
 
 		// user info
 		const email = $('#signup-email-input').val();
@@ -64,8 +64,6 @@ $( ()=> {
 
 	$('#signin-form').on('submit', evt=> {
 		evt.preventDefault();
-
-		// @TODO: error handle if pass doesn't match user
 
 		// user info
 		const email = $('#signin-email-input').val();
@@ -111,3 +109,5 @@ function displayLoggedOut(show_snackbar=true) {
 	$('#signout-btn').hide();
 	$('#signin-btn').show();
 }
+
+export { signed_in };
