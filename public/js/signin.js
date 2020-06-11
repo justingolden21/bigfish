@@ -2,8 +2,19 @@ import { showSnackbar } from './notify.js';
 
 // @TODO show/hide ".invalid-feedback" divs
 
+// @TODO: display loader while signing in
+
 const auth = firebase.auth();
 // const db = firebase.firestore();
+
+auth.onAuthStateChanged(user => {
+	if(user) { // logged in
+		$('#account-info').html(user.email);
+		displayLoggedIn();
+	} else { // logged out
+		displayLoggedOut();
+	}
+});
 
 $( ()=> {
 	displayLoggedOut(false);
@@ -23,26 +34,18 @@ $( ()=> {
 		const pass = $('#signup-password-input').val();
 
 		// sign up
-		auth.createUserWithEmailAndPassword(email, pass).then(cred => {
-			// close the modal
-			$('#signin-modal').modal('hide');
+		auth.createUserWithEmailAndPassword(email, pass);
 
-			// clear the form
-			$('#signup-form').trigger('reset');
+		// close the modal
+		$('#signin-modal').modal('hide');
 
-			// display signed in email
-			$('#account-info').html(cred.user.email);
-
-			// show/hide correct login btns and info
-			displayLoggedIn();
-		});
+		// clear the form
+		$('#signup-form').trigger('reset');
 	});
 
 	$('#signout-btn').click(evt=> {
 		evt.preventDefault();
-		auth.signOut().then( ()=> {
-			displayLoggedOut();
-		});
+		auth.signOut();
 	});
 
 	$('#signin-form').on('submit', evt=> {
