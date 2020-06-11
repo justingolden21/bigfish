@@ -42,7 +42,7 @@ const getMills = ()=> new Date().getTime();
 
 // creates a new user, adds their save data and login time
 function createData(user) {
-	db.collection('users').doc(user.uid).set({ savedata: exportData(), logins: [getMills()] }).then(snapshot=> {
+	db.collection('users').doc(user.uid).set({ savedata: exportData(), email: user.email, logins: [getMills()] }).then(snapshot=> {
 		console.log(snapshot);
 	});
 }

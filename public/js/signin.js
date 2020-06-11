@@ -1,10 +1,6 @@
 import { showSnackbar } from './notify.js';
 import { getData, updateData } from './database.js';
 
-// @TODO show/hide ".invalid-feedback" divs
-
-// @TODO: display loader while signing in
-
 const auth = firebase.auth();
 
 let update_data_interval;
@@ -41,33 +37,30 @@ $( ()=> {
 		const confirm_pass = $('#signup-password-confirm-input').val();
 
 		if(pass != confirm_pass) {
-			$('#error-text').html('Passwords do not match.');
+			$('#signup-error-text').html('Passwords do not match.');
 			return;
 		}
 
 		// sign up
 		$('#signup-loader').css('display', 'block');
-		$('#error-text').html('');
+		$('#signup-error-text').html('');
 		auth.createUserWithEmailAndPassword(email, pass).then(user=> {
 			$('#signup-loader').css('display', 'none');
 			console.log('signup success ' + user.uid);
 	
-			$('#error-text').html('');
+			$('#signup-error-text').html('');
 			$('#signin-modal').modal('hide');
 			$('#signup-form').trigger('reset');
 		}).catch(err=> {
 			$('#signup-loader').css('display', 'none');
-			console.log('signup error ' + err);
+			console.log('signup error ' + err.message);
 
-			$('#error-text').html(err.message);
+			$('#signup-error-text').html(err.message);
 		});
 
 	});
 
-	$('#signout-btn').click(evt=> {
-		evt.preventDefault();
-		auth.signOut();
-	});
+
 
 	$('#signin-form').on('submit', evt=> {
 		evt.preventDefault();
@@ -79,45 +72,28 @@ $( ()=> {
 		const pass = $('#signin-password-input').val();
 
 		// sign in
+		$('#signin-loader').css('display', 'block');
+		$('#signin-error-text').html('');
 		auth.signInWithEmailAndPassword(email, pass).then(cred => {
-			// close the modal
-			$('#signin-modal').modal('hide');
+			$('#signin-loader').css('display', 'none');
+			console.log('signin success ' + cred);
 
-			// clear the form
+			$('#signin-error-text').html('');
+			$('#signin-modal').modal('hide');
 			$('#signin-form').trigger('reset');
+		}).catch(err=> {
+			$('#signin-loader').css('display', 'none');
+			console.log('signin error ' + err.message);
+
+			$('#signin-error-text').html(err.message);
 		});
 	});
 
 
-
-
-	// // ======== Validation ========
-	// // 8 chararcters, 1 letter, 1 number, 1 special
-	// // https://stackoverflow.com/a/21456918/4907950
-	// const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-
-	// const doValidation = ()=> {
-	// 	if(!PASSWORD_REGEX.test($('#signup-password-input').val() ) )
-	// 		$('#signup-password-input').addClass('is-invalid');
-	// 	else
-	// 		$('#signup-password-input').removeClass('is-invalid');
-
-	// 	if($('#signup-password-input').val() != $('#signup-password-confirm-input').val() )
-	// 		$('#signup-password-confirm-input').addClass('is-invalid');
-	// 	else
-	// 		$('#signup-password-confirm-input').removeClass('is-invalid');
-	// };
-
-	// $('#signup-password-input').change(doValidation);
-	// $('#signup-password-confirm-input').change(doValidation);
-
-
-
-
-
-
-
-
+	$('#signout-btn').click(evt=> {
+		evt.preventDefault();
+		auth.signOut();
+	});
 
 });
 

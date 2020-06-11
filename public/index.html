@@ -67,9 +67,6 @@
 									</span>
 								</div>
 								<input autofocus id="signin-email-input" class="form-control" type="email" placeholder="Email" required>
-								<div class="invalid-feedback">
-									Please enter your email.
-								</div>
 							</div>
 							<div class="input-group my-4">
 								<div class="input-group-prepend">
@@ -78,15 +75,14 @@
 									</span>
 								</div>
 								<input id="signin-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
-								<div class="invalid-feedback">
-									Invalid password.
-								</div>
 							</div>
 							<!-- <div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="remember-me-checkbox">
 								<label class="custom-control-label" for="remember-me-checkbox">Remember me</label>
 							</div> -->
 							<button class="btn btn-block"><i class="fas fa-sign-in-alt"></i> Log in</button>
+							<b><span id="signin-error-text"></span></b>
+							<span id="signin-loader" style="display: none"><i class="fas fa-spinner fa-spin"></i></span>
 							<!-- <a href="">Forgot password?</a> -->
 						</form>
 
@@ -102,9 +98,6 @@
 									</span>
 								</div>
 								<input autofocus id="signup-name-input" class="form-control" type="text" placeholder="Name" required>
-								<div class="invalid-feedback">
-									Please enter your name.
-								</div>
 							</div> -->
 							<div class="input-group my-4">
 								<div class="input-group-prepend">
@@ -113,9 +106,6 @@
 									</span>
 								</div>
 								<input autofocus id="signup-email-input" class="form-control" type="email" placeholder="Email" required>
-								<div class="invalid-feedback">
-									Please enter your email.
-								</div>
 							</div>
 							<div class="row my-4">
 								<div class="input-group col-sm-6 align-self-start">
@@ -125,9 +115,6 @@
 										</span>
 									</div>
 									<input id="signup-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
-									<div class="invalid-feedback">
-										Password must be at least 6 characters.
-									</div>
 								</div>
 								<div class="col-12 d-sm-none"><br></div>
 								<div class="input-group col-sm-6 align-self-start">
@@ -137,13 +124,10 @@
 										</span>
 									</div>
 									<input id="signup-password-confirm-input" class="form-control" type="password" placeholder="Confirm Password" required minlength="6">
-									<div class="invalid-feedback">
-										Passwords do not match.
-									</div>
 								</div>
 							</div>
 							<button class="btn btn-block"><i class="fas fa-user-plus"></i> Sign up</button>
-							<b><span id="error-text"></span></b>
+							<b><span id="signup-error-text"></span></b>
 							<span id="signup-loader" style="display: none"><i class="fas fa-spinner fa-spin"></i></span>
 							<!-- <p>By signing up you agree to our <a href="">terms of use</a></p> -->
 						</form>
