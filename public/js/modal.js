@@ -4,7 +4,7 @@ import { updateStatsDisplay, getStatsHTML } from './stats.js';
 import { updateInsightsDisplay, getInsightsHTML } from './chart.js';
 import { getMultiplierHTML } from './multiplier.js';
 import { showSnackbar, getNotificationHistory } from './notify.js';
-import { exportData, doImport } from './data.js';
+import { exportData, importData } from './data.js';
 import { getAchievementHTML, getAchievementSize, getCompletedAchievementSize, unlocks } from './unlock.js';
 
 function openModal(title, body, footer='', is_big=false) {
@@ -84,10 +84,10 @@ $( ()=> {
 			// @todo: display copied confirmation (in popover or text below)
 		});
 
-		// @maybe onenter in textarea doImport as well, don't have to click btn to import
+		// @maybe onenter in textarea importData as well, don't have to click btn to import
 		$('#do-import-btn').click( ()=> {
 			// @todo: catch import errors and give notification
-			doImport();
+			importData($('#import-textarea').val() );
 			$('.modal').modal('hide');
 			display();
 			showSnackbar('Game data imported successfully', 'success');

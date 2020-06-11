@@ -1,16 +1,25 @@
 import { showSnackbar } from './notify.js';
+import { getData, updateData } from './database.js';
 
 // @TODO show/hide ".invalid-feedback" divs
 
 // @TODO: display loader while signing in
 
 const auth = firebase.auth();
-// const db = firebase.firestore();
+
+let update_data_interval;
 
 auth.onAuthStateChanged(user => {
 	if(user) { // logged in
 		$('#account-info').html(user.email);
 		displayLoggedIn();
+
+		getData(user);
+
+		// save data every 60s, and after 5s
+		clearInterval(update_data_interval);
+		update_data_interval = setInterval( ()=>updateData(user), 1000*60);
+		setTimeout( ()=>updateData(user), 1000*5);
 	} else { // logged out
 		displayLoggedOut();
 	}
@@ -64,12 +73,6 @@ $( ()=> {
 
 			// clear the form
 			$('#signin-form').trigger('reset');
-
-			// display signed in email
-			$('#account-info').html(cred.user.email);
-
-			// show/hide correct login btns and info
-			displayLoggedIn();
 		});
 	});
 

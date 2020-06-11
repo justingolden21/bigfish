@@ -38,14 +38,6 @@ function importData(data) {
 	if(LOG_TIMES) console.timeEnd('import');
 }
 
-// ==== functions called from import/export UI ====
-
-function doImport() {
-	importData($('#import-textarea').val() );
-}
-
-
-
 // tests
 // setTimeout( ()=> {
 // 	console.log(JSON.stringify(stats) );
@@ -72,4 +64,4 @@ function deletePlayerData() {
 	// @todo
 }
 
-export { exportData, doImport };
+export { exportData, importData };
