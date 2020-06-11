@@ -7,6 +7,9 @@ let update_data_interval;
 
 let signed_in = false;
 
+let page_first_load = true;
+setTimeout( ()=>page_first_load=false , 3000);
+
 auth.onAuthStateChanged(user => {
 	if(user) { // logged in
 		$('#account-info').html(user.email);
@@ -19,7 +22,7 @@ auth.onAuthStateChanged(user => {
 		update_data_interval = setInterval( ()=>updateData(user), 1000*60);
 		setTimeout( ()=>updateData(user), 1000*5);
 	} else { // logged out
-		displayLoggedOut();
+		displayLoggedOut(!page_first_load);
 
 		clearInterval(update_data_interval);
 	}
