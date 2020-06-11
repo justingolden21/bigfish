@@ -43,7 +43,20 @@ $( ()=> {
 		const pass = $('#signup-password-input').val();
 
 		// sign up
-		auth.createUserWithEmailAndPassword(email, pass);
+		$('#signup-loader').css('display', 'block');
+		auth.createUserWithEmailAndPassword(email, pass).then(user=> {
+			$('#signup-loader').css('display', 'none');
+			console.log('signup success ' + user.uid);
+		}).catch(err=> {
+			$('#signup-loader').css('display', 'none');
+			console.log('signup error ' + err);
+
+			// if(err.code == 'auth/weak-password') {
+				// alert('The password is too weak.');
+			// } else {
+				alert(err.message);
+			// }
+		});
 
 		// close the modal
 		$('#signin-modal').modal('hide');

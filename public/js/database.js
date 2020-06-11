@@ -101,10 +101,12 @@ function updateGlobalStats(user) {
 
 		// update user's previous stats
 		db.collection('users').doc(user.uid).update({
-			ticks: stats.ticks,
-			fish: (inventory.fish.small + inventory.fish.medium + inventory.fish.big),
-			buildings: stats.buildings.purchased,
-			coins: inventory.coins,
+			prevstats: {
+				ticks: stats.ticks,
+				fish: (inventory.fish.small + inventory.fish.medium + inventory.fish.big),
+				buildings: stats.buildings.purchased,
+				coins: inventory.coins,
+			}
 		});
 
 	});
