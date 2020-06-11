@@ -1,5 +1,6 @@
 import { exportData, importData } from './data.js';
 import { inventory, stats } from './game.js';
+import { signed_in } from './signin.js';
 
 const db = firebase.firestore();
 
@@ -49,7 +50,7 @@ function createData(user) {
 // called on an interval from signin
 // save data to db with exportData
 function updateData(user) {
-	if(!data_is_set) return;
+	if(!data_is_set || !signed_in) return;
 
 	console.log('updating data');
 

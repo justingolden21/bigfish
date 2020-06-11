@@ -20,6 +20,8 @@ auth.onAuthStateChanged(user => {
 		setTimeout( ()=>updateData(user), 1000*5);
 	} else { // logged out
 		displayLoggedOut();
+
+		clearInterval(update_data_interval);
 	}
 
 	signed_in = Boolean(user);
@@ -74,7 +76,7 @@ $( ()=> {
 		$('#signin-error-text').html('');
 		auth.signInWithEmailAndPassword(email, pass).then(cred => {
 			$('#signin-loader').css('display', 'none');
-			console.log('signin success ' + cred);
+			console.log('signin success');
 
 			$('#signin-error-text').html('');
 			$('#signin-modal').modal('hide');
