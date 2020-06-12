@@ -10,6 +10,36 @@ import { getProgressBar, getMultiBar, updateChartData, updateInsightsDisplay } f
 
 const LOG_TIMES = false;
 
+function displayConsts(VALS) {
+
+	displayNum('.data-food-cost', VALS.costs.food);
+	displayNum('.data-food-seconds-fed', 1);
+	displayNum('.data-food-per-purchase', 1);
+
+	let types = ['small', 'medium', 'big'];
+	for(let type of types) {
+		displayNum(`.data-${type}-fish-cost`, VALS.costs.fish[type]);
+		displayNum(`.data-${type}-fish-sell`, Math.floor(VALS.costs.fish[type]/2) );
+		displayNum(`.data-${type}-fish-coin-rate`, VALS.rates.fish[type]);
+		displayNum(`.data-${type}-fish-space`, VALS.space.fish[type]);
+		
+		displayNum(`.data-${type}-fish-food-rate`, 1);
+		displayNum(`.data-${type}-fish-per-purchase`, 1);
+	}
+
+	let buildings = ['food-farm', 'aquarium', 'bank', 'aquarium-factory', 'small-hatchery', 'medium-hatchery', 'big-hatchery'];
+	for(let building of buildings) {
+		let key_name = building.replace('-','_');
+
+		displayNum(`.data-${building}-rate`, VALS.rates.buildings[key_name]);
+
+		displayNum(`.data-${building}-per-purchase`, 1);
+		displayNum(`.data-${building}-cost`, VALS.costs.buildings[key_name]);
+		displayNum(`.data-${building}-sell`, Math.floor(VALS.costs.buildings[key_name]/2) );
+	}
+
+}
+
 function displayTick(inventory, hungry, rates, VALS) {
 	if(LOG_TIMES) console.time('display');
 	displayNum('.num-coins', inventory.coins);
@@ -20,9 +50,9 @@ function displayTick(inventory, hungry, rates, VALS) {
 	displayNum('.rate-num-coins', rates.coins.small+rates.coins.medium+rates.coins.big+rates.coins.bank);
 	displayNum('.rate-num-food', rates.food);
 
-	displayNum('.data-food-cost', VALS.costs.food);
-	displayNum('.data-food-seconds-fed', 1);
-	displayNum('.data-food-per-purchase', 1);
+	// displayNum('.data-food-cost', VALS.costs.food);
+	// displayNum('.data-food-seconds-fed', 1);
+	// displayNum('.data-food-per-purchase', 1);
 
 	if(LOG_TIMES) console.timeLog('display');
 	let types = ['small', 'medium', 'big'];
@@ -30,16 +60,16 @@ function displayTick(inventory, hungry, rates, VALS) {
 		displayNum(`.num-${type}-fish`, inventory.fish[type]);
 		displayNum(`.num-hungry-${type}-fish`, hungry[type]);
 
-		displayNum(`.data-${type}-fish-cost`, VALS.costs.fish[type]);
-		displayNum(`.data-${type}-fish-sell`, Math.floor(VALS.costs.fish[type]/2) );
-		displayNum(`.data-${type}-fish-coin-rate`, VALS.rates.fish[type]);
+		// displayNum(`.data-${type}-fish-cost`, VALS.costs.fish[type]);
+		// displayNum(`.data-${type}-fish-sell`, Math.floor(VALS.costs.fish[type]/2) );
+		// displayNum(`.data-${type}-fish-coin-rate`, VALS.rates.fish[type]);
 		displayNum(`.rate-coin-${type}-fish`, rates.coins[type]);
 		displayNum(`.rate-food-${type}-fish`, 1*(inventory.fish[type]-hungry[type]) );
-		displayNum(`.data-${type}-fish-space`, VALS.space.fish[type]);
+		// displayNum(`.data-${type}-fish-space`, VALS.space.fish[type]);
 		displayNum(`.num-${type}-fish-space`, VALS.space.fish[type]*inventory.fish[type]);
 
-		displayNum(`.data-${type}-fish-food-rate`, 1);
-		displayNum(`.data-${type}-fish-per-purchase`, 1);
+		// displayNum(`.data-${type}-fish-food-rate`, 1);
+		// displayNum(`.data-${type}-fish-per-purchase`, 1);
 	}
 
 	if(LOG_TIMES) console.timeLog('display');
@@ -50,12 +80,12 @@ function displayTick(inventory, hungry, rates, VALS) {
 		// @todo rename "rates" in vals to "provided" to be more generic and accurate?
 
 		displayNum(`.num-${building}`, inventory.buildings[key_name]);
-		displayNum(`.data-${building}-rate`, VALS.rates.buildings[key_name]);
+		// displayNum(`.data-${building}-rate`, VALS.rates.buildings[key_name]);
 		displayNum(`.rate-${building}`, VALS.rates.buildings[key_name] * inventory.buildings[key_name]);
 
-		displayNum(`.data-${building}-per-purchase`, 1);
-		displayNum(`.data-${building}-cost`, VALS.costs.buildings[key_name]);
-		displayNum(`.data-${building}-sell`, Math.floor(VALS.costs.buildings[key_name]/2) );
+		// displayNum(`.data-${building}-per-purchase`, 1);
+		// displayNum(`.data-${building}-cost`, VALS.costs.buildings[key_name]);
+		// displayNum(`.data-${building}-sell`, Math.floor(VALS.costs.buildings[key_name]/2) );
 	}
 
 	// could put these in if statement if aquariums are unlocked (and do similar for others)
@@ -113,4 +143,4 @@ function setOutOfSpaceBannerDisplay(shown) {
 	else $('#out-of-space-banner').removeClass('show');
 }
 
-export { displayTick, setOutOfSpaceBannerDisplay };
+export { displayTick, displayConsts, setOutOfSpaceBannerDisplay };

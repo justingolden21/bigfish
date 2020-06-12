@@ -1,5 +1,5 @@
 import { settings } from './setting.js';
-import { displayTick, setOutOfSpaceBannerDisplay } from './display.js';
+import { displayTick, displayConsts, setOutOfSpaceBannerDisplay } from './display.js';
 import { addManyDrawnFish, checkReduceDrawnFish } from './sprite.js';
 import { checkUnlocks } from './unlock.js';
 import { openModal } from './modal.js';
@@ -164,6 +164,8 @@ function setupGame() {
 	tick();
 	stats.ticks = 0; // reset from above tick
 	setInterval(tick, TICK_SPEED);
+
+	displayConsts(VALS);
 
 	setupCharts(inventory);
 }
