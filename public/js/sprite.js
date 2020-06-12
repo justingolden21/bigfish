@@ -132,6 +132,8 @@ const LOG_TIMES = false;
 function drawAllFish(override_pause=false) {
 	if(settings.paused && !override_pause) return;
 
+	if(!settings.show_aquarium) return;
+
 	if(LOG_TIMES) console.time('sprites');
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	if(LOG_TIMES) console.timeLog('sprites');

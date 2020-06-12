@@ -49,14 +49,16 @@ function createData(user) {
 
 // called on an interval from signin
 // save data to db with exportData
-function updateData(user) {
+function updateData(user, signout=false) {
 	if(!data_is_set || !signed_in) return;
 
 	console.log('updating data');
 
-	db.collection('users').doc(user.uid).update({ savedata: exportData() });
-
 	updateGlobalStats(user);
+
+	db.collection('users').doc(user.uid).update({ savedata: exportData() }).then( ()=> {
+		if(signout) firebase.auth().signOut();
+	});
 }
 
 // empty data in db

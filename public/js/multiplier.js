@@ -58,7 +58,7 @@ function getMultiplierHTML() {
 	}
 
 	return `Your fish can earn coins at a faster rate if you maintain a balanced ecosystem.<br>
-			Your multiplier increase with the number of fish you have of each type,
+			Your multiplier increases with the number of fish you have of each type,
 			but it's limited by the smallest number of any type of fish you have.<br>
 			${fish_display_HTML}<hr>
 			You are level ${min_lvl} with multiplier ${min_lvl*0.2 + 1}`;

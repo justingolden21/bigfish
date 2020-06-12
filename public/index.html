@@ -82,7 +82,9 @@
 							</div> -->
 							<button class="btn btn-block"><i class="fas fa-sign-in-alt"></i> Log in</button>
 							<b><span id="signin-error-text"></span></b>
-							<span id="signin-loader" style="display: none"><i class="fas fa-spinner fa-spin"></i></span>
+							<div class="mt-2 text-center">
+								<span id="signin-loader" style="display: none"><i class="fas fa-spinner fa-spin fa-2x"></i></span>
+							</div>
 							<!-- <a href="">Forgot password?</a> -->
 						</form>
 
@@ -128,7 +130,9 @@
 							</div>
 							<button class="btn btn-block"><i class="fas fa-user-plus"></i> Sign up</button>
 							<b><span id="signup-error-text"></span></b>
-							<span id="signup-loader" style="display: none"><i class="fas fa-spinner fa-spin"></i></span>
+							<div class="mt-2 text-center">
+								<span id="signup-loader" style="display: none"><i class="fas fa-spinner fa-spin fa-2x"></i></span>
+							</div>
 							<!-- <p>By signing up you agree to our <a href="">terms of use</a></p> -->
 						</form>
 
@@ -162,10 +166,10 @@
 <hr id="top-hr">
 
 <div id="info-row" class="row text-center">
-	<div class="col-lg-3 col-sm-6"><i class="fas fa-fish"></i> <span class="num-fish"></span> fish (<span class="num-hungry-fish"></span> hungry)</div>
-	<div class="col-lg-3 col-sm-6"><i class="fas fa-coins"></i> <span class="num-coins"></span> coin (<span class="rate-num-coins"></span> coin/s)</div>
-	<div class="col-lg-3 col-sm-6"><i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span class="rate-num-food"></span> food/s)</div>
-	<div class="unlock aquarium-unlock col-lg-3 col-sm-6"><i class="fas fa-water"></i> <span class="num-space-used"></span> used / <span class="num-space-total"></span> total space</div>
+	<div class="col-xl-3 col-sm-6"><i class="fas fa-fish"></i> <span class="num-fish"></span> fish (<span class="num-hungry-fish"></span> hungry)</div>
+	<div class="col-xl-3 col-sm-6"><i class="fas fa-coins"></i> <span class="num-coins"></span> coins (<span class="rate-num-coins"></span> coins/s)</div>
+	<div class="col-xl-3 col-sm-6"><i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span class="rate-num-food"></span> food/s)</div>
+	<div class="unlock aquarium-unlock col-xl-3 col-sm-6"><i class="fas fa-water"></i> <span class="num-space-used"></span> used / <span class="num-space-total"></span> total space</div>
 </div>
 
 <canvas id="main-canvas"></canvas>
@@ -213,7 +217,7 @@
 							<div class="card-body">
 								<i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span class="rate-num-food"></span> food/s)
 								<hr>
-								<i class="fas fa-fish"></i> 1 food feeds your fish for <span class="data-food-seconds-fed"></span>s
+								<i class="fas fa-fish"></i> 1 food feeds your small fish for <span class="data-food-seconds-fed"></span>s
 							</div>
 						</div>
 						<div class="accordion" id="food-accordion">
@@ -233,7 +237,7 @@
 											<button class="btn">100 food</button>
 											<button class="btn">1000 food</button>
 										</div>
-										<br><span class="data-food-per-purchase"></span> food costs <span class="data-food-cost"></span> coin
+										<br><span class="data-food-per-purchase"></span> food costs <span class="data-food-cost"></span> coins
 									</div>
 								</div>
 							</div>
@@ -252,7 +256,7 @@
 											<button class="btn">100 food</button>
 											<button class="btn">1000 food</button>
 										</div>
-										<br>20 food sell for 1 coin
+										<br>20 food sell for 1 coins
 									</div>
 								</div>
 								</div> -->
@@ -263,7 +267,7 @@
 							<div class="card-body">
 								<i class="fas fa-fish"></i> <span class="num-small-fish"></span> small fish (<span class="num-hungry-small-fish"></span> hungry)
 								<hr>
-								<i class="fas fa-coins"></i> makes <span class="data-small-fish-coin-rate"></span> coin/s (<span class="rate-coin-small-fish"></span> coin/s total)<br>
+								<i class="fas fa-coins"></i> makes <span class="data-small-fish-coin-rate"></span> coins/s (<span class="rate-coin-small-fish"></span> coins/s total)<br>
 								<i class="fas fa-capsules"></i> eats <span class="data-small-fish-food-rate"></span> food/s (<span class="rate-food-small-fish"></span> food/s total)<br>
 								<span class="unlock aquarium-unlock"><i class="fas fa-water"></i> uses <span class="data-small-fish-space"></span> space (<span class="num-small-fish-space"></span> space total)<br></span>
 							</div>
@@ -476,7 +480,7 @@
 </div>
 
 <!-- <hr> -->
-<div class="mx-auto mt-4">
+<div class="mt-4 text-center">
 	<button id="notifications-modal-btn" class="btn m-1 mb-4"><i class="fas fa-history"></i> Notifications</button>
 	<button id="achievement-modal-btn" class="unlock achievement-unlock btn m-1 mb-4"><i class="fas fa-award"></i> Achievements</button>
 	<button id="stats-modal-btn" class="unlock stats-unlock btn m-1 mb-4"><i class="fas fa-sort-amount-up"></i> Stats</button>

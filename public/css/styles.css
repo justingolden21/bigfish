@@ -1,3 +1,7 @@
+/* @todo
+specific styles for checkboxes and range inputs
+*/
+
 /* generic */
 
 body {
@@ -420,6 +424,7 @@ span.highlight {
 
 /* Carousel */
 .carousel-inner {
+	text-align: center;
 	padding: 0.5rem 2rem !important;
 	overflow-y: auto; /*only when necessary*/
 	-ms-overflow-style: none;
@@ -469,6 +474,7 @@ span.highlight {
 	padding: 0.25rem;
 	margin-left: 0;
 	margin-right: 0;
+	font-weight: bold;
 }
 
 
@@ -528,5 +534,8 @@ span.highlight {
 	.carousel-item {
 		/*larger because more vertical room, less horizontal room*/
 		height: 30rem;
+	}
+	.carousel-inner {
+		text-align: left;
 	}
 }

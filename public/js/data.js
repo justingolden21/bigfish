@@ -1,5 +1,5 @@
 import { inventory, stats, importInventory, importStats } from './game.js';
-import { settings, importSettings } from './setting.js';
+import { settings, importSettings, updateSetting } from './setting.js';
 import { unlocks, achievements, importUnlocks, importAchievements, exportUnlocks, exportAchievements } from './unlock.js';
 
 // https://stackoverflow.com/a/38134374/4907950
@@ -10,7 +10,16 @@ function decode(encoded) {
 	return JSON.parse(atob(encoded) );
 }
 
+const getBankVals = ()=> 
+	$('#manage-bank-collapse .sortable input[type=number]').map( (idx, elm)=> 
+		([$(elm).attr('id').replace('bank-buy-','').replace('-input',''), parseInt($(elm).val() )])
+	);
+
 function exportData() {
+	// only need to do this before export
+	updateSetting('bank_inputs', getBankVals() );
+	// then have to handle import todo @TODO
+
 	return encode([
 		Object.values(inventory),
 		Object.values(stats),

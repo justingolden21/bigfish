@@ -5,21 +5,28 @@ important/now stuff:
 bug!: negative values somehow? early game?
 bug: (1T minus 1) coins shows 1000B
 
+================
+
 - test delete user data then create same user
 - make encode decode data good
 - logging out should backup the data first, then log out and clear their save data locally
 - deleting all data should clear local data too
 
-todo maybe before launch:
 data.js has importFromEncoded and exportEncoded and also importData and exportData
+multiplier should be an unlock, and saved to account
+delete all data should return a promise, then modal.js can wait for the promise before logging out
+
+make your key info more obvious, account stuff more obvious, click 1 food btn more obvious
+save inputs from banks in savedata
+
+================
 
 insights ideas:
 Pie chart of your spending in banks as an insight. Insights modal has btns that show different insignts
 Insight for fish production and eating: have x small, y hungry, z eaten, a produced
 Insight for space, showing amount of space used by each. Optional bar widget unlocked below aquarium
 
-
-
+================
 
 bugs maybe (can't replicate them):
 bug!: Selling fish (thorugh normal btns anyway) puts the info pannel eats food per second to negative if selling quickly per tick
@@ -52,6 +59,9 @@ ways to play:
 speedrun, idle game, relaxing/calm game, automation game/balance numbers/ratios math game, goes on forever, but also distinct ending
 
 maybe:
+log scale progress bars for rates of a few basic things
+store food in silos, money in something
+save data btn
 stats for buildings purchased from banks
 when unlocking new thing, show banner that says click the help button to learn more, and maybe highlight the help button.
 	maybe have link in banner to help modal
@@ -122,8 +132,9 @@ use animate css for a collapse or slide animation for tabs/pills
 
 
 achievement ideas:
-Perfectly balanced: have 1m small, md, and bg fish
+Perfectly balanced: have 1m small, md, and bg fish for 10 ticks
 The balancing act: Have 1b bg hatcheries and no hungry fish for ten seconds
+note: final achievement is pause buffer-able
 fish are friends, not food: go 10 seconds without eating a fish (after having big fish unlocked)
 "baby shark": eat a million fish
 Achievement(s) for coin rate and other rates
@@ -141,6 +152,9 @@ Gold fish: have 1m fish more fish than coins (not hidden)
 multiplier related achievements:
 	balanced ecosystem achievement (maintain 10k of each type of fish for 5 ticks in a row)
 	"hard mode" have EXACTLY a million of each type of fish for 10 seconds
+
+faq:
+why am i not producing more fish? aquarium full or have more of the fish that eats it
 
 next:
 add sound settings, redo modal system, add scss to localfish, add charts/progress bars
@@ -235,7 +249,7 @@ option to choose notification side of screen (css class for left or right)
 Option to display basic numbers on top of aquarium in fullscreen mode (default off)
 play background music when game is paused
 setting to pause game on modal open (and unpause on modal close)
-setting for max number of fish displayed (default 200 per type)
+setting for max number of fish displayed (default 100 per type, max 200, min 1)
 settings for which snackbars/notifications are shown
 filters in notification history for types of notifications
 settings for how long notifications are on screen
@@ -258,7 +272,7 @@ If multiplier of 1.5, double speed of hatcheries?
 
 performance:
 if they purchase or sell a building, only update relevant numbers in display (separate display function for updating specific things)
-investigate fullscreen aquarium lagging
+possible lag: creating then destroying small fish immedatly... same for medium (unnecessary)
 
 game feel/usage:
 esc to close modal pauses game, check if modal is open on esc key btn down (and setting for if esc should close modal, toggle pause even when modal open, or do both if modal open. when modal is open, esc should : dropdown menu)
@@ -274,6 +288,8 @@ misc:
 add sublime and sass to localhost bat file:
 	start "C:\Program Files\Sublime Text 3\sublime_text.exe"
 
+notes:
+"purchasing power" as word to describe banks
 
 bigger ideas:
 - prestige feature? yeah

@@ -104,7 +104,7 @@ function displayTick(inventory, hungry, rates, VALS) {
 		let md_space = VALS.space.fish.medium * inventory.fish.medium / space_total;
 		let lg_space = VALS.space.fish.big * inventory.fish.big / space_total;
 		$('#aquarium-multibar').html(getMultiBar([sm_space, md_space, lg_space], ['hsl(205, 90%, 60%)', 'hsl(205, 90%, 30%)', 'hsl(220, 90%, 30%)']) );
-		$('#aquarium-multibar').attr('title', `${inventory.fish.small} small, ${inventory.fish.medium} medium, and ${inventory.fish.big} big fish`);
+		$('#aquarium-multibar').attr('title', `${pretty(inventory.fish.small)} small, ${pretty(inventory.fish.medium)} medium, and ${pretty(inventory.fish.big)} big fish`);
 	}
 
 	displayNum('.bank-spend-rate', rates.coins.bank);

@@ -280,6 +280,8 @@ function buildingTick() {
 				transaction_input.classList.remove('error'); // just in case
 				continue;
 			}
+
+			// limit transactions by number of banks
 			let num_transaction = Math.min(transaction_input_val, max_transaction);
 
 			// @note: takes about 15ms per time val is set
@@ -287,6 +289,9 @@ function buildingTick() {
 			if(transaction_input != document.activeElement) { // doesn't have focus
 				if(do_clear && transaction_input_val != 0) {
 					transaction_input.value = 0;
+				} else if(settings.bank_input_limit && num_transaction != transaction_input_val) {
+					// if setting, then limit input value by number of banks
+					transaction_input.value = num_transaction;
 				} else if(!do_clear && transaction_input_val != num_transaction) {
 					transaction_input.value = transaction_input_val;
 				}
@@ -370,8 +375,8 @@ $( ()=> {
 
 	// make fish tabs
 	// https://stackoverflow.com/a/9306228/4907950
-	$('#v-pills-medium-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food-rate/g, 'FOOD-RATE').replace(/(<rate\-)food/g, 'small fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
-	$('#v-pills-big-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food-rate/g, 'FOOD-RATE').replace(/(<rate\-)food/g, 'medium fish').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
+	$('#v-pills-medium-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food-rate/g, 'FOOD-RATE').replace(/rate-food/g, 'tmp1').replace(/food/g, 'small fish').replace(/tmp1/g, 'rate-food').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
+	$('#v-pills-big-fish').html($('#v-pills-small-fish').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food-rate/g, 'FOOD-RATE').replace(/rate-food/g, 'tmp1').replace(/food/g, 'medium fish').replace('/tmp1/g', 'rate-food').replace(/capsules/g, 'fish').replace(/FOOD-RATE/g, 'food-rate') );
 
 	$('#v-pills-medium-hatchery').html($('#v-pills-small-hatchery').html().replace(/small/g, 'medium').replace(/Small/g, 'Medium').replace(/food/g, 'small fish').replace(/capsules/g, 'fish') );
 	$('#v-pills-big-hatchery').html($('#v-pills-small-hatchery').html().replace(/small/g, 'big').replace(/Small/g, 'Big').replace(/food/g, 'medium fish').replace(/capsules/g, 'fish') );
@@ -436,17 +441,17 @@ $( ()=> {
 	
 	for(let building of buildings.concat(['small-fish', 'medium-fish', 'big-fish']) ) {
 
-		// @note: don't need to check unlocks variable because they're created at the beginning
-		// hide buildings that haven't been unlocked from bank menu
+		$(`#${building}-buy-sell-switch`).change( ()=> {
+			$(`label[for=${building}-buy-sell-switch]`).html($(`#${building}-buy-sell-switch`).is(':checked') ? 'Sell' : 'Buy');
+		});
 
 		// skip banks because we don't want to unlock big banking upon unlocking banks
 		if(building=='bank') continue;
 
+		// @note: don't need to check unlocks variable because they're created at the beginning
+		// hide buildings that haven't been unlocked from bank menu
 		$(`.unlock.${building}-unlock`).hide();
 
-		$(`#${building}-buy-sell-switch`).change( ()=> {
-			$(`label[for=${building}-buy-sell-switch]`).html($(`#${building}-buy-sell-switch`).is(':checked') ? 'Sell' : 'Buy');
-		});
 
 		// $(`#bank-buy-${building}-input`).hide().addClass(`unlock ${building}-unlock`);
 		// $(`label[for=bank-buy-${building}-input]`).hide().addClass(`unlock ${building}-unlock`);
@@ -611,7 +616,7 @@ function sellBuildings(building_name, amount, is_bank=false) {
 
 	if(amount == 0) {
 		// if(!is_bank) showSnackbar(`Not enough ${pluralize(building_name.replace('_',' ') )}`, 'error');
-	} else if(building_name=='aquarium' && inventory.buildings.aquarium - amount < getSpaceUsed() ) {
+	} else if(building_name=='aquarium' && (inventory.buildings.aquarium - amount) * VALS.space.aquarium < getSpaceUsed() ) {
 		if(!is_bank) showSnackbar(`Cannot sell full aquariums`, 'error');
 	} else {
 		inventory.coins += Math.floor(amount * VALS.costs.buildings[building_name] / 2);

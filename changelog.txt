@@ -1,0 +1,71 @@
+****************
+    Alpha
+****************
+
+================
+0.0.1 - Initial Alpha Release
+================
+
+================
+0.0.2 - First Update
+================
+
+==== Visual ====
+
+- Center aligned bottom buttons
+
+- Help modal content is aligned to center on larger screens
+
+- Added "thriving" to aquarium descriptions
+
+- Fixed spelling of "barren" (previously "baren") in aquarium descriptions
+
+- Changed "coin" to "coins" in multiple places
+
+- Updated look of info row at the top of the aquarium (columns stack differently on medium-large screens, text is bold)
+
+- Added version number to about modal (currently 0.0.2 with the release of this update)
+
+- Updated food description to say that your "small fish" (previously "fish") eat food (in food description and help modal)
+
+- After first beginning the game, the sign in button blinks colors for a few seconds
+
+- Changed "Your multiplier increase" to "Your multiplier increases" in multiplier modal
+
+- Now using number abbreviations in the title that appears when hovering over the progress bar display below the aquarium
+
+- Updated banner description in FAQs in help modal
+
+- Unlock notifications aren't pluralized any more ("unlocked volume" instead of "volumes", same for fullscreen)
+
+- Added tooltip to help modal mentioning players can drag to change the transaction priority for banks
+
+- Update signin and signup loader aesthetic
+
+==== Bug Fixes ====
+
+- Fixed bug where players could not sell empty aquariums and were told the aquariums were full
+
+- Fixed regex bug where medium and big fish would display that they eat food beside fish icon in info pannel
+
+- Fixed bug where bank buy/sell toggle switch label wouldn't update
+
+==== Settings ====
+
+- Added setting to toggle display of aquarium. Defaults to on.
+
+- Added setting to limit bank inputs by number of banks. Defaults to on.
+
+- Added volume sliders for background and effects volumes. Default to 50%.
+
+- Settings now save bank inputs
+
+- Added forwards compatability for previous data such that newly added settings default correctly when importing data
+
+==== Save Data ====
+
+- Keeps current settings for paused and volume when importing save data
+
+- Save data just before signout
+
+- Save data every 3min (changed from every 1min)

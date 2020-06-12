@@ -232,16 +232,16 @@ function checkUnlocks(inventory) {
 	}
 
 	if(inventory.food >= 20 || total_fish >= 10) {
-		checkUnlock('volume');
+		checkUnlock('volume', 'Volume'); // not plural
 	}
 	if(total_fish >= 5) {
-		checkUnlock('fullscreen');
+		checkUnlock('fullscreen', 'Fullscreen'); // not plural
 	}
 	if(total_fish >= 20) {
 		checkUnlock('stats');
 	}
 	if(total_fish >= 100) {
-		checkUnlock('fullscreen-aquarium');
+		checkUnlock('fullscreen-aquarium', 'Fullscreen Aquarium'); // not plural
 	}
 	// if(total_fish >= 5e4) {
 	// 	checkUnlock('insights');

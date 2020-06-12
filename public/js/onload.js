@@ -99,6 +99,7 @@ $( ()=> {
 			$('#pause-btn').click();
 			if(!signed_in) {
 				showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
+				showBlink($('#signin-btn'), 5, 1);
 				setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 2500);
 			}
 		}

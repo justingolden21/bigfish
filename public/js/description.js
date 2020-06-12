@@ -3,7 +3,7 @@ aquarium:
 `Lonely
 Microscopic
 Miniscule
-Baren
+Barren
 Lackluster
 Unpopulated
 Tiny
@@ -39,6 +39,7 @@ Groovy
 Splendid
 Exquisite
 Lively
+Thriving
 Interesting
 Busy
 Populated
@@ -112,7 +113,7 @@ Despicable
 Puny
 Disgusting
 Awful
-Baren
+Barren
 Unpopulated
 Boring
 Bland

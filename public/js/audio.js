@@ -164,4 +164,4 @@ $( ()=> {
 	updateVolumes();
 });
 
-export{ setSound, playSoundEffect, audioHandlePause };
+export{ setSound, playSoundEffect, audioHandlePause, setVolume };

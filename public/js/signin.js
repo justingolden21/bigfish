@@ -17,10 +17,9 @@ auth.onAuthStateChanged(user => {
 
 		getData(user);
 
-		// save data every 60s, and after 5s
 		clearInterval(update_data_interval);
-		update_data_interval = setInterval( ()=>updateData(user), 1000*60);
-		setTimeout( ()=>updateData(user), 1000*5);
+		update_data_interval = setInterval( ()=>updateData(user), 1000*60*3); // every 3min
+		setTimeout( ()=>updateData(user), 1000*5); // after first 5s
 	} else { // logged out
 		displayLoggedOut(!page_first_load);
 
@@ -62,10 +61,7 @@ $( ()=> {
 
 			$('#signup-error-text').html(err.message);
 		});
-
 	});
-
-
 
 	$('#signin-form').on('submit', evt=> {
 		evt.preventDefault();
@@ -92,10 +88,11 @@ $( ()=> {
 		});
 	});
 
-
 	$('#signout-btn').click(evt=> {
 		evt.preventDefault();
-		auth.signOut();
+
+		// save data before signout
+		updateData(firebase.auth().currentUser, true); // true means sign out after
 	});
 
 });

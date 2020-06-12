@@ -1,5 +1,6 @@
 import { stats, display, inventory } from './game.js';
 import { settings, toggleSetting } from './setting.js';
+import { setVolume } from './audio.js';
 import { updateStatsDisplay, getStatsHTML } from './stats.js';
 import { updateInsightsDisplay, getInsightsHTML } from './chart.js';
 import { getMultiplierHTML } from './multiplier.js';
@@ -73,10 +74,24 @@ $( ()=> {
 			<textarea id="export-textarea" class="form-control">${exportData()}</textarea>
 			<button id="copy-export-btn" class="btn mt-2"><i class="fas fa-copy"></i> Copy</button>
 			<br>
+			<b>Audio:</b>
+			<label for="setting-background-volume-input">Background Volume:</label>
+			<input id="setting-background-volume-input" class="form-control" type="range" min="0" max="1" step="0.1" value="${settings.audio.background_volume}">
+			<label for="setting-effects-volume-input">Effects Volume:</label>
+			<input id="setting-effects-volume-input" class="form-control" type="range" min="0" max="1" step="0.1" value="${settings.audio.effects_volume}">
+			<br>
 			<b>Display Settings:</b>
 			<div class="custom-control custom-checkbox">
 				<input ${settings.num_abrev?'checked':''} type="checkbox" class="custom-control-input" id="setting-num-abrev-checkbox">
 				<label class="custom-control-label" for="setting-num-abrev-checkbox">Display large numbers with abbreviations</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input ${settings.show_aquarium?'checked':''} type="checkbox" class="custom-control-input" id="setting-show-aquarium-checkbox">
+				<label class="custom-control-label" for="setting-show-aquarium-checkbox">Show aquarium</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input ${settings.bank_input_limit?'checked':''} type="checkbox" class="custom-control-input" id="setting-bank-input-limit-checkbox">
+				<label class="custom-control-label" for="setting-bank-input-limit-checkbox">Bank input limit (limit numeric bank inputs to the maximum transactions possible with your current number of banks)</label>
 			</div>
 			`
 		);
@@ -100,6 +115,35 @@ $( ()=> {
 		$('#setting-num-abrev-checkbox').change( ()=> {
 			toggleSetting('num_abrev');
 			display(); // display changes immedatly, especially if paused
+			$('#export-textarea').val(exportData() ); // update it with new setting
+		});
+
+		$('#setting-bank-input-limit-checkbox').change( ()=> {
+			toggleSetting('bank_input_limit');
+			$('#export-textarea').val(exportData() ); // update it with new setting
+		});
+
+		$('#setting-show-aquarium-checkbox').change( ()=> {
+			toggleSetting('show_aquarium');
+
+			// display changes
+			$('#main-canvas').css('display', settings.show_aquarium ? '' : 'none');
+			$('#info-row').css('margin-bottom', settings.show_aquarium ? '' : '1.75rem');
+
+			$('#export-textarea').val(exportData() ); // update it with new setting
+		});
+
+		// setVolume() updates the setting and the audio volume itself
+
+		$('#setting-background-volume-input').change( ()=> {
+			setVolume('background', $('#setting-background-volume-input').val() );
+
+			$('#export-textarea').val(exportData() ); // update it with new setting
+		});
+
+		$('#setting-effects-volume-input').change( ()=> {
+			setVolume('effects', $('#setting-effects-volume-input').val() );
+
 			$('#export-textarea').val(exportData() ); // update it with new setting
 		});
 
@@ -133,6 +177,7 @@ $( ()=> {
 		openModal(
 			`<i class="fas fa-info-circle"></i> About`,
 			`<button class="btn my-2" onclick="window.open('mailto:contact@justingolden.me')"><i class="fas fa-envelope"></i> Contact</button>
+			<p>Big Fish Alpha 0.0.2</p>
 			<p>Made by <a href="https://justingolden.me" target="_blank">Justin Golden</a></p>
 			<p>Check out our <a href="https://discord.gg/aEnKS5e" target="_blank">Discord</a></p>`
 		);
@@ -154,7 +199,7 @@ $( ()=> {
 						<p>You start the game with 1 small fish <i class="fas fa-fish"></i></p>
 						<p>Your fish earn you coins <i class="fas fa-coins"></i> when they're full</p>
 						<p>Your fish won't starve when they're hungry, they just won't give you coins</p>
-						<p>Your fish eat food <i class="fas fa-capsules"></i> which costs coins <i class="fas fa-coins"></i></p>
+						<p>Your small fish eat food <i class="fas fa-capsules"></i> which costs coins <i class="fas fa-coins"></i></p>
 						<p>You can purchase food <i class="fas fa-capsules"></i> and fish <i class="fas fa-fish"></i> under the <b><i class="fas fa-fish"></i> Fish</b> tab</p>
 						${unlocks['medium-fish'] ? `<p>Medium fish <i class="fas fa-fish"></i> eat small fish, and earn more coins than small fish</p>` : ''}
 						${unlocks['big-fish'] ? `<p>Big fish <i class="fas fa-fish"></i> eat medium fish, and earn more coins than medium fish</p>` : ''}
@@ -174,6 +219,7 @@ $( ()=> {
 						${unlocks['aquarium'] ? `<p><i class="fas fa-water"></i> Aquariums allow you to hold more fish</p>` : ''}
 						${unlocks['aquarium-factory'] ? `<p><i class="fas fa-industry-alt"></i> Aquarium factories produce aquariums every second</p>` : ''}
 						${unlocks['bank'] ? `<p><i class="fas fa-landmark"></i> Banks enable you to buy and sell buildings every second, automatically</p>` : ''}
+						${unlocks['bank'] ? `<p><i class="fas fa-landmark"></i> You can drag <i class="fas fa-arrows-alt"></i> your order items to change the priority of bank transactions</p>` : ''}
 						${unlocks['bank-fish'] ? `<p><i class="fas fa-landmark"></i> You can also buy and sell fish at banks</p>` : ''}
 						${unlocks['big-banking'] ? `<p><i class="fas fa-landmark"></i> You can even buy banks with banks!</p>` : ''}
 						<br>
@@ -191,7 +237,7 @@ $( ()=> {
 						<p><i>I can't purchase fish even though I have enough money. What's wrong?</i></p>
 						<p>Check your aquarium space.</p>
 						<p><i>My aquarium space says it has room but my hatcheries don't seem to be producing. What gives?</i></p>
-						<p>Your hatcheries produce to capacity. Then, your fish eat. So for example, if you have hatcheries producing to your maximum aquarium space, then the fish are getting eaten, it will show a constant number of aquarium space, fish, and hungry fish, even though your aquarium is full. That's why we've included the little banner at the top.</p>
+						<p>Your hatcheries produce to capacity. Then, your fish eat. So for example, if you have hatcheries producing to your maximum aquarium space, then the fish are getting eaten, it will show a constant number of aquarium space, fish, and hungry fish, even though your aquarium is full. That's why we've included a little banner at the top displaying that your aquarium is full.</p>
 						${unlocks.buildings ? `<p><i>I have a building that should be producing but the numbers aren't going up. Why?</i></p>` : ''}
 						<p>You are probably producing it then it is being consumed at that rate or faster.</p>
 					</div>` : ''}
