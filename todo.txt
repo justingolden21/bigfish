@@ -122,6 +122,9 @@ use animate css for a collapse or slide animation for tabs/pills
 
 
 achievement ideas:
+Perfectly balanced: have 1m small, md, and bg fish
+The balancing act: Have 1b bg hatcheries and no hungry fish for ten seconds
+fish are friends, not food: go 10 seconds without eating a fish (after having big fish unlocked)
 "baby shark": eat a million fish
 Achievement(s) for coin rate and other rates
 Chaos: purchase a big fish hatchery

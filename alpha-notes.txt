@@ -33,3 +33,21 @@ final achievement: pause buffer-able
 final achievement 1m of each fish for 10 ticks "balancing act"
 
 typo: "your multiplier increase" needs "s" at end in multiplier modal
+
+use num abreviations in hover title for bar
+
+possible lag: creating then destroying small fish immedatly... same for medium (unnecessary)
+
+baren spelled barren
+
+typo: eat food to eat fish per sec
+
+unlocked volumes should say volume, same with fullscreen. pluralize Boolean param in unlocks
+
+make your key info more obvious, account stuff more obvious, click 1 food btn more obvious
+
+fix lag, add settings
+
+save inputs from banks in savedata
+
+top display should say "coins" not coin
