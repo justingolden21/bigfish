@@ -1,0 +1,35 @@
+alpha notes:
+
+add more attention to top area with basic info
+
+something that specifices that it's food for small fish
+
+add volume slider
+
+look into tab height vs line height
+
+center align bottom buttons, and content in help modal
+
+log scale progress bars for rates of a few basic things
+
+store food in silos, money in something
+
+performance settings
+
+setting to clear or not clear bank inputs to max. default to clear.
+
+bug: cannot sell full aquarium appears when aquarium isn't full
+
+put in help: you can drag to change the order for banks
+
+save data btn and on logout
+
+"purchasing power" as word to describe banks
+
+why am i not producing more fish? aquarium full or have more of the fish that eats it
+
+final achievement: pause buffer-able
+
+final achievement 1m of each fish for 10 ticks "balancing act"
+
+typo: "your multiplier increase" needs "s" at end in multiplier modal
