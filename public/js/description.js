@@ -41,10 +41,12 @@ Exquisite
 Lively
 Thriving
 Interesting
+Loud
 Busy
 Populated
 Active
 Bustling
+Boisterous
 Frantic
 Advanced
 Professional
@@ -61,7 +63,9 @@ Mythical
 Mega
 Huge
 Amazing
+Majestic
 Sensational
+Awesome
 Expansive
 Superior
 Vast
@@ -74,6 +78,7 @@ Fantastic
 Wonderful
 Spectacular
 Fabulous
+Extreme
 Massive
 Gigantic
 Tremendous
@@ -92,6 +97,7 @@ Astounding
 Phenomenal
 Otherworldly
 Extraterrestrial
+Immeasurable
 Unthinkable
 Unimaginable
 Unfathomable

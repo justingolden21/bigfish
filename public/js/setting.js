@@ -28,10 +28,14 @@ function updateSetting(setting_name, new_val) {
 }
 
 const setBankVals = (arr)=> {
-	for(let i=0; i<arr.length; i+=2) {
-		// arr contains names and vals
-		let name = arr[i], val = arr[i+1];
+	for(let i=0; i<arr.length; i+=3) {
+		// arr contains names, vals, and is_checked
+		let name = arr[i], val = arr[i+1], is_checked = arr[i+2];
 		$(`#bank-buy-${name}-input`).val(val);
+		if($(`#${name}-buy-sell-switch`).is(':checked') != is_checked) {
+			$(`#${name}-buy-sell-switch`).click(); // updates label too
+		}
+		// $(`#bank-buy-${name}-input`).parent().siblings().find('input[type=checkbox]').prop('checked', is_checked);
 	}
 };
 

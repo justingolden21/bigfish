@@ -69,3 +69,27 @@
 - Save data just before signout
 
 - Save data every 3min (changed from every 1min)
+
+================
+0.0.3 - Minor Fixes
+================
+
+==== Visual ====
+
+- Renamed "background" volume to "music" volume in settings
+
+- Fixed indentation in settings
+
+- "Fullscreen Aquarium" now also enters fullscreen mode, and exiting remembers if the user was previously in fullscreen and restores that state
+
+- "Fullscreen Aquarium" displays aquarium correctly even if "display aquarium" is turned off in settings
+
+- Settings are hidden if relevant unlock has not been unlocked (currently volume and banks)
+
+- Added a loading page display with spinning icon during page load
+
+- Added aquarium descriptions: "majestic", "immeasurable", "awesome", "extreme", "boisterous", "loud"
+
+==== Bug Fixes ====
+
+- Now saves if bank inputs were set to buy or sell

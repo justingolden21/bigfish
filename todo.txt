@@ -17,7 +17,16 @@ multiplier should be an unlock, and saved to account
 delete all data should return a promise, then modal.js can wait for the promise before logging out
 
 make your key info more obvious, account stuff more obvious, click 1 food btn more obvious
-save inputs from banks in savedata
+
+!doesn't save if buy or sell for bank inputs, doesn't save scientific notation inputs. also doesn't save order of inputs
+
+no way to reopen you win modal? in notifications unlock a button?
+
+signup/login modal (non-closable) that appears after help, where a button at the bottom says (nah maybe later)
+	remove flicker from signin/up btb
+
+use sass
+clean code
 
 ================
 
@@ -59,6 +68,9 @@ ways to play:
 speedrun, idle game, relaxing/calm game, automation game/balance numbers/ratios math game, goes on forever, but also distinct ending
 
 maybe:
+mega bank: allows you to buy max or sell max, but only once per bank, then bank is destroyed
+sound effects volumes need balance?
+sell max/buy max btns unlocked later in banks (bottom of manage pannel)
 log scale progress bars for rates of a few basic things
 store food in silos, money in something
 save data btn
@@ -132,6 +144,7 @@ use animate css for a collapse or slide animation for tabs/pills
 
 
 achievement ideas:
+Sustainable ecosystem achievement name
 Perfectly balanced: have 1m small, md, and bg fish for 10 ticks
 The balancing act: Have 1b bg hatcheries and no hungry fish for ten seconds
 note: final achievement is pause buffer-able
@@ -240,6 +253,7 @@ mobile: 99 cents, with free demo version available, goes on sale for 49 cents
 steam: 2.99, goes on sale for 99 cents
 
 possible settings:
+more number format settings. full names like "trillion, quadrillion" or scientific notation like "1e20"
 draw fish in order of magnitude. Every power of 10 (or 2)
 turn on/off notifications for not having coins or aquarium space etc, turn on or off error sound if purchased something but not the entier amount just part of it. toggle for sound between default or error
 coin rate: settings checkboxes for gross and net, you can display either, both, or none

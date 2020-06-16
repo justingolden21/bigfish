@@ -2,7 +2,7 @@ import { canvasLoaded, onCanvasReload } from './sprite.js';
 import { setupGame } from './game.js';
 import { showSnackbar, showBlink } from './notify.js';
 // import { openModal } from './modal.js';
-import { settings, toggleSetting } from './setting.js';
+import { settings, toggleSetting, updateSetting } from './setting.js';
 import { setSound, playSoundEffect, audioHandlePause } from './audio.js';
 import { checkAchievement } from './unlock.js';
 import { signed_in } from './signin.js';
@@ -12,6 +12,8 @@ let canvas, ctx;
 let first_pause = true;
 
 let aquarium_fullscreen = false; // note: not a setting, not part of save data
+
+let was_fullscreen, was_aquarium_shown;
 
 let last_mousemove = -1;
 
@@ -65,7 +67,7 @@ $( ()=> {
 		$('#volume-btn').html(`<i class="fas fa-volume-${settings.sound?'up':'mute'}"></i>`);
 		checkAchievement('Scales');
 	});
-	$('#fullscreen-btn').click(toggleFullScreen);
+	$('#fullscreen-btn').click(toggleFullscreen);
 
 	$('.info-toggle-btn').click( (evt)=> {
 		let t = $(evt.target);
@@ -121,6 +123,15 @@ $( ()=> {
 			// $('#full-aquarium-css').attr('onload', onCanvasReload);
 			$('#full-aquarium-css').attr('href', 'css/full-aquarium.css');
 			$('*:not(#exit-fullscreen-btn)').attr('tabindex', '-1');
+
+			// remember if was fullscreen, then enter fullscreen
+			was_fullscreen = isFullscreen();
+			enterFullscreen();
+
+			// show aquarium even if setting is off
+			was_aquarium_shown = settings.show_aquarium;
+			$('#main-canvas').css('display', '');
+			updateSetting('show_aquarium', true); // so sprite.js does draw loop
 		} else {
 			canvas.width = window.innerWidth;
 			canvas.height = 160;
@@ -129,6 +140,13 @@ $( ()=> {
 			// $('#full-aquarium-css').attr('onload', onCanvasReload);
 			$('#full-aquarium-css').attr('href', '');
 			$('*:not(#exit-fullscreen-btn)').attr('tabindex', '');
+
+			// if wasn't fullscreen before, exit back to normal
+			if(!was_fullscreen && isFullscreen() ) toggleFullscreen();
+
+			// restore show aquarium setting
+			$('#main-canvas').css('display', was_aquarium_shown ? '' : 'none');
+			updateSetting('show_aquarium', was_aquarium_shown);
 		}
 		onCanvasReload();
 	});
@@ -167,7 +185,23 @@ $( ()=> {
 });
 
 // https://stackoverflow.com/a/10627148/4907950
-function toggleFullScreen() {
+function isFullscreen() {
+	return !((document.fullScreenElement && document.fullScreenElement !== null) ||
+	 (!document.mozFullScreen && !document.webkitIsFullScreen));
+}
+function enterFullscreen() {
+	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+	 (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+		if (document.documentElement.requestFullScreen) {
+			document.documentElement.requestFullScreen();
+		} else if (document.documentElement.mozRequestFullScreen) {
+			document.documentElement.mozRequestFullScreen();
+		} else if (document.documentElement.webkitRequestFullScreen) {
+			document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		}
+	}	
+}
+function toggleFullscreen() {
 	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
 	 (!document.mozFullScreen && !document.webkitIsFullScreen)) {
 		if (document.documentElement.requestFullScreen) {

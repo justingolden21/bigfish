@@ -74,12 +74,13 @@ $( ()=> {
 			<textarea id="export-textarea" class="form-control">${exportData()}</textarea>
 			<button id="copy-export-btn" class="btn mt-2"><i class="fas fa-copy"></i> Copy</button>
 			<br>
-			<b>Audio:</b>
-			<label for="setting-background-volume-input">Background Volume:</label>
+			${unlocks['volume'] ?
+			`<b>Audio:</b><br>
+			<label for="setting-background-volume-input">Music Volume:</label>
 			<input id="setting-background-volume-input" class="form-control" type="range" min="0" max="1" step="0.1" value="${settings.audio.background_volume}">
 			<label for="setting-effects-volume-input">Effects Volume:</label>
 			<input id="setting-effects-volume-input" class="form-control" type="range" min="0" max="1" step="0.1" value="${settings.audio.effects_volume}">
-			<br>
+			<br>` : ''}
 			<b>Display Settings:</b>
 			<div class="custom-control custom-checkbox">
 				<input ${settings.num_abrev?'checked':''} type="checkbox" class="custom-control-input" id="setting-num-abrev-checkbox">
@@ -89,10 +90,11 @@ $( ()=> {
 				<input ${settings.show_aquarium?'checked':''} type="checkbox" class="custom-control-input" id="setting-show-aquarium-checkbox">
 				<label class="custom-control-label" for="setting-show-aquarium-checkbox">Show aquarium</label>
 			</div>
-			<div class="custom-control custom-checkbox">
+			${unlocks['bank'] ? 
+			`<div class="custom-control custom-checkbox">
 				<input ${settings.bank_input_limit?'checked':''} type="checkbox" class="custom-control-input" id="setting-bank-input-limit-checkbox">
 				<label class="custom-control-label" for="setting-bank-input-limit-checkbox">Bank input limit (limit numeric bank inputs to the maximum transactions possible with your current number of banks)</label>
-			</div>
+			</div>` : ''}
 			`
 		);
 		// @note @maybe setTimeout to update export-texarea with new exportData()? nah

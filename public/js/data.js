@@ -10,9 +10,10 @@ function decode(encoded) {
 	return JSON.parse(atob(encoded) );
 }
 
+// name, val, isSell
 const getBankVals = ()=> 
 	$('#manage-bank-collapse .sortable input[type=number]').map( (idx, elm)=> 
-		([$(elm).attr('id').replace('bank-buy-','').replace('-input',''), parseInt($(elm).val() )])
+		([$(elm).attr('id').replace('bank-buy-','').replace('-input',''), parseInt($(elm).val() ), Number($(elm).parent().siblings().find('input[type=checkbox]').is(':checked') ) ])
 	);
 
 function exportData() {

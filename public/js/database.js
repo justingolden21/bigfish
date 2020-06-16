@@ -39,6 +39,8 @@ function getData(user) {
 }
 
 const getMills = ()=> new Date().getTime();
+const getMillsDiff = mills=> getMills() - mills;
+const getHoursDiff = mills=> getMillsDiff(mills)/1000/60/60;
 
 // creates a new user, adds their save data and login time
 function createData(user) {
