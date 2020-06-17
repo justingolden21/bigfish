@@ -93,3 +93,7 @@
 ==== Bug Fixes ====
 
 - Now saves if bank inputs were set to buy or sell
+
+- Logging out now clears local save data after backing up save data and logging out
+
+- Deleting all data now works as intended, and also signs the user out and clears local data

@@ -38,18 +38,9 @@ function canvasLoaded() {
 }
 
 function onCanvasReload() {
-
 	for(let df of drawn_fish) {
 		df.randomY();
 	}
-
-	// new_fish param and btn in settings?
-	// drawn_fish = [];
-	// num_drawn_fish = {
-	// 	small: 0,
-	// 	medium: 0,
-	// 	big: 0,
-	// };
 
 	MAX_X = canvas.width - SPRITE_SIZE;
 	MAX_Y = canvas.height - SPRITE_SIZE;

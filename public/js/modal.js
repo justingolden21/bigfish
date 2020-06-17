@@ -153,7 +153,7 @@ $( ()=> {
 			openModal(
 				`<i class="fas fa-exclamation-triangle"></i> Are You Sure?`,
 				`<p>Yes, I'm sure I want to delete all data:</p>
-				<p><small>This will delete all data saved to your account, not data on the page now. Refresh to remove this data as well.</small></p>
+				<p><small>This will delete all data saved to your account.<br>Your account will still exist, but your data will be removed.</small></p>
 				<button id="delete-data-confirm-btn" class="btn mt-2">Yes</button>
 				<button class="btn mt-2" data-dismiss="modal" aria-label="Close">No</button>`
 			);
@@ -162,7 +162,6 @@ $( ()=> {
 				deleteAllData();
 				$('.modal').modal('hide');
 				showSnackbar('All account data has been deleted', 'success');
-				$('#signout-btn').click();
 			});
 		});
 	});

@@ -33,6 +33,7 @@ function exportData() {
 const LOG_TIMES = false;
 
 function importData(data) {
+	if(data=='') return;
 	if(LOG_TIMES) console.time('import');
 	let decoded = decode(data);
 	if(LOG_TIMES) console.timeLog('import');

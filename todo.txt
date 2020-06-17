@@ -1,29 +1,22 @@
 REMINDER:
 don't commit in debug mode... seriously... don't do it...
 
-important/now stuff:
-bug!: negative values somehow? early game?
-bug: (1T minus 1) coins shows 1000B
-
 ================
 
-- test delete user data then create same user
 - make encode decode data good
-- logging out should backup the data first, then log out and clear their save data locally
 - deleting all data should clear local data too
 
 data.js has importFromEncoded and exportEncoded and also importData and exportData
 multiplier should be an unlock, and saved to account
-delete all data should return a promise, then modal.js can wait for the promise before logging out
 
 make your key info more obvious, account stuff more obvious, click 1 food btn more obvious
 
 !doesn't save if buy or sell for bank inputs, doesn't save scientific notation inputs. also doesn't save order of inputs
 
-no way to reopen you win modal? in notifications unlock a button?
+no way to reopen "you win modal"? in notifications unlock a button? save win time to account and display in stats
 
 signup/login modal (non-closable) that appears after help, where a button at the bottom says (nah maybe later)
-	remove flicker from signin/up btb
+	remove flicker from signin/up btn
 
 use sass
 clean code
@@ -45,6 +38,8 @@ todo todo (meta):
 import todo from google docs
 
 bugs:
+negative values somehow? early game?
+(1T minus 1) coins shows 1000B
 notifications keep playing when game is paused
 notifications can still step on each other (i think?)
 
@@ -66,6 +61,9 @@ multiplayer ideas
 
 ways to play:
 speedrun, idle game, relaxing/calm game, automation game/balance numbers/ratios math game, goes on forever, but also distinct ending
+
+to test:
+test delete user data then create same user
 
 maybe:
 mega bank: allows you to buy max or sell max, but only once per bank, then bank is destroyed

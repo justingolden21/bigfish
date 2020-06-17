@@ -26,6 +26,7 @@ function getData(user) {
 
 			// add login
 			let prev_logins = snapshot.data().logins;
+			if(!prev_logins || prev_logins.length==0) prev_logins = [];
 			prev_logins.push(getMills() );
 			db.collection('users').doc(user.uid).update({logins: prev_logins });
 		} else {
@@ -56,17 +57,29 @@ function updateData(user, signout=false) {
 
 	console.log('updating data');
 
-	updateGlobalStats(user);
-
 	db.collection('users').doc(user.uid).update({ savedata: exportData() }).then( ()=> {
-		if(signout) firebase.auth().signOut();
+		if(signout) {
+			console.log('logging out');
+			firebase.auth().signOut().then( ()=> {
+				console.log('logged out');
+				location.reload();
+			});
+		}
 	});
 }
 
 // empty data in db
 function deleteAllData() {
 	let user = firebase.auth().currentUser;
-	db.collection('users').doc(user.uid).set({});
+	console.log('deleting all data');
+	db.collection('users').doc(user.uid).update({savedata: '', status: 'deleted'}).then( ()=> {
+		console.log('all data deleted');
+		console.log('logging out');
+		firebase.auth().signOut().then( ()=> {
+			console.log('logged out');
+			location.reload();
+		});
+	});
 }
 
 
@@ -118,4 +131,4 @@ function updateGlobalStats(user) {
 	});
 }
 
-export { getData, updateData, deleteAllData };
+export { getData, updateData, updateGlobalStats, deleteAllData };

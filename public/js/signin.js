@@ -1,5 +1,5 @@
 import { showSnackbar } from './notify.js';
-import { getData, updateData } from './database.js';
+import { getData, updateData, updateGlobalStats } from './database.js';
 
 const auth = firebase.auth();
 
@@ -18,7 +18,7 @@ auth.onAuthStateChanged(user => {
 		getData(user);
 
 		clearInterval(update_data_interval);
-		update_data_interval = setInterval( ()=>updateData(user), 1000*60*3); // every 3min
+		update_data_interval = setInterval( ()=>{updateData(user); updateGlobalStats(user);}, 1000*60*3); // every 3min
 		setTimeout( ()=>updateData(user), 1000*5); // after first 5s
 	} else { // logged out
 		displayLoggedOut(!page_first_load);
