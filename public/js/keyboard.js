@@ -6,9 +6,12 @@ window.onkeyup = function(e) {
 		if(aquarium_fullscreen) {
 			$('#fullscreen-aquarium-btn').click();
 		} else {
-			// if(! $('.modal').hasClass('show') ) { // not working because modal is already closed by the time it's reading it
+			// doesn't work with modals other than signin-modal
+			// because the modal is already closed by the time it's reading it
+			// signin-modal stays open upon clicking esc
+			if(! $('.modal').hasClass('show') ) {
 				$('#pause-btn').click();
-			// }
+			}
 		}
 	}
 }

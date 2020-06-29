@@ -97,3 +97,29 @@
 - Logging out now clears local save data after backing up save data and logging out
 
 - Deleting all data now works as intended, and also signs the user out and clears local data
+
+================
+0.0.4 - First Impression Update
+================
+
+==== Visual ====
+
+- Now the signup / signin modal opens upon page load (instead of the help modal)
+
+- The signup / signin modal now cannot be closed normally (though clicking away or the esc key, and the close button is missing).
+
+- The signup / signin modal now features a "continue as guest" button which closes the modal
+
+- The help modal will display to the user first, above the signin / signup modal
+
+- If the user is logged in, then the signin / signup modal will be closed automatically and the game will be unpaused. After the user logs in, the same steps will be taken. If the user is logged in by default, then the help modal will no display.
+
+- If the user signs up, a hint to purchase food will appear. If the user continues as guest, the same steps will be taken
+
+- Removed blink from signin button
+
+- Added "Use an account to save your progress" text above tabs in signup / signin modal
+
+- Hitting the escape key in the signin / signup modal will no longer toggle pause in game
+
+- The loader now hides overflow in the y-axis upon loading the page, and the scroll will be set to the top of the page

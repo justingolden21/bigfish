@@ -1,5 +1,26 @@
 REMINDER:
 don't commit in debug mode... seriously... don't do it...
+update version num in about modal before commit
+
+================
+
+beginning:
+make top bar, account btn, buy food btn obviuos
+make signup give option for name (name: what should we call you)
+
+mid game:
+make aquariums cost increasing amount
+sprites for md and bg fish
+add btn toggle unock for 10k,100k,1m,10m btns
+unlock bank and bank with fish later
+unlock filters after 100 fish, move filters and aquariums to aquarium tab (and food)
+filter factory after owning 1k filters
+bank factory after owning 1t coins, costs 1t coins
+sell food? food silo?
+land? for now buy land with money, then can buy soldier fish to earn land and eat big fish much later in game
+
+end game:
+make game winning achievement (1m of each fish no change for 5 seconds, no clicking buttons, "balancing act")
 
 ================
 
@@ -15,6 +36,10 @@ signup/login modal (non-closable) that appears after help, where a button at the
 
 use sass
 clean code
+
+each new aquarium cost 10k more than the prev, each new aquarium factory cost 1m than the prev
+bank factories cost 1t and make 1k banks per sec
+"sizeable" description word
 
 ================
 

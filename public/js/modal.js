@@ -178,7 +178,7 @@ $( ()=> {
 		openModal(
 			`<i class="fas fa-info-circle"></i> About`,
 			`<button class="btn my-2" onclick="window.open('mailto:contact@justingolden.me')"><i class="fas fa-envelope"></i> Contact</button>
-			<p>Big Fish Alpha 0.0.3</p>
+			<p>Big Fish Alpha 0.0.4</p>
 			<p>Made by <a href="https://justingolden.me" target="_blank">Justin Golden</a></p>
 			<p>Check out our <a href="https://discord.gg/aEnKS5e" target="_blank">Discord</a></p>`
 		);
@@ -225,13 +225,14 @@ $( ()=> {
 						${unlocks['big-banking'] ? `<p><i class="fas fa-landmark"></i> You can even buy banks with banks!</p>` : ''}
 						<br>
 					</div>` : ''}
-					${unlocks['volume'] ? `<div class="carousel-item">
+					${unlocks['volume'] || false ? `<div class="carousel-item">
 						<p class="text-center"><b>Using the Website</b></p>
 						<p>To learn more about something, click the <i class="fas fa-info-circle"></i> info button next to it.</p>
 						${unlocks['volume'] ? `<p>Turn on the volume with the <i class="fas fa-volume-up"></i> button above</p>` : ''}
 						${unlocks['fullscreen'] ? `<p>Go into fullscreen mode with the <i class="fas fa-arrows-alt"></i> button above</p>` : ''}
 						${unlocks['fullscreen-aquarium'] ? `<p>Enter fullscreen aquarium mode with the <b><i class="fas fa-external-link-alt"></i> Fullscreen Aquarium</b> button below. Your game will run in the background, but you'll get to watch your beautiful fish swim around. It's a great wallpaper.</p>` : ''}
 						${unlocks['stats'] ? `<p>Check out your game stats with the <b><i class="fas fa-sort-amount-up"></i> Stats</b> button below</p>` : ''}
+						<p>The help menu will grow as you unlock more features.</p>
 					</div>` : ''}
 					${unlocks.aquarium ? `<div class="carousel-item">
 						<p class="text-center"><b>FAQs</b></p>
@@ -243,7 +244,7 @@ $( ()=> {
 						<p>You are probably producing it then it is being consumed at that rate or faster.</p>
 					</div>` : ''}
 				</div>
-				${unlocks['volume'] ?
+				${unlocks['volume'] || false ?
 				`<a class="carousel-control-prev" href="#help-carousel" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>

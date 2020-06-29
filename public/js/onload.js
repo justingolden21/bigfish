@@ -10,6 +10,7 @@ import { signed_in } from './signin.js';
 let canvas, ctx;
 
 let first_pause = true;
+const ignoreFirstPause = ()=> first_pause = false;
 
 let aquarium_fullscreen = false; // note: not a setting, not part of save data
 
@@ -93,15 +94,16 @@ $( ()=> {
 
 	// --------
 
+	// make so they cant click away from signin signup modal
+	$('#signin-btn').click(); // after sign in unpause, after signup open help modal and after close help modal unpause and hints
 	$('#help-modal-btn').click();
 	$('#pause-btn').click();
-	$('.modal').on('hidden.bs.modal', ()=> {
+	$('#signin-modal').on('hidden.bs.modal', ()=> {
 		if(first_pause) {
 			first_pause = false;
 			$('#pause-btn').click();
 			if(!signed_in) {
 				showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
-				showBlink($('#signin-btn'), 5, 1);
 				setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 2500);
 			}
 		}
@@ -222,4 +224,4 @@ function toggleFullscreen() {
 	}
 }
 
-export { canvas, ctx, settings, aquarium_fullscreen };
+export { canvas, ctx, settings, aquarium_fullscreen, ignoreFirstPause };

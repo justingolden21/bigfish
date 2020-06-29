@@ -1,3 +1,5 @@
+import { settings } from './setting.js';
+import { ignoreFirstPause } from './onload.js';
 import { showSnackbar } from './notify.js';
 import { getData, updateData, updateGlobalStats } from './database.js';
 
@@ -27,6 +29,13 @@ auth.onAuthStateChanged(user => {
 	}
 
 	signed_in = Boolean(user);
+
+	if(signed_in) {
+		ignoreFirstPause();
+		$('#signin-modal').modal('hide'); // do this after ignoring first pause
+		$('#default-modal').modal('hide'); // close help modal. depends on if the modal has opened first / bad code?
+		if(settings.paused) $('#pause-btn').click();
+	}
 });
 
 $( ()=> {

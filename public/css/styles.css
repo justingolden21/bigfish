@@ -435,6 +435,7 @@ span.highlight {
 .carousel-item {
 	width: 100%;
 	height: 25rem;
+	/*padding: 3rem;*/
 }
 .carousel-control-prev, .carousel-control-next {
 	background-color: hsl(220, 90%, 30%) !important;
