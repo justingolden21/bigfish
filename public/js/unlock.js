@@ -200,7 +200,7 @@ function checkUnlocks(inventory) {
 		checkUnlock('food-farm');
 	}
 
-	if(aquariums_used > 0.4) {
+	if(aquariums_used > 0.4 || inventory.fish.small > 500) {
 		checkUnlock('buildings');
 		checkUnlock('aquarium');
 	}

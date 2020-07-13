@@ -1,0 +1,1 @@
+change firebase.json hosting.site from "bigfishgame" to "play-big-fish" for dev, change back for prod

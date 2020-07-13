@@ -103,6 +103,9 @@ $( ()=> {
 			first_pause = false;
 			$('#pause-btn').click();
 			if(!signed_in) {
+				$('#info-row').css('background-color', 'hsl(135, 90%, 30%)');
+				$('#info-row').css('border', '2px solid white');
+				setTimeout( ()=> $('#info-row').css('background-color', '').css('border', ''), 5000 );
 				showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
 				setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 2500);
 			}
