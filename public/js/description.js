@@ -26,6 +26,7 @@ Satisfactory
 Decent
 Pretty
 Good
+Neat
 Special
 Unique
 Sparkling
@@ -36,6 +37,7 @@ Gorgeous
 Beautiful
 Cool
 Groovy
+Stunning
 Splendid
 Exquisite
 Lively
@@ -46,18 +48,24 @@ Busy
 Populated
 Active
 Bustling
+Wild
+Unruly
 Boisterous
 Frantic
 Advanced
 Professional
 Elite
 Magnificent
+Extravagant
 Great
 Big
 Large
 Hefty
+Glamorous
 Enchanted
 Glorious
+Exceptional
+Exemplary
 Magical
 Mythical 
 Mega
@@ -65,6 +73,7 @@ Huge
 Amazing
 Majestic
 Sensational
+Marvelous
 Awesome
 Expansive
 Superior
@@ -78,6 +87,7 @@ Fantastic
 Wonderful
 Spectacular
 Fabulous
+Miraculous
 Extreme
 Massive
 Gigantic
@@ -87,6 +97,7 @@ Monstrous
 Behemoth
 Absurd
 Outrageous
+Proposterous
 Outstanding
 Incredible
 Extraordinary
@@ -95,6 +106,7 @@ Monumentous
 Astonishing
 Astounding
 Phenomenal
+Unbelievable
 Otherworldly
 Extraterrestrial
 Immeasurable
@@ -102,6 +114,7 @@ Unthinkable
 Unimaginable
 Unfathomable
 Incomprehensible
+Inconceivable
 Astronomical
 Complete
 Perfect
