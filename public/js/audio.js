@@ -21,14 +21,14 @@ const QUIETER_EFFECT_VOLUME = 0.1;
 let sounds = {
 	backgrounds: {
 		default: new Howl({
-			src: ['audio/background.wav'],
+			src: ['audio/background.mp3'],
 			loop: true,
 			volume: DEFAULT_BACKGROUND_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		snow: new Howl({
-			src: ['audio/background.wav'], // @todo background-snow.wav
+			src: ['audio/background.mp3'], // @todo background-snow.mp3
 			loop: true,
 			volume: DEFAULT_BACKGROUND_VOLUME,
 			rate: 1,
@@ -37,37 +37,37 @@ let sounds = {
 	},
 	effects: {
 		button: new Howl({
-			src: ['audio/effects/button.wav'],
+			src: ['audio/effects/button.mp3'],
 			volume: DEFAULT_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		notification: new Howl({
-			src: ['audio/effects/notification.wav'],
+			src: ['audio/effects/notification.mp3'],
 			volume: DEFAULT_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		achievement: new Howl({
-			src: ['audio/effects/achievement.wav'],
+			src: ['audio/effects/achievement.mp3'],
 			volume: DEFAULT_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		unlock: new Howl({
-			src: ['audio/effects/unlock.wav'],
+			src: ['audio/effects/unlock.mp3'],
 			volume: QUIETER_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		error: new Howl({
-			src: ['audio/effects/error.wav'],
+			src: ['audio/effects/error.mp3'],
 			volume: QUIETER_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,
 		}),
 		success: new Howl({
-			src: ['audio/effects/success.wav'],
+			src: ['audio/effects/success.mp3'],
 			volume: DEFAULT_EFFECT_VOLUME,
 			rate: 1,
 			autoplay: false,

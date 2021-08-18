@@ -1,0 +1,11 @@
+converter:
+https://audio.online-convert.com/convert/wav-to-mp3
+
+kbps:
+background: 6kbps (yes... really...it still sounds good)
+achievement: 32kbps
+button: 6kbps
+error: 32kbps
+notification: 32kbps
+success: 32kbps
+unlock: 32kbps
