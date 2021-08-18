@@ -1,0 +1,3 @@
+If `firebase deploy` does not work, try `firebase login --reauth` :
+  - https://stackoverflow.com/q/63473787/4907950
+

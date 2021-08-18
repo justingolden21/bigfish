@@ -1,9 +1,13 @@
-html, body {
+html,
+body {
 	margin: 0 !important;
 	padding: 0 !important;
-	overflow: hidden;	
+	overflow: hidden;
 }
-#title, #top-hr, #info-row, #signin-div {
+#title,
+#top-hr,
+#info-row,
+#signin-div {
 	display: none;
 }
 #snackbar {

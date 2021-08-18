@@ -1,6 +1,5 @@
 const DESCRIPTIONS = {
-aquarium:
-`Lonely
+	aquarium: `Lonely
 Microscopic
 Miniscule
 Barren
@@ -66,8 +65,9 @@ Enchanted
 Glorious
 Exceptional
 Exemplary
+Super
 Magical
-Mythical 
+Mythical
 Mega
 Huge
 Amazing
@@ -75,6 +75,7 @@ Majestic
 Sensational
 Marvelous
 Awesome
+Spacious
 Expansive
 Superior
 Vast
@@ -107,6 +108,7 @@ Astonishing
 Astounding
 Phenomenal
 Unbelievable
+Insurmountable
 Otherworldly
 Extraterrestrial
 Immeasurable
@@ -123,16 +125,20 @@ Infinite`.split('\n'),
 
 // powers of 2, number of fish
 function getDescription(num_item, item) {
-	if(item == 'aquarium' && num_item == 0) return 'an empty aquarium';
-	let scale = Math.min(DESCRIPTIONS[item].length - 1, Math.floor(Math.log2(num_item) ) );
+	if (item == 'aquarium' && num_item == 0) return 'an empty aquarium';
+	let scale = Math.min(
+		DESCRIPTIONS[item].length - 1,
+		Math.floor(Math.log2(num_item))
+	);
 	let word = DESCRIPTIONS[item][scale].toLowerCase();
 	let n = 'aeiou'.split('').includes(word[0]);
-	return `a${n?'n':''} ${word} ${item}`;
+	return `a${n ? 'n' : ''} ${word} ${item}`;
 }
 
 function updateDescriptionDisplay(inventory) {
-	let num_fish = inventory.fish.small+inventory.fish.medium+inventory.fish.big;
-	$('.description-aquarium').html(getDescription(num_fish, 'aquarium') );
+	let num_fish =
+		inventory.fish.small + inventory.fish.medium + inventory.fish.big;
+	$('.description-aquarium').html(getDescription(num_fish, 'aquarium'));
 }
 
 // tests

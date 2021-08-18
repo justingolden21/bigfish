@@ -12,123 +12,163 @@ let data_is_set = false;
 
 // on signin
 function getData(user) {
-
-	if(!user) {
+	if (!user) {
 		data_is_set = true; // data doesn't exist so we can set scores now
 		return false;
 	}
 
-	db.collection('users').doc(user.uid).get().then(snapshot=> {
-		console.log(snapshot);
+	db.collection('users')
+		.doc(user.uid)
+		.get()
+		.then((snapshot) => {
+			console.log(snapshot);
 
-		if(snapshot.data() ) {
-			importData(snapshot.data().savedata);
+			if (snapshot.data()) {
+				importData(snapshot.data().savedata);
 
-			// add login
-			let prev_logins = snapshot.data().logins;
-			if(!prev_logins || prev_logins.length==0) prev_logins = [];
-			prev_logins.push(getMills() );
-			db.collection('users').doc(user.uid).update({logins: prev_logins });
-		} else {
-			createData(user);
-		}
+				// add login
+				let prev_logins = snapshot.data().logins;
+				if (!prev_logins || prev_logins.length == 0) prev_logins = [];
+				prev_logins.push(getMills());
+				db.collection('users')
+					.doc(user.uid)
+					.update({ logins: prev_logins });
+			} else {
+				createData(user);
+			}
 
-		data_is_set = true;
-
-	});
-
+			data_is_set = true;
+		});
 }
 
-const getMills = ()=> new Date().getTime();
-const getMillsDiff = mills=> getMills() - mills;
-const getHoursDiff = mills=> getMillsDiff(mills)/1000/60/60;
+const getMills = () => new Date().getTime();
+const getMillsDiff = (mills) => getMills() - mills;
+const getHoursDiff = (mills) => getMillsDiff(mills) / 1000 / 60 / 60;
 
 // creates a new user, adds their save data and login time
 function createData(user) {
-	db.collection('users').doc(user.uid).set({ savedata: exportData(), email: user.email, logins: [getMills()] }).then(snapshot=> {
-		console.log(snapshot);
-	});
+	db.collection('users')
+		.doc(user.uid)
+		.set({
+			savedata: exportData(),
+			email: user.email,
+			logins: [getMills()],
+		})
+		.then((snapshot) => {
+			console.log(snapshot);
+		});
 }
 
 // called on an interval from signin
 // save data to db with exportData
-function updateData(user, signout=false) {
-	if(!data_is_set || !signed_in) return;
+function updateData(user, signout = false) {
+	if (!data_is_set || !signed_in) return;
 
 	console.log('updating data');
 
-	db.collection('users').doc(user.uid).update({ savedata: exportData() }).then( ()=> {
-		if(signout) {
-			console.log('logging out');
-			firebase.auth().signOut().then( ()=> {
-				console.log('logged out');
-				location.reload();
-			});
-		}
-	});
+	db.collection('users')
+		.doc(user.uid)
+		.update({ savedata: exportData() })
+		.then(() => {
+			if (signout) {
+				console.log('logging out');
+				firebase
+					.auth()
+					.signOut()
+					.then(() => {
+						console.log('logged out');
+						location.reload();
+					});
+			}
+		});
 }
 
 // empty data in db
 function deleteAllData() {
 	let user = firebase.auth().currentUser;
 	console.log('deleting all data');
-	db.collection('users').doc(user.uid).update({savedata: '', status: 'deleted'}).then( ()=> {
-		console.log('all data deleted');
-		console.log('logging out');
-		firebase.auth().signOut().then( ()=> {
-			console.log('logged out');
-			location.reload();
+	db.collection('users')
+		.doc(user.uid)
+		.update({ savedata: '', status: 'deleted' })
+		.then(() => {
+			console.log('all data deleted');
+			console.log('logging out');
+			firebase
+				.auth()
+				.signOut()
+				.then(() => {
+					console.log('logged out');
+					location.reload();
+				});
 		});
-	});
 }
-
 
 // update global stats
 // get the user's previous stats
 // add the difference to global data
 // then update the user's previous stats
 function updateGlobalStats(user) {
+	if (!user) return;
 
-	if(!user) return;
+	db.collection('users')
+		.doc(user.uid)
+		.get()
+		.then((snapshot) => {
+			console.log(snapshot);
 
-	db.collection('users').doc(user.uid).get().then(snapshot=> {
-		console.log(snapshot);
-
-		// get user's previous stats
-		let prev_stats;
-		if(snapshot.data().prevstats) {
-			prev_stats = snapshot.data().prevstats;
-		} else {
-			prev_stats = {ticks: 0, fish: 0, buildings: 0, coins: 0};
-		}
-
-		// calculate the difference since last update
-		let diff_stats = {
-			ticks: stats.ticks - prev_stats.ticks,
-			fish: (inventory.fish.small + inventory.fish.medium + inventory.fish.big) - prev_stats.fish,
-			buildings: stats.buildings.purchased - prev_stats.buildings, // good anough for now
-			coins: inventory.coins - prev_stats.coins,
-		};
-
-		// add the difference to the global data
-		db.collection('global').doc('stats').update({
-			ticks: firebase.firestore.FieldValue.increment(diff_stats.ticks),
-			fish: firebase.firestore.FieldValue.increment(diff_stats.fish),
-			buildings: firebase.firestore.FieldValue.increment(diff_stats.buildings),
-			coins: firebase.firestore.FieldValue.increment(diff_stats.coins),
-		});
-
-		// update user's previous stats
-		db.collection('users').doc(user.uid).update({
-			prevstats: {
-				ticks: stats.ticks,
-				fish: (inventory.fish.small + inventory.fish.medium + inventory.fish.big),
-				buildings: stats.buildings.purchased,
-				coins: inventory.coins,
+			// get user's previous stats
+			let prev_stats;
+			if (snapshot.data().prevstats) {
+				prev_stats = snapshot.data().prevstats;
+			} else {
+				prev_stats = { ticks: 0, fish: 0, buildings: 0, coins: 0 };
 			}
-		});
 
-	});
+			// calculate the difference since last update
+			let diff_stats = {
+				ticks: stats.ticks - prev_stats.ticks,
+				fish:
+					inventory.fish.small +
+					inventory.fish.medium +
+					inventory.fish.big -
+					prev_stats.fish,
+				buildings: stats.buildings.purchased - prev_stats.buildings, // good anough for now
+				coins: inventory.coins - prev_stats.coins,
+			};
+
+			// add the difference to the global data
+			db.collection('global')
+				.doc('stats')
+				.update({
+					ticks: firebase.firestore.FieldValue.increment(
+						diff_stats.ticks
+					),
+					fish: firebase.firestore.FieldValue.increment(
+						diff_stats.fish
+					),
+					buildings: firebase.firestore.FieldValue.increment(
+						diff_stats.buildings
+					),
+					coins: firebase.firestore.FieldValue.increment(
+						diff_stats.coins
+					),
+				});
+
+			// update user's previous stats
+			db.collection('users')
+				.doc(user.uid)
+				.update({
+					prevstats: {
+						ticks: stats.ticks,
+						fish:
+							inventory.fish.small +
+							inventory.fish.medium +
+							inventory.fish.big,
+						buildings: stats.buildings.purchased,
+						coins: inventory.coins,
+					},
+				});
+		});
 }
 
 export { getData, updateData, updateGlobalStats, deleteAllData };

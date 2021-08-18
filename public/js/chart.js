@@ -1,25 +1,32 @@
 import { prettyStr } from './util.js';
 
-google.charts.load('current', {packages:['corechart','line']});
-google.charts.setOnLoadCallback( ()=> loaded = true);
+google.charts.load('current', { packages: ['corechart', 'line'] });
+google.charts.setOnLoadCallback(() => (loaded = true));
 
 let loaded = false;
 
 class ChartManager {
-	constructor(chartTitle, chartXTitle, chartYTitle, maxSize=100, chartColors=['#000'], gridColor='transparent') {
+	constructor(
+		chartTitle,
+		chartXTitle,
+		chartYTitle,
+		maxSize = 100,
+		chartColors = ['#000'],
+		gridColor = 'transparent'
+	) {
 		this.title = chartTitle;
 		this.chartX = chartXTitle; // can be array for multi charts
 		this.chartY = chartYTitle;
 		this.maxSize = maxSize;
-		this.colors = chartColors
+		this.colors = chartColors;
 		this.gridColor = gridColor;
 		this.data = [];
 	}
-	addData(newData) { // can be array for multi charts
-		if(this.data.length < this.maxSize) {
+	addData(newData) {
+		// can be array for multi charts
+		if (this.data.length < this.maxSize) {
 			this.data.push(newData); // push to end
-		}
-		else {
+		} else {
 			this.data.shift(); // cut from the beginning
 			this.data.push(newData);
 		}
@@ -29,32 +36,33 @@ class ChartManager {
 		this.data = [];
 	}
 	drawChart(elm) {
-		if(!loaded) return false;
+		if (!loaded) return false;
 		let data = new google.visualization.DataTable();
 
 		data.addColumn('number', this.chartY);
-		if(typeof this.chartX == 'string') { // simple chart
+		if (typeof this.chartX == 'string') {
+			// simple chart
 			data.addColumn('number', this.chartX);
-		}
-		else { // multi chart
-			for(let i=0; i<this.chartX.length; i++) {
+		} else {
+			// multi chart
+			for (let i = 0; i < this.chartX.length; i++) {
 				data.addColumn('number', this.chartX[i]);
 			}
 		}
 
 		let rows = [];
-		if(typeof this.data[0] == 'object') { // multi chart
-			for(let i=0; i<this.data.length; i++) {
-				let tmp = [ i+1 ];
-				for(let j=0; j<this.data[i].length; j++) {
+		if (typeof this.data[0] == 'object') {
+			// multi chart
+			for (let i = 0; i < this.data.length; i++) {
+				let tmp = [i + 1];
+				for (let j = 0; j < this.data[i].length; j++) {
 					tmp.push(this.data[i][j]);
 				}
 				rows.push(tmp);
 			}
-		}
-		else {
-			for(let i=0; i<this.data.length; i++) {
-				rows.push([ i+1, this.data[i] ]);
+		} else {
+			for (let i = 0; i < this.data.length; i++) {
+				rows.push([i + 1, this.data[i]]);
 			}
 		}
 		// console.log(rows);
@@ -63,10 +71,10 @@ class ChartManager {
 		let options = {
 			title: this.title,
 			hAxis: {
-				title: this.chartX
+				title: this.chartX,
 			},
 			vAxis: {
-				title: this.chartY
+				title: this.chartY,
 			},
 			colors: this.colors,
 			backgroundColor: 'transparent',
@@ -85,7 +93,13 @@ class ChartManager {
 
 class PieChartManager {
 	// dataTitles, chartColors, and data shoud all be arrays with same length
-	constructor(chartTitle, dataTitles, data, chartColors=null, color='#000') {
+	constructor(
+		chartTitle,
+		dataTitles,
+		data,
+		chartColors = null,
+		color = '#000'
+	) {
 		this.title = chartTitle;
 		this.dataTitles = dataTitles;
 		this.colors = chartColors;
@@ -99,22 +113,22 @@ class PieChartManager {
 		this.dataTitles = newDataTitles;
 	}
 	drawChart(elm) {
-		if(!loaded) return false;
+		if (!loaded) return false;
 
-		let vals = [ ['',''] ];
-		for(let i=0; i<this.data.length; i++) {
-			vals.push([ this.dataTitles[i], this.data[i] ]);
+		let vals = [['', '']];
+		for (let i = 0; i < this.data.length; i++) {
+			vals.push([this.dataTitles[i], this.data[i]]);
 		}
 		let data = google.visualization.arrayToDataTable(vals);
 
 		let options = {
 			title: this.title,
-			legend: {textStyle: {color: this.color} },
-			titleTextStyle: {color: this.color},
-			backgroundColor: { fill: 'transparent'},
+			legend: { textStyle: { color: this.color } },
+			titleTextStyle: { color: this.color },
+			backgroundColor: { fill: 'transparent' },
 		};
 
-		if(this.colors) {
+		if (this.colors) {
 			options.colors = this.colors;
 		}
 
@@ -124,20 +138,22 @@ class PieChartManager {
 	}
 }
 
-const getProgressBar = (amount_full) => 
+const getProgressBar = (amount_full) =>
 	`<div class="progress"><div class="progress-bar" role="progressbar"
-	style="width: ${amount_full*100}%" aria-valuenow="${amount_full*100}"
+	style="width: ${amount_full * 100}%" aria-valuenow="${amount_full * 100}"
 	aria-valuemin="0" aria-valuemax="100"></div></div>`;
 
 const getMultiBar = (amounts_full, colors) => {
 	let tmp = '<div class="progress">';
-	for(let idx in amounts_full) {
+	for (let idx in amounts_full) {
 		tmp += `<div class="progress-bar" role="progressbar"
-			style="width: ${amounts_full[idx]*100}%; background-color: ${colors[idx]}"
-			aria-valuenow="${amounts_full[idx]*100}" aria-valuemin="0" aria-valuemax="100"></div>`;
+			style="width: ${amounts_full[idx] * 100}%; background-color: ${colors[idx]}"
+			aria-valuenow="${
+				amounts_full[idx] * 100
+			}" aria-valuemin="0" aria-valuemax="100"></div>`;
 	}
 	return tmp + '</div>';
-}
+};
 
 /* examples:
 let cm = new ChartManager('chartTitle', 'chartXTitle', 'chartYTitle');
@@ -192,23 +208,40 @@ let cms_setup = false;
 
 function setupCharts(inventory) {
 	// hsl(220, 90%, 10/30/50%)
-	cm_fish = new ChartManager('Fish vs Time', ['small','medium','big'], 'Fish', 25, ['#0D59F2','#083691','#031230']);
+	cm_fish = new ChartManager(
+		'Fish vs Time',
+		['small', 'medium', 'big'],
+		'Fish',
+		25,
+		['#0D59F2', '#083691', '#031230']
+	);
 	// cm_buildings = new ChartManager('Buildings vs Time', Object.keys(inventory.buildings).map(x => x.replace(/_/g, ' ') ), 'Buildings', 25, ['#0D59F2','#083691','#031230']);
 
-	for(let building in inventory.buildings) {
+	for (let building in inventory.buildings) {
 		let buildingName = prettyStr(building);
-		cms[building] = new ChartManager(`${buildingName} vs Time`, buildingName, 'Amount', 25, ['#0D59F2']);
+		cms[building] = new ChartManager(
+			`${buildingName} vs Time`,
+			buildingName,
+			'Amount',
+			25,
+			['#0D59F2']
+		);
 	}
 
 	cms_setup = true;
 }
 
 function updateChartData(inventory) {
-	if(cm_fish) cm_fish.addData([inventory.fish.small, inventory.fish.medium, inventory.fish.big]);
+	if (cm_fish)
+		cm_fish.addData([
+			inventory.fish.small,
+			inventory.fish.medium,
+			inventory.fish.big,
+		]);
 	// if(cm_buildings) cm_buildings.addData(Object.values(inventory.buildings) );
 
-	if(cms_setup) {
-		for(let building in inventory.buildings) {
+	if (cms_setup) {
+		for (let building in inventory.buildings) {
 			cms[building].addData(inventory.buildings[building]);
 		}
 	}
@@ -216,11 +249,14 @@ function updateChartData(inventory) {
 
 function updateInsightsDisplay(inventory) {
 	console.time('update insights');
-	if(cm_fish) cm_fish.drawChart(document.getElementById('chart-fish-linechart') );
+	if (cm_fish)
+		cm_fish.drawChart(document.getElementById('chart-fish-linechart'));
 	// if(cm_buildings) cm_buildings.drawChart(document.getElementById('chart-building-linechart') );
 	console.timeLog('update insights');
-	for(let building in inventory.buildings) {
-		cms[building].drawChart(document.getElementById(`chart-${building}-linechart`) );
+	for (let building in inventory.buildings) {
+		cms[building].drawChart(
+			document.getElementById(`chart-${building}-linechart`)
+		);
 	}
 
 	console.timeEnd('update insights');
@@ -228,14 +264,22 @@ function updateInsightsDisplay(inventory) {
 
 function getInsightsHTML(inventory) {
 	let tmpHTML = `<div id="chart-fish-linechart"></div>`;
-		// <div id="chart-building-linechart"></div>`;
-	
-	for(let building in inventory.buildings) {
+	// <div id="chart-building-linechart"></div>`;
+
+	for (let building in inventory.buildings) {
 		tmpHTML += `<div id="chart-${building}-linechart"></div>`;
 	}
 
 	return tmpHTML;
 }
 
-export { ChartManager, PieChartManager, getProgressBar, getMultiBar,
-	setupCharts, updateChartData, updateInsightsDisplay, getInsightsHTML };
+export {
+	ChartManager,
+	PieChartManager,
+	getProgressBar,
+	getMultiBar,
+	setupCharts,
+	updateChartData,
+	updateInsightsDisplay,
+	getInsightsHTML,
+};

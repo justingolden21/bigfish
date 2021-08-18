@@ -10,7 +10,7 @@ import { signed_in } from './signin.js';
 let canvas, ctx;
 
 let first_pause = true;
-const ignoreFirstPause = ()=> first_pause = false;
+const ignoreFirstPause = () => (first_pause = false);
 
 let aquarium_fullscreen = false; // note: not a setting, not part of save data
 
@@ -18,59 +18,60 @@ let was_fullscreen, was_aquarium_shown;
 
 let last_mousemove = -1;
 
-$( ()=> {
-
+$(() => {
 	// UI stuff
 
-	$('.card-header').click( (evt)=> {
-		if(evt.target.tagName!='BUTTON')
-			$(evt.target).find('.btn').click();
+	$('.card-header').click((evt) => {
+		if (evt.target.tagName != 'BUTTON') $(evt.target).find('.btn').click();
 	});
 
 	$('.collapse.show').parent().find('.card-header').addClass('open');
 
-	$('.card-header .btn').click( (evt)=> {
+	$('.card-header .btn').click((evt) => {
 		let has = $(evt.target).parent().parent().hasClass('open');
 		$('.card-header').removeClass('open');
-		if(has)
-			$(evt.target).parent().parent().removeClass('open');
-		else
-			$(evt.target).parent().parent().addClass('open');
+		if (has) $(evt.target).parent().parent().removeClass('open');
+		else $(evt.target).parent().parent().addClass('open');
 	});
 
 	$('.carousel').carousel('pause');
 
-
-
-	$('.btn:not(#volume-btn)').click( (e)=> {
+	$('.btn:not(#volume-btn)').click((e) => {
 		// https://stackoverflow.com/a/6692173/4907950
-		if (e.originalEvent !== undefined) { // if human
+		if (e.originalEvent !== undefined) {
+			// if human
 			// playSoundEffect('button');
 		}
 	});
 
-
-
-	$('#pause-btn').click( (e)=> {
+	$('#pause-btn').click((e) => {
 		toggleSetting('paused');
-		$('#pause-btn').html(`<i class="fas fa-${settings.paused?'play':'pause'}"></i>`);
+		$('#pause-btn').html(
+			`<i class="fas fa-${settings.paused ? 'play' : 'pause'}"></i>`
+		);
 		$('#top-hr').toggleClass('paused');
 		$('#out-of-space-banner').toggleClass('paused');
 		audioHandlePause(settings.paused);
 		// https://stackoverflow.com/a/6692173/4907950
-		if (e.originalEvent !== undefined) { // if human
-			showSnackbar(`Game ${settings.paused?'paused':'resumed'}`, 'info');
+		if (e.originalEvent !== undefined) {
+			// if human
+			showSnackbar(
+				`Game ${settings.paused ? 'paused' : 'resumed'}`,
+				'info'
+			);
 		}
 	});
-	$('#volume-btn').click( ()=> {
+	$('#volume-btn').click(() => {
 		// toggleSetting('sound');
 		setSound(!settings.sound);
-		$('#volume-btn').html(`<i class="fas fa-volume-${settings.sound?'up':'mute'}"></i>`);
+		$('#volume-btn').html(
+			`<i class="fas fa-volume-${settings.sound ? 'up' : 'mute'}"></i>`
+		);
 		checkAchievement('Scales');
 	});
 	$('#fullscreen-btn').click(toggleFullscreen);
 
-	$('.info-toggle-btn').click( (evt)=> {
+	$('.info-toggle-btn').click((evt) => {
 		let t = $(evt.target);
 		let btn = t.prop('tagName') == 'BUTTON' ? t : t.parent(); // account for clicking icon inside btn
 		let id = btn.parent().attr('href');
@@ -98,13 +99,20 @@ $( ()=> {
 	$('#signin-btn').click(); // after sign in unpause, after signup open help modal and after close help modal unpause and hints
 	$('#help-modal-btn').click();
 	$('#pause-btn').click();
-	$('#signin-modal').on('hidden.bs.modal', ()=> {
-		if(first_pause) {
+	$('#signin-modal').on('hidden.bs.modal', () => {
+		if (first_pause) {
 			first_pause = false;
 			$('#pause-btn').click();
-			if(!signed_in) {
+			if (!signed_in) {
 				showBlink($($('.purchase-food-btns .btn')[0]), 5, 1);
-				setTimeout( ()=> showSnackbar('Hint: Why don\'t you purchase some food?', 'info'), 2500);
+				setTimeout(
+					() =>
+						showSnackbar(
+							"Hint: Why don't you purchase some food?",
+							'info'
+						),
+					2500
+				);
 			}
 		}
 	});
@@ -113,9 +121,9 @@ $( ()=> {
 
 	// fullscreen aquarium stuff below
 
-	$('#fullscreen-aquarium-btn').click( ()=> {
+	$('#fullscreen-aquarium-btn').click(() => {
 		aquarium_fullscreen = !aquarium_fullscreen;
-		if(aquarium_fullscreen) {
+		if (aquarium_fullscreen) {
 			document.documentElement.scrollTop = document.body.scrollTop = 0;
 
 			canvas.width = window.innerWidth;
@@ -144,7 +152,7 @@ $( ()=> {
 			$('*:not(#exit-fullscreen-btn)').attr('tabindex', '');
 
 			// if wasn't fullscreen before, exit back to normal
-			if(!was_fullscreen && isFullscreen() ) toggleFullscreen();
+			if (!was_fullscreen && isFullscreen()) toggleFullscreen();
 
 			// restore show aquarium setting
 			$('#main-canvas').css('display', was_aquarium_shown ? '' : 'none');
@@ -153,9 +161,9 @@ $( ()=> {
 		onCanvasReload();
 	});
 
-	$(window).resize( ()=> {
+	$(window).resize(() => {
 		canvas.width = window.innerWidth;
-		if(aquarium_fullscreen) {
+		if (aquarium_fullscreen) {
 			canvas.height = window.innerHeight;
 		} else {
 			canvas.height = 160;
@@ -164,54 +172,66 @@ $( ()=> {
 		onCanvasReload();
 	});
 
-	$('canvas').click( ()=> {
-		if(aquarium_fullscreen) {
+	$('canvas').click(() => {
+		if (aquarium_fullscreen) {
 			$('#fullscreen-aquarium-btn').click();
 		}
 	});
 
-	$('canvas').mousemove( ()=> {
-		if(aquarium_fullscreen) {
+	$('canvas').mousemove(() => {
+		if (aquarium_fullscreen) {
 			$('#exit-fullscreen-btn').show();
 			last_mousemove = new Date();
-			setTimeout( ()=> {
+			setTimeout(() => {
 				// https://stackoverflow.com/a/4944782/4907950
-				if(Math.abs(new Date() - last_mousemove) >= 2000) {
+				if (Math.abs(new Date() - last_mousemove) >= 2000) {
 					$('#exit-fullscreen-btn').hide();
 				}
 			}, 2000);
 		}
 	});
 
-	$('#exit-fullscreen-btn').click( ()=> $('#fullscreen-aquarium-btn').click() );
+	$('#exit-fullscreen-btn').click(() =>
+		$('#fullscreen-aquarium-btn').click()
+	);
 });
 
 // https://stackoverflow.com/a/10627148/4907950
 function isFullscreen() {
-	return !((document.fullScreenElement && document.fullScreenElement !== null) ||
-	 (!document.mozFullScreen && !document.webkitIsFullScreen));
+	return !(
+		(document.fullScreenElement && document.fullScreenElement !== null) ||
+		(!document.mozFullScreen && !document.webkitIsFullScreen)
+	);
 }
 function enterFullscreen() {
-	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-	 (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+	if (
+		(document.fullScreenElement && document.fullScreenElement !== null) ||
+		(!document.mozFullScreen && !document.webkitIsFullScreen)
+	) {
 		if (document.documentElement.requestFullScreen) {
 			document.documentElement.requestFullScreen();
 		} else if (document.documentElement.mozRequestFullScreen) {
 			document.documentElement.mozRequestFullScreen();
 		} else if (document.documentElement.webkitRequestFullScreen) {
-			document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+			document.documentElement.webkitRequestFullScreen(
+				Element.ALLOW_KEYBOARD_INPUT
+			);
 		}
-	}	
+	}
 }
 function toggleFullscreen() {
-	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-	 (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+	if (
+		(document.fullScreenElement && document.fullScreenElement !== null) ||
+		(!document.mozFullScreen && !document.webkitIsFullScreen)
+	) {
 		if (document.documentElement.requestFullScreen) {
 			document.documentElement.requestFullScreen();
 		} else if (document.documentElement.mozRequestFullScreen) {
 			document.documentElement.mozRequestFullScreen();
 		} else if (document.documentElement.webkitRequestFullScreen) {
-			document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+			document.documentElement.webkitRequestFullScreen(
+				Element.ALLOW_KEYBOARD_INPUT
+			);
 		}
 	} else {
 		if (document.cancelFullScreen) {

@@ -15,9 +15,14 @@ body {
 
 	/*https://leaverou.github.io/css3patterns/#lined-paper*/
 	background-color: #fff;
-	background-image:
-	linear-gradient(90deg, transparent 31px, hsl(180, 30%, 80%) 31px, hsl(180, 30%, 80%) 33px, transparent 33px),
-	linear-gradient(hsl(220, 50%, 90%) .1rem, transparent .1rem);
+	background-image: linear-gradient(
+			90deg,
+			transparent 31px,
+			hsl(180, 30%, 80%) 31px,
+			hsl(180, 30%, 80%) 33px,
+			transparent 33px
+		),
+		linear-gradient(hsl(220, 50%, 90%) 0.1rem, transparent 0.1rem);
 	background-size: 100% 2rem;
 }
 
@@ -31,9 +36,9 @@ body {
 #title {
 	padding: 0.25rem;
 
-/*	color: #fff;
+	/*	color: #fff;
 	background-color: hsl(220, 90%, 30%);*/
-	
+
 	color: hsl(220, 90%, 30%);
 
 	/*border: 2px solid hsl(220, 90%, 30%);*/
@@ -52,7 +57,6 @@ body {
 	font-weight: 900;
 	font-size: 150%;
 	letter-spacing: 0.25em;
-
 }
 .description-aquarium {
 	margin-bottom: 0;
@@ -91,7 +95,8 @@ hr {
 /* sticky top */
 /* maybe: make this a setting, separate stylesheet */
 
-#info-row, #top-hr {
+#info-row,
+#top-hr {
 	position: -webkit-sticky;
 	position: sticky;
 	z-index: 99;
@@ -137,7 +142,7 @@ hr {
 	border-color: hsl(220, 90%, 30%);
 }
 .nav-tabs {
-	border-color: hsl(220, 50%, 90%);	
+	border-color: hsl(220, 50%, 90%);
 	border-width: 2px;
 
 	/* maybe */
@@ -151,12 +156,12 @@ hr {
 
 .accordion .card {
 	border-radius: 0;
-	
+
 	/* maybe */
 	/*border-width: 0;*/
 	/*border-bottom-width: 1px;*/
 }
-.accordion>.card:first-of-type {
+.accordion > .card:first-of-type {
 	border-top-left-radius: 0.5rem !important;
 	border-top-right-radius: 0.5rem !important;
 }
@@ -195,28 +200,29 @@ hr {
 
 #main-canvas {
 	width: 100%;
-/*	border: 4px solid hsl(220, 90%, 30%);
+	/*	border: 4px solid hsl(220, 90%, 30%);
 	border-radius: 0.5rem;
 	box-shadow: 0.25rem 0.25rem 0px hsl(220, 50%, 90%);*/
 
 	margin: auto;
 	display: block;
 
-/*	border-top: 0.125rem solid hsl(190, 90%, 30%);
+	/*	border-top: 0.125rem solid hsl(190, 90%, 30%);
 	border-bottom: 0.125rem solid hsl(190, 90%, 30%);*/
 	margin-bottom: 0.75rem;
 
 	background-color: rgba(8, 54, 145, 0.8);
 }
 
-#main-canvas, .pixelart {
+#main-canvas,
+.pixelart {
 	/*https://stackoverflow.com/a/7665647/4907950*/
-	image-rendering: optimizeSpeed;             /* Older versions of FF          */
-	image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+	image-rendering: optimizeSpeed; /* Older versions of FF          */
+	image-rendering: -moz-crisp-edges; /* FF 6.0+                       */
 	image-rendering: -webkit-optimize-contrast; /* Safari                        */
-	image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
-	image-rendering: pixelated;                 /* Awesome future-browsers       */
-	-ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+	image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+	image-rendering: pixelated; /* Awesome future-browsers       */
+	-ms-interpolation-mode: nearest-neighbor; /* IE                            */
 }
 
 /* progress */
@@ -243,7 +249,8 @@ hr {
 .close:hover {
 	background-color: hsl(220, 50%, 90%);
 }
-.modal-header, .modal-footer {
+.modal-header,
+.modal-footer {
 	border-color: hsl(220, 90%, 10%);
 }
 .info-toggle-card {
@@ -265,7 +272,8 @@ hr {
 	/*border-color: hsl(205, 90%, 60%);*/
 	border-color: hsl(250, 90%, 60%);
 }
-.btn:focus, .btn.lighter:focus {
+.btn:focus,
+.btn.lighter:focus {
 	color: hsl(190, 90%, 30%);
 	border-color: hsl(190, 90%, 30%);
 }
@@ -279,7 +287,8 @@ hr {
 	color: #fff;
 	background-color: hsl(250, 90%, 60%);
 }
-.btn:active, .btn.lighter:active {
+.btn:active,
+.btn.lighter:active {
 	color: #fff;
 	background-color: hsl(190, 90%, 30%);
 }
@@ -292,7 +301,8 @@ hr {
 }
 
 /* Textareas and Inputs */
-textarea, input {
+textarea,
+input {
 	border: 2px solid hsl(220, 90%, 30%) !important;
 	border-radius: 0.5rem !important;
 }
@@ -306,14 +316,15 @@ input.error {
 }
 
 /* Checkboxes */
-.custom-control-input:checked~.custom-control-label::before, .custom-switch .custom-control-label::before {
+.custom-control-input:checked ~ .custom-control-label::before,
+.custom-switch .custom-control-label::before {
 	background-color: hsl(220, 90%, 30%);
 	border-color: hsl(220, 90%, 30%) !important;
 }
 .custom-switch .custom-control-label::after {
 	background-color: #fff;
 }
-.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
 	border-color: hsl(190, 90%, 30%) !important;
 }
 
@@ -334,7 +345,7 @@ span.highlight {
 
 #out-of-space-banner {
 	display: none;
-/*	border: 2px solid hsl(205, 60%, 60%);
+	/*	border: 2px solid hsl(205, 60%, 60%);
 	color: hsl(205, 60%, 60%);*/
 	border: 2px solid hsl(190, 90%, 30%);
 	color: hsl(190, 90%, 30%);
@@ -355,24 +366,43 @@ span.highlight {
 /* in case we want to go into motionsickness mode later :) */
 *.motionsickness {
 	-webkit-animation: shake 0.75s infinite;
-	animation: shake 0.75s infinite;	
+	animation: shake 0.75s infinite;
 }
 
 @keyframes shake {
-	0% { transform: rotate(0deg); }
-	25% { transform: rotate(-3deg); }
-	50% { transform: rotate(0deg); }
-	75% { transform: rotate(3deg); }
-	100% { transform: rotate(0deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+	75% {
+		transform: rotate(3deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
 @-webkit-keyframes shake {
-	0% { transform: rotate(0deg); }
-	25% { transform: rotate(-3deg); }
-	50% { transform: rotate(0deg); }
-	75% { transform: rotate(3deg); }
-	100% { transform: rotate(0deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+	75% {
+		transform: rotate(3deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
-
 
 /* snackbar */
 #snackbar {
@@ -389,11 +419,11 @@ span.highlight {
 	border: 2px solid hsl(220, 90%, 30%);
 	color: hsl(220, 90%, 30%);
 
-/*	background-color: hsl(220, 90%, 30%);
+	/*	background-color: hsl(220, 90%, 30%);
 	color: #fff;*/
 }
 #snackbar.right {
-	right: 2rem;	
+	right: 2rem;
 }
 #snackbar.important {
 	background-color: hsl(220, 90%, 30%);
@@ -406,20 +436,44 @@ span.highlight {
 	animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 @-webkit-keyframes fadein {
-	from {bottom: 0; opacity: 0;}
-	to {bottom: 2rem; opacity: 1;}
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 2rem;
+		opacity: 1;
+	}
 }
 @keyframes fadein {
-	from {bottom: 0; opacity: 0;}
-	to {bottom: 2rem; opacity: 1;}
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 2rem;
+		opacity: 1;
+	}
 }
 @-webkit-keyframes fadeout {
-	from {bottom: 2rem; opacity: 1;}
-	to {bottom: 0; opacity: 0;}
+	from {
+		bottom: 2rem;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
 }
 @keyframes fadeout {
-	from {bottom: 2rem; opacity: 1;}
-	to {bottom: 0; opacity: 0;}
+	from {
+		bottom: 2rem;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
 }
 
 /* Carousel */
@@ -437,11 +491,15 @@ span.highlight {
 	height: 25rem;
 	/*padding: 3rem;*/
 }
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
 	background-color: hsl(220, 90%, 30%) !important;
 	opacity: 0.15;
 }
-.carousel-control-prev:hover, .carousel-control-prev:focus, .carousel-control-next:hover, .carousel-control-next:focus {
+.carousel-control-prev:hover,
+.carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-next:focus {
 	opacity: 0.5;
 }
 .carousel-indicators {
@@ -460,7 +518,11 @@ span.highlight {
 	background-repeat: repeat;
 	height: 16px;
 	background-size: 32px 32px;
-	background-image: radial-gradient(circle at 16px -8px, transparent 18px, rgba(8, 54, 145, 0.8) 19px);
+	background-image: radial-gradient(
+		circle at 16px -8px,
+		transparent 18px,
+		rgba(8, 54, 145, 0.8) 19px
+	);
 
 	margin: 0;
 }
@@ -478,18 +540,28 @@ span.highlight {
 	font-weight: bold;
 }
 
-
 @keyframes wave {
-	0% { background-position: 16px -2px; }
-	50% { background-position: 0px 0px; }
-	100% { background-position: -16px -2px; }
+	0% {
+		background-position: 16px -2px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: -16px -2px;
+	}
 }
 @-webkit-keyframes wave {
-	0% { background-position: 16px -2px; }
-	50% { background-position: 0px 0px; }
-	100% { background-position: -16px -2px; }
+	0% {
+		background-position: 16px -2px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: -16px -2px;
+	}
 }
-
 
 /* Ripple */
 
@@ -519,7 +591,6 @@ span.highlight {
 		opacity: 0;
 	}
 }
-
 
 @media (max-width: 576px) {
 	.accordion {
