@@ -752,9 +752,6 @@ function buyBuildings(building_name, amount, is_bank = false) {
 	let is_increasing_cost = INCREASING_COST_BUILDINGS.includes(
 		building_name.replace('_', '-')
 	);
-	console.log(is_increasing_cost);
-	console.log(INCREASING_COST_BUILDINGS);
-	console.log(building_name);
 	if (is_increasing_cost) {
 		amount = Math.min(
 			amount,

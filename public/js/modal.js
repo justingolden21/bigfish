@@ -218,9 +218,9 @@ $(() => {
 			// 	${unlocks.volume ? `<li data-target="#help-carousel" data-slide-to="2"></li>` : ''}
 			// </ol>
 			`<div id="help-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-				<div class="carousel-inner">
+				<div class="carousel-inner text-left">
 					<div class="carousel-item active">
-						<p class="text-center"><b>Fish</b></p>
+						<p><b>Fish</b></p>
 						<p>You start the game with 1 small fish <i class="fas fa-fish"></i></p>
 						<p>Your fish earn you coins <i class="fas fa-coins"></i> when they're full</p>
 						<p>Your fish won't starve when they're hungry, they just won't give you coins</p>
@@ -253,7 +253,7 @@ $(() => {
 					${
 						unlocks.buildings
 							? `<div class="carousel-item">
-						<p class="text-center"><b>Buildings</b></p>
+						<p><b>Buildings</b></p>
 						<p><i class="fas fa-store-alt"></i> You can purchase buildings to produce items every second</p>
 						${
 							unlocks['food-farm']
@@ -319,7 +319,7 @@ $(() => {
 					${
 						unlocks['volume'] || false
 							? `<div class="carousel-item">
-						<p class="text-center"><b>Using the Website</b></p>
+						<p><b>Using the Website</b></p>
 						<p>To learn more about something, click the <i class="fas fa-info-circle"></i> info button next to it.</p>
 						${
 							unlocks['volume']
@@ -348,7 +348,7 @@ $(() => {
 					${
 						unlocks.aquarium
 							? `<div class="carousel-item">
-						<p class="text-center"><b>FAQs</b></p>
+						<p><b>FAQs</b></p>
 						<p><i>I can't purchase fish even though I have enough money. What's wrong?</i></p>
 						<p>Check your aquarium space.</p>
 						<p><i>My aquarium space says it has room but my hatcheries don't seem to be producing. What gives?</i></p>

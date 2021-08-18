@@ -146,7 +146,7 @@ hr {
 	border-width: 2px;
 
 	/* maybe */
-	/*border-bottom: 0;*/
+	border-bottom: 0;
 }
 .nav-tabs + .tab-content {
 	margin-top: 1rem;
@@ -487,9 +487,9 @@ span.highlight {
 	display: none;
 }
 .carousel-item {
-	width: 100%;
+	width: 60%;
 	height: 25rem;
-	/*padding: 3rem;*/
+	margin-left: 8rem;
 }
 .carousel-control-prev,
 .carousel-control-next {
@@ -606,6 +606,9 @@ span.highlight {
 	.carousel-item {
 		/*larger because more vertical room, less horizontal room*/
 		height: 30rem;
+
+		width: 80%;
+		margin-left: 2rem;
 	}
 	.carousel-inner {
 		text-align: left;
