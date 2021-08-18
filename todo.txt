@@ -4,6 +4,14 @@ update version num in about modal before commit
 
 ================
 
+signup enter name optional
+tutorial for top bar
+feed fish individually, fish feeder
+game end achievement
+unlock fish space bar for 1k
+bar for showing profit per fish (unlock for 1m)
+toggle for x10000 on btns (unlock for 1b)
+
 beginning:
 make top bar, account btn, buy food btn obviuos
 make signup give option for name (name: what should we call you)

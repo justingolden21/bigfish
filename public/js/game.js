@@ -13,6 +13,10 @@ import { getMultiplier } from './multiplier.js';
 import { round } from './number.js';
 import { setupCharts } from './chart.js';
 import { playSoundEffect } from './audio.js';
+import {
+	getIncreasingCost,
+	maxCanAffordIncreasingCost,
+} from './increasing_cost.js';
 
 // ==== data ====
 
@@ -100,7 +104,7 @@ const VALS = {
 			small_hatchery: 1250,
 			medium_hatchery: 12500,
 			big_hatchery: 125000,
-			aquarium: 1e4,
+			aquarium: 5e3,
 			bank: 1e6,
 			aquarium_factory: 1e6,
 		},
@@ -109,7 +113,7 @@ const VALS = {
 		fish: {
 			small: 2,
 			medium: 30,
-			big: 300,
+			big: 275,
 		},
 		buildings: {
 			food_farm: 1,
@@ -130,6 +134,16 @@ const VALS = {
 		},
 	},
 };
+
+const INCREASING_COST_BUILDINGS = [
+	'aquarium',
+	'small-hatchery',
+	'medium-hatchery',
+	'big-hatchery',
+	'bank',
+	'aquarium-factory',
+	'food-farm',
+];
 
 // ==== import previous data ====
 
@@ -482,8 +496,18 @@ $(() => {
 	);
 
 	$('#v-pills-aquarium .info-toggle-card .card-body').append(
-		'<br><div class="progress"></div>'
+		'<br>Each aquarium costs more than the previous<br><div class="progress"></div>'
 	);
+	for (let building of INCREASING_COST_BUILDINGS) {
+		if (building == 'aquarium') continue;
+		let key_name = building.replace('-', '_');
+		$(`#v-pills-${building} .info-toggle-card .card-body`).append(
+			`<br>Each ${building.replace(
+				'-',
+				' '
+			)} costs more than the previous`
+		);
+	}
 
 	let buildings = [
 		'food-farm',
@@ -725,17 +749,43 @@ function buyFood(amount) {
 }
 
 function buyBuildings(building_name, amount, is_bank = false) {
-	amount = Math.min(
-		amount,
-		maxCanAfford(VALS.costs.buildings[building_name])
+	let is_increasing_cost = INCREASING_COST_BUILDINGS.includes(
+		building_name.replace('_', '-')
 	);
+	console.log(is_increasing_cost);
+	console.log(INCREASING_COST_BUILDINGS);
+	console.log(building_name);
+	if (is_increasing_cost) {
+		amount = Math.min(
+			amount,
+			maxCanAffordIncreasingCost(
+				inventory.coins,
+				VALS.costs.buildings[building_name],
+				inventory.buildings[building_name]
+			)
+		);
+	} else {
+		amount = Math.min(
+			amount,
+			maxCanAfford(VALS.costs.buildings[building_name])
+		);
+	}
 
 	highlightIf($('.num-coins'), amount == 0);
 
 	if (amount == 0) {
 		// if(!is_bank) showSnackbar('Not enough coins', 'error');
 	} else {
-		inventory.coins -= amount * VALS.costs.buildings[building_name];
+		if (is_increasing_cost) {
+			inventory.coins -= getIncreasingCost(
+				amount,
+				VALS.costs.buildings[building_name],
+				inventory.buildings[building_name]
+			);
+		} else {
+			inventory.coins -= amount * VALS.costs.buildings[building_name];
+		}
+
 		inventory.buildings[building_name] += amount;
 		stats.buildings.purchased += amount;
 		display();
@@ -810,6 +860,7 @@ export {
 	getAquariumsUsed,
 	display,
 	VALS,
+	INCREASING_COST_BUILDINGS,
 };
 
 // move data / inventory / stats / hungry into a variables/common file

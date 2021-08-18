@@ -1,4 +1,11 @@
-import { getTotalSpace, getSpaceUsed, getAquariumsUsed } from './game.js';
+import {
+	inventory,
+	getTotalSpace,
+	getSpaceUsed,
+	getAquariumsUsed,
+	VALS,
+	INCREASING_COST_BUILDINGS,
+} from './game.js';
 import { updateStatsDisplay } from './stats.js';
 import { updateDescriptionDisplay } from './description.js';
 import { updateMultiplierDisplay } from './multiplier.js';
@@ -12,6 +19,7 @@ import {
 	updateChartData,
 	updateInsightsDisplay,
 } from './chart.js';
+import { getIncreasingCost } from './increasing_cost.js';
 
 const LOG_TIMES = false;
 
@@ -204,7 +212,29 @@ function displayTick(inventory, hungry, rates, VALS) {
 
 	updateDescriptionDisplay(inventory);
 
+	displayIncreasingCosts();
+
 	if (LOG_TIMES) console.timeEnd('display');
+}
+
+function displayIncreasingCosts() {
+	for (let building of INCREASING_COST_BUILDINGS) {
+		let costs = [];
+		for (let amount of [1, 10, 100, 1000]) {
+			let key_name = building.replace('-', '_');
+			let cost = getIncreasingCost(
+				amount,
+				VALS.costs.buildings[key_name],
+				inventory.buildings[key_name]
+			);
+			costs.push(cost);
+		}
+		$(`.data-${building}-cost`).html(
+			costs.map((x) => pretty(x)).join(', ')
+		);
+		$(`.data-${building}-per-purchase`).html('1, 10, 100, 1000');
+		// display each aquarium costs more in info
+	}
 }
 
 function setOutOfSpaceBannerDisplay(shown) {
