@@ -1,7 +1,7 @@
 /* TODO: looks ugly on top if email is long */
 
 .btn.signin {
-	margin: 0.5rem;
+	margin: 0;
 	float: left;
 }
 #signin-div {

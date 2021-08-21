@@ -18,6 +18,8 @@ let was_fullscreen, was_aquarium_shown;
 
 let last_mousemove = -1;
 
+const CANVAS_DEFAULT_HEIGHT = 160;
+
 $(() => {
 	// UI stuff
 
@@ -84,7 +86,7 @@ $(() => {
 
 	canvas = document.getElementById('main-canvas');
 	canvas.width = window.innerWidth;
-	canvas.height = 160;
+	canvas.height = CANVAS_DEFAULT_HEIGHT;
 
 	ctx = canvas.getContext('2d');
 	ctx.imageSmoothingEnabled = false; // https://stackoverflow.com/a/11751817/4907950
@@ -144,7 +146,7 @@ $(() => {
 			updateSetting('show_aquarium', true); // so sprite.js does draw loop
 		} else {
 			canvas.width = window.innerWidth;
-			canvas.height = 160;
+			canvas.height = CANVAS_DEFAULT_HEIGHT;
 			ctx.imageSmoothingEnabled = false;
 			$('#exit-fullscreen-btn').hide();
 			// $('#full-aquarium-css').attr('onload', onCanvasReload);
@@ -166,7 +168,7 @@ $(() => {
 		if (aquarium_fullscreen) {
 			canvas.height = window.innerHeight;
 		} else {
-			canvas.height = 160;
+			canvas.height = CANVAS_DEFAULT_HEIGHT;
 		}
 		ctx.imageSmoothingEnabled = false;
 		onCanvasReload();

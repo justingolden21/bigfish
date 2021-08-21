@@ -34,7 +34,8 @@ body {
 }
 
 #title {
-	padding: 0.25rem;
+	margin-top: 2rem;
+	height: 6rem;
 
 	/*	color: #fff;
 	background-color: hsl(220, 90%, 30%);*/
@@ -114,6 +115,7 @@ hr {
 	padding: 1rem 1rem !important;
 	margin: 0rem 0rem !important;
 	border-radius: 0.5rem !important;
+	height: 4rem;
 }
 .nav-pills .nav-link:hover {
 	background-color: hsl(220, 90%, 95%);
@@ -149,7 +151,7 @@ hr {
 	border-bottom: 0;
 }
 .nav-tabs + .tab-content {
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 
 /* accordion */
@@ -204,12 +206,12 @@ hr {
 	border-radius: 0.5rem;
 	box-shadow: 0.25rem 0.25rem 0px hsl(220, 50%, 90%);*/
 
-	margin: auto;
+	margin: 0 auto;
 	display: block;
 
 	/*	border-top: 0.125rem solid hsl(190, 90%, 30%);
 	border-bottom: 0.125rem solid hsl(190, 90%, 30%);*/
-	margin-bottom: 0.75rem;
+	margin-bottom: 1rem;
 
 	background-color: rgba(8, 54, 145, 0.8);
 }
@@ -254,7 +256,10 @@ hr {
 	border-color: hsl(220, 90%, 10%);
 }
 .info-toggle-card {
-	/*border-right: 0;*/
+	margin-bottom: 2rem;
+	border-radius: 0.5rem;
+	border: 2px solid hsl(180, 30%, 80%);
+	box-sizing: border-box;
 }
 
 /* buttons */
@@ -265,6 +270,11 @@ hr {
 	color: hsl(220, 90%, 30%);
 	background-color: #fff;
 	/*box-shadow: 2px 2px 0px hsl(190, 90%, 30%);*/
+
+	height: 3rem;
+}
+.btn.btn-sm {
+	height: 2rem;
 }
 .btn.lighter {
 	/*color: hsl(205, 90%, 60%);*/
@@ -516,7 +526,7 @@ span.highlight {
 	border: none;
 	/*https://stackoverflow.com/questions/33759102/wave-border-in-css*/
 	background-repeat: repeat;
-	height: 16px;
+	height: 1rem;
 	background-size: 32px 32px;
 	background-image: radial-gradient(
 		circle at 16px -8px,
@@ -534,7 +544,8 @@ span.highlight {
 #info-row {
 	background-color: rgba(8, 54, 145, 0.8);
 	color: #fff;
-	padding: 0.25rem;
+	padding: 0.5rem;
+	height: 3rem;
 	margin-left: 0;
 	margin-right: 0;
 	font-weight: bold;
