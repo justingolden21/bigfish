@@ -100,13 +100,13 @@ const VALS = {
 			big: 2500,
 		},
 		buildings: {
-			food_farm: 50,
-			small_hatchery: 1250,
-			medium_hatchery: 12500,
-			big_hatchery: 125000,
-			aquarium: 5e3,
-			bank: 1e6,
-			aquarium_factory: 1e6,
+			food_farm: 50 / 2,
+			small_hatchery: 1250 / 2,
+			medium_hatchery: 12500 / 2,
+			big_hatchery: 125000 / 2,
+			aquarium: 5e3 / 2,
+			bank: 1e6 / 2,
+			aquarium_factory: 1e6 / 2,
 		},
 	},
 	rates: {
@@ -120,7 +120,7 @@ const VALS = {
 			small_hatchery: 1,
 			medium_hatchery: 1,
 			big_hatchery: 1,
-			aquarium: 200, // workaround for display.js, same as space provided (resource provided per bxuilding)
+			aquarium: 200, // workaround for display.js, same as space provided (resource provided per building)
 			bank: 10,
 			aquarium_factory: 1,
 		},
@@ -365,8 +365,21 @@ function buildingTick() {
 					rates.coins.bank -= VALS.costs.fish[type] * num_bought;
 				} else {
 					num_bought = buyBuildings(key_name, num_transaction, true);
-					rates.coins.bank -=
-						VALS.costs.buildings[key_name] * num_bought;
+
+					const is_increasing_cost =
+						INCREASING_COST_BUILDINGS.indexOf(
+							key_name.replace('_', '-')
+						) != -1;
+					if (is_increasing_cost) {
+						rates.coins.bank -= getIncreasingCost(
+							num_bought,
+							VALS.costs.buildings[key_name],
+							inventory.buildings[key_name]
+						);
+					} else {
+						rates.coins.bank -=
+							VALS.costs.buildings[key_name] * num_bought;
+					}
 				}
 
 				if (num_bought != num_transaction) {
@@ -873,9 +886,12 @@ if (DEBUG == 2) {
 			$('.purchase-aquarium-btns .btn')[3].click();
 			$('.purchase-aquarium-factory-btns .btn')[3].click();
 			$('.purchase-medium-fish-btns .btn')[3].click();
-			$('.purchase-small-hatchery-btns .btn')[3].click();
+			for (let i = 0; i < 10; i++)
+				$('.purchase-small-hatchery-btns .btn')[3].click();
 			$('.purchase-medium-hatchery-btns .btn')[2].click();
 			$('.purchase-big-hatchery-btns .btn')[2].click();
+
+			$('.purchase-bank-btns .btn')[2].click();
 			// for(let i=0; i<10; i++) $('.purchase-aquarium-factory-btns .btn')[3].click();
 			// for(let i=0; i<10; i++) $('.purchase-medium-hatchery-btns .btn')[3].click();
 			// $('.purchase-bank-btns .btn')[3].click();

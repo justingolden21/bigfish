@@ -268,7 +268,7 @@ function checkUnlocks(inventory) {
 		}
 	}
 
-	// // achievements
+	// achievements
 	if (inventory.fish.small > 1) checkAchievement('One Fish, Two Fish');
 	if (inventory.fish.medium >= 1) checkAchievement('Fish Sticks');
 	if (inventory.fish.big >= 1) checkAchievement('Bigger Fish to Fry');
