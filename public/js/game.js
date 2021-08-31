@@ -381,10 +381,7 @@ function buildingTick() {
 							num_bought,
 							Math.ceil(
 								VALS.costs.buildings[key_name] /
-									Math.pow(
-										10,
-										inventory.upgrades.cost_divider
-									)
+									Math.pow(2, inventory.upgrades.cost_divider)
 							),
 							inventory.buildings[key_name],
 							VALS.costs.buildings[key_name]
@@ -799,7 +796,7 @@ function buyBuildings(building_name, amount, is_bank = false) {
 				inventory.coins,
 				Math.ceil(
 					VALS.costs.buildings[building_name] /
-						Math.pow(10, inventory.upgrades.cost_divider)
+						Math.pow(2, inventory.upgrades.cost_divider)
 				),
 				inventory.buildings[building_name],
 				VALS.costs.buildings[building_name]
@@ -822,7 +819,7 @@ function buyBuildings(building_name, amount, is_bank = false) {
 				amount,
 				Math.ceil(
 					VALS.costs.buildings[building_name] /
-						Math.pow(10, inventory.upgrades.cost_divider)
+						Math.pow(2, inventory.upgrades.cost_divider)
 				),
 				inventory.buildings[building_name],
 				VALS.costs.buildings[building_name]
