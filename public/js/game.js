@@ -25,7 +25,7 @@ const LOG_TIMES = false;
 
 let inventory = {
 	food: 0,
-	coins: DEBUG ? 1e15 : 1,
+	coins: DEBUG ? 1e5 : 1,
 	fish: {
 		small: 1,
 		medium: 0,
@@ -39,6 +39,9 @@ let inventory = {
 		aquarium: 1,
 		bank: 0,
 		aquarium_factory: 0,
+	},
+	upgrades: {
+		cost_divider: 1,
 	},
 };
 
@@ -100,13 +103,13 @@ const VALS = {
 			big: 2500,
 		},
 		buildings: {
-			food_farm: 50 / 2,
-			small_hatchery: 1250 / 2,
-			medium_hatchery: 12500 / 2,
-			big_hatchery: 125000 / 2,
-			aquarium: 5e3 / 2,
-			bank: 1e6 / 2,
-			aquarium_factory: 1e6 / 2,
+			food_farm: 25,
+			small_hatchery: 750,
+			medium_hatchery: 7500,
+			big_hatchery: 75000,
+			aquarium: 2500,
+			bank: 5e5,
+			aquarium_factory: 1e6,
 		},
 	},
 	rates: {
@@ -373,8 +376,12 @@ function buildingTick() {
 					if (is_increasing_cost) {
 						rates.coins.bank -= getIncreasingCost(
 							num_bought,
-							VALS.costs.buildings[key_name],
-							inventory.buildings[key_name]
+							Math.floor(
+								VALS.costs.buildings[key_name] /
+									inventory.upgrades.cost_divider
+							),
+							inventory.buildings[key_name],
+							VALS.costs.buildings[key_name]
 						);
 					} else {
 						rates.coins.bank -=
@@ -770,8 +777,12 @@ function buyBuildings(building_name, amount, is_bank = false) {
 			amount,
 			maxCanAffordIncreasingCost(
 				inventory.coins,
-				VALS.costs.buildings[building_name],
-				inventory.buildings[building_name]
+				Math.floor(
+					VALS.costs.buildings[building_name] /
+						inventory.upgrades.cost_divider
+				),
+				inventory.buildings[building_name],
+				VALS.costs.buildings[building_name]
 			)
 		);
 	} else {
@@ -789,8 +800,12 @@ function buyBuildings(building_name, amount, is_bank = false) {
 		if (is_increasing_cost) {
 			inventory.coins -= getIncreasingCost(
 				amount,
-				VALS.costs.buildings[building_name],
-				inventory.buildings[building_name]
+				Math.floor(
+					VALS.costs.buildings[building_name] /
+						inventory.upgrades.cost_divider
+				),
+				inventory.buildings[building_name],
+				VALS.costs.buildings[building_name]
 			);
 		} else {
 			inventory.coins -= amount * VALS.costs.buildings[building_name];

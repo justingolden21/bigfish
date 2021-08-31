@@ -224,8 +224,12 @@ function displayIncreasingCosts() {
 			let key_name = building.replace('-', '_');
 			let cost = getIncreasingCost(
 				amount,
-				VALS.costs.buildings[key_name],
-				inventory.buildings[key_name]
+				Math.floor(
+					VALS.costs.buildings[key_name] /
+						inventory.upgrades.cost_divider
+				),
+				inventory.buildings[key_name],
+				VALS.costs.buildings[key_name]
 			);
 			costs.push(cost);
 		}
