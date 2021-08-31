@@ -30,3 +30,9 @@ option to play game at 10x tick speed (console hack?)
 make it a pwa
 check time login since last time? nah
 divide increasing cost buildings by 8, rebalance unlocks
+
+add more upgrades, achievements for having upgrades?
+
+banks dynamically buying upgrades unlock?
+
+end game achievements are all clumped (achievement for that, olympic, monopoly, thanks for all, big banking, fishy business, watergate), should separate them out more

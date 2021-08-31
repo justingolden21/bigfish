@@ -42,7 +42,7 @@ function displayConsts(VALS) {
 		displayNum(`.data-${type}-fish-per-purchase`, 1);
 	}
 
-	let buildings = [
+	const buildings = [
 		'food-farm',
 		'aquarium',
 		'bank',
@@ -51,6 +51,7 @@ function displayConsts(VALS) {
 		'medium-hatchery',
 		'big-hatchery',
 	];
+
 	for (let building of buildings) {
 		let key_name = building.replace('-', '_');
 
@@ -62,6 +63,12 @@ function displayConsts(VALS) {
 			`.data-${building}-sell`,
 			Math.floor(VALS.costs.buildings[key_name] / 2)
 		);
+	}
+
+	const upgrades = ['cost-divider'];
+	for (let upgrade of upgrades) {
+		let key_name = upgrade.replace('-', '_');
+		displayNum(`.data-${upgrade}-per-purchase`, 1);
 	}
 }
 
@@ -137,6 +144,24 @@ function displayTick(inventory, hungry, rates, VALS) {
 		// displayNum(`.data-${building}-per-purchase`, 1);
 		// displayNum(`.data-${building}-cost`, VALS.costs.buildings[key_name]);
 		// displayNum(`.data-${building}-sell`, Math.floor(VALS.costs.buildings[key_name]/2) );
+	}
+
+	const upgrades = ['cost-divider'];
+	for (let upgrade of upgrades) {
+		let key_name = upgrade.replace('-', '_');
+		displayNum(`.num-${upgrade}`, inventory.upgrades[key_name]);
+	}
+
+	// upgrade cost is not constant, hence in displayTick and not displayConsts
+	for (let upgrade of upgrades) {
+		let key_name = upgrade.replace('-', '_');
+
+		// upgrade cost = base_cost * 10^num_owned
+		displayNum(
+			`.data-${upgrade}-cost`,
+			VALS.costs.upgrades[key_name] *
+				Math.pow(10, inventory.upgrades[key_name])
+		);
 	}
 
 	// could put these in if statement if aquariums are unlocked (and do similar for others)
@@ -224,7 +249,7 @@ function displayIncreasingCosts() {
 			let key_name = building.replace('-', '_');
 			let cost = getIncreasingCost(
 				amount,
-				Math.floor(
+				Math.ceil(
 					VALS.costs.buildings[key_name] /
 						Math.pow(10, inventory.upgrades.cost_divider)
 				),

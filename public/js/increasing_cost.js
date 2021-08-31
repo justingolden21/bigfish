@@ -19,6 +19,7 @@ const getIncreasingCost = (amount, step, start, base) =>
 
 // https://www.wolframalpha.com/input/?i=Divide%5Bc%2Ca%5D+%3D+p*Divide%5Ba%2C2%5D+%2B+p*s+%2B+Divide%5Bp%2C2%5D+%2B+b%5C%28%2C%29+c%3E%3D0%5C%28%2C%29+s%3E0%5C%28%2C%29+p%3E0%5C%28%2C%29+b%3E0%5C%28%2C%29+solve+for+a&assumption=%7B%22C%22%2C+%22c%22%7D+-%3E+%7B%22Variable%22%7D&assumption=%22UnitClash%22+-%3E+%7B%22c%22%2C+%7B%22SpeedOfLight%22%7D%7D&assumption=%7B%22C%22%2C+%22p%22%7D+-%3E+%7B%22Variable%22%7D
 
+// step > 0, base > 0, start >=0, coins >= 0
 const maxCanAffordIncreasingCost = (coins, step, start, base) =>
 	coins == 0
 		? 0
@@ -85,11 +86,17 @@ floor for max can afford
 // TESTS
 
 // const num_tests = 100;
+// let tests_passed = 0,
+// 	tests_failed = 0;
 // for (let i = 0; i < num_tests; i++) {
-// 	const coins = Math.floor(Math.random() * 10000),
+// 	let coins = Math.floor(Math.random() * 10000),
 // 		step = Math.ceil(Math.random() * 100),
 // 		start = Math.ceil(Math.random() * 100),
 // 		base = Math.ceil(Math.random() * 100);
+// 	// if (i % 2 == 0) step = 0;
+// 	// if (i % 3 == 0) start = 0;
+// 	// if (i % 5 == 0) base = 0;
+// 	// if (i % 7 == 0) coins = 0;
 
 // 	const amount = maxCanAffordIncreasingCost(coins, step, start, base);
 
@@ -105,6 +112,9 @@ floor for max can afford
 // 		`inputs:\ncoins: ${coins} | step: ${step} | start: ${start} | base: ${base}\ntest passed: %c${test_passed}`,
 // 		`color: ${test_passed ? 'green' : 'red'}`
 // 	);
+// 	if (test_passed) tests_passed++;
+// 	else tests_failed++;
 // }
+// console.log(`${tests_passed} tests passed, ${tests_failed} tests failed`);
 
 export { getIncreasingCost, maxCanAffordIncreasingCost };

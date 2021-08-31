@@ -20,7 +20,7 @@ import {
 
 // ==== data ====
 
-const DEBUG = 0;
+const DEBUG = 1;
 const LOG_TIMES = false;
 
 let inventory = {
@@ -41,7 +41,7 @@ let inventory = {
 		aquarium_factory: 0,
 	},
 	upgrades: {
-		cost_divider: 1,
+		cost_divider: 0,
 	},
 };
 
@@ -111,6 +111,9 @@ const VALS = {
 			bank: 5e5,
 			aquarium_factory: 1e6,
 		},
+		upgrades: {
+			cost_divider: 1e4,
+		},
 	},
 	rates: {
 		fish: {
@@ -178,7 +181,7 @@ function importStats(sts) {
 // ==== setup and tick ====
 
 function setupGame() {
-	const TICK_SPEED = 1000;
+	const TICK_SPEED = DEBUG ? 100 : 1000;
 	tick();
 	stats.ticks = 0; // reset from above tick
 	setInterval(tick, TICK_SPEED);
@@ -376,7 +379,7 @@ function buildingTick() {
 					if (is_increasing_cost) {
 						rates.coins.bank -= getIncreasingCost(
 							num_bought,
-							Math.floor(
+							Math.ceil(
 								VALS.costs.buildings[key_name] /
 									Math.pow(
 										10,
@@ -532,7 +535,7 @@ $(() => {
 		);
 	}
 
-	let buildings = [
+	const buildings = [
 		'food-farm',
 		'aquarium',
 		'bank',
@@ -541,6 +544,7 @@ $(() => {
 		'medium-hatchery',
 		'big-hatchery',
 	];
+	const upgrades = ['cost-divider'];
 	let bank_HTML = '';
 	for (let building of buildings.concat([
 		'small-fish',
@@ -644,6 +648,19 @@ $(() => {
 			if (sold != amount) playSoundEffect('error');
 			else playSoundEffect('button');
 		});
+	}
+
+	for (let upgrade of upgrades) {
+		let key_name = upgrade.replace('-', '_');
+		// note: upgrades purchased one at a time
+		$(`.purchase-${upgrade}`).click((evt) => {
+			let purchased = buyUpgrade(key_name);
+
+			if (purchased) playSoundEffect('error');
+			else playSoundEffect('button');
+		});
+
+		// note: no selling upgrades
 	}
 
 	$('.purchase-food-btns .btn').click((evt) => {
@@ -780,7 +797,7 @@ function buyBuildings(building_name, amount, is_bank = false) {
 			amount,
 			maxCanAffordIncreasingCost(
 				inventory.coins,
-				Math.floor(
+				Math.ceil(
 					VALS.costs.buildings[building_name] /
 						Math.pow(10, inventory.upgrades.cost_divider)
 				),
@@ -803,7 +820,7 @@ function buyBuildings(building_name, amount, is_bank = false) {
 		if (is_increasing_cost) {
 			inventory.coins -= getIncreasingCost(
 				amount,
-				Math.floor(
+				Math.ceil(
 					VALS.costs.buildings[building_name] /
 						Math.pow(10, inventory.upgrades.cost_divider)
 				),
@@ -852,6 +869,26 @@ function sellBuildings(building_name, amount, is_bank = false) {
 	}
 
 	return amount;
+}
+
+function buyUpgrade(upgrade_name) {
+	const cost =
+		VALS.costs.upgrades[upgrade_name] *
+		Math.pow(10, inventory.upgrades[upgrade_name]);
+
+	highlightIf($('.num-coins'), cost > inventory.coins);
+
+	if (cost > inventory.coins) {
+		showSnackbar('Not enough coins', 'error');
+	} else {
+		inventory.coins -= cost;
+
+		inventory.upgrades[upgrade_name] += 1;
+		// todo? stat for upgrades purchased? (stats.upgrades.purchased += 1)
+		display();
+	}
+
+	return cost <= inventory.coins;
 }
 
 function maxCanAfford(cost) {

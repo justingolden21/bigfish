@@ -24,6 +24,9 @@ let unlocks = {
 	'bank-fish': false,
 	'big-banking': false,
 
+	upgrades: false, // generic for all upgrades
+	'cost-divider': false,
+
 	// 'sell-fish': false, // generic for any fish // removed to shorten save data space
 	'sell-small-fish': false,
 	'sell-medium-fish': false,
@@ -230,6 +233,11 @@ function checkUnlocks(inventory) {
 	if (inventory.buildings.aquarium >= 1e4) {
 		checkUnlock('aquarium-factory');
 		checkUnlock('buildings');
+	}
+
+	if (inventory.coins > 1e4) {
+		checkUnlock('cost-divider');
+		checkUnlock('upgrades');
 	}
 
 	let total_fish =

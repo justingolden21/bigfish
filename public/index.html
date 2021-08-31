@@ -627,7 +627,58 @@
         </div>
         <div class="tab-pane" id="upgrades" role="tabpanel" aria-labelledby="upgrades-tab">
             <div class="row">
+                <div class="col-md-4 col-sm-3">
+                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
 
+                        <a class="unlock cost-divider-unlock nav-link active" id="v-pills-cost-divider-tab"
+                            data-toggle="pill" href="#v-pills-cost-divider" role="tab"
+                            aria-controls="v-pills-cost-divider" aria-selected="true"><i
+                                class="fas fa-cart-arrow-down"></i> Cost Divider&mdash; <span
+                                class="num-cost-divider"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-9">
+                    <div class="tab-content">
+                        <div class="unlock cost-divider-unlock tab-pane show active" id="v-pills-cost-divider"
+                            role="tabpanel" aria-labelledby="v-pills-cost-divider-tab">
+                            <div class="info-toggle-card card">
+                                <div class="card-body">
+                                    <i class="fas fa-cart-arrow-down"></i> Cost dividers: <span
+                                        class="num-cost-divider"></span>
+                                    <hr>
+                                    Each cost divider decreases the increasing cost of buildings by ten-fold
+                                </div>
+                            </div>
+                            <div class="accordion" id="cost-divider-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="purchase-cost-divider-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn" type="button" data-toggle="collapse"
+                                                data-target="#purchase-cost-divider-collapse" aria-expanded="true"
+                                                aria-controls="purchase-cost-divider-collapse">
+                                                <i class="fas fa-shopping-basket"></i> Purchase Cost Dividers
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="purchase-cost-divider-collapse" class="collapse show"
+                                        aria-labelledby="purchase-cost-divider-heading"
+                                        data-parent="#cost-divider-accordion">
+                                        <div class="card-body">
+                                            <button class="btn purchase-cost-divider"
+                                                aria-label="Purchase cost divider upgrade">1 cost
+                                                divider</button>
+                                            <br><span class="data-cost-divider-per-purchase"></span> cost divider costs
+                                            <span class="data-cost-divider-cost"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
