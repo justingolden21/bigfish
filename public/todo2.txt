@@ -1,0 +1,30 @@
+big fish 3 todo
+
+increasing cost can be decreased with increasingly expensive upgrades
+
+notify that you would lose if buying fish at exactly 0 coins
+change fullscreen icon
+
+balance increasing costs, needs to increase MUCH slower
+check unlocks
+make game playable longer
+
+rework code with eslint and js doc
+use tailwind? replace jquery with umbrella?
+installable pwa
+bug: stats should update live?
+question: does settings store bank input vals?
+todo: check prev todo for direction for where to go next with game
+bug? files being requested twice in network tab dev tools?
+
+bug: bank description text doesnt account for increasing cost
+
+add 10k btns unlocked later
+unlock banks sooner
+after 100 hatcheries or 10k fish
+double aquarium space? half default building costs again?
+option to play game at 10x tick speed (console hack?)
+
+make it a pwa
+check time login since last time? nah
+divide increasing cost buildings by 8, rebalance unlocks
