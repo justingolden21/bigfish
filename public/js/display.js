@@ -226,7 +226,7 @@ function displayIncreasingCosts() {
 				amount,
 				Math.floor(
 					VALS.costs.buildings[key_name] /
-						inventory.upgrades.cost_divider
+						Math.pow(10, inventory.upgrades.cost_divider)
 				),
 				inventory.buildings[key_name],
 				VALS.costs.buildings[key_name]

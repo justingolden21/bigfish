@@ -1,107 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<title>Big Fish</title>
-<meta charset="utf-8">
-<meta name="title=" content="Big Fish">
-<meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="A relaxing idle game where you grow your beautiful aquarium to absurd sizes">
-<meta name="keywords" content="big fish game, big fish, idle game, relaxing game, fish game, cookie clicker, cookie clicker game, simple game, addictive, addictive game, automation game, aquarium game, speedrun game, free games, free game, fun games, online games, fish, game">
-<meta name="theme-color" content="hsl(220, 90%, 30%)">
-<meta name="msapplication-navbutton-color" content="hsl(220, 90%, 30%)">
-<meta name="apple-mobile-web-app-status-bar-style" content="hsl(220, 90%, 30%)">
-<link rel="shortcut icon" href="img/favicon-blue.png">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"> -->
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/signin.css">
-<link id="full-aquarium-css" rel="stylesheet" href="">
+    <title>Big Fish</title>
+    <meta charset="utf-8">
+    <meta name="title=" content="Big Fish">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A relaxing idle game where you grow your beautiful aquarium to absurd sizes">
+    <meta name="keywords"
+        content="big fish game, big fish, idle game, relaxing game, fish game, cookie clicker, cookie clicker game, simple game, addictive, addictive game, automation game, aquarium game, speedrun game, free games, free game, fun games, online games, fish, game">
+    <meta name="theme-color" content="hsl(220, 90%, 30%)">
+    <meta name="msapplication-navbutton-color" content="hsl(220, 90%, 30%)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="hsl(220, 90%, 30%)">
+    <link rel="shortcut icon" href="img/favicon-blue.png">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"> -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/signin.css">
+    <link id="full-aquarium-css" rel="stylesheet" href="">
 
 </head>
+
 <body>
 
-<!-- doesn't matter where this is -->
-<div class="ripple"></div>
+    <!-- doesn't matter where this is -->
+    <div class="ripple"></div>
 
-<div id="page-loader" class="text-center" style="width: 100%; height: 100%; background-color: hsl(220, 90%, 30%); z-index: 9999; position: absolute; top: 0; left: 0; overflow-y: hidden;">
-	<div style="position: relative; height: 100%;">
-		<div style="position: absolute; top: 50%; left: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
-			<i class="fas fa-spinner fa-spin fa-3x" style="color: #fff;"></i>
-		</div>
-	</div>
-</div>
+    <div id="page-loader" class="text-center"
+        style="width: 100%; height: 100%; background-color: hsl(220, 90%, 30%); z-index: 9999; position: absolute; top: 0; left: 0; overflow-y: hidden;">
+        <div style="position: relative; height: 100%;">
+            <div
+                style="position: absolute; top: 50%; left: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+                <i class="fas fa-spinner fa-spin fa-3x" style="color: #fff;"></i>
+            </div>
+        </div>
+    </div>
 
-<!-- begin signin code -->
+    <!-- begin signin code -->
 
-<div id="signin-div">
-	<button id="signin-btn" class="btn signin" data-toggle="modal" data-target="#signin-modal">
-		<i class="fas fa-sign-in-alt"></i> Sign In / Up
-	</button>
-	<button id="signout-btn" class="btn signin"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
-	<small><br><span id="account-info"></span></small>
-</div>
+    <div id="signin-div">
+        <button id="signin-btn" class="btn signin" data-toggle="modal" data-target="#signin-modal">
+            <i class="fas fa-sign-in-alt"></i> Sign In / Up
+        </button>
+        <button id="signout-btn" class="btn signin"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+        <small><br><span id="account-info"></span></small>
+    </div>
 
-<div id="signin-modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Sign In / Up</h5>
-<!-- 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div id="signin-modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In / Up</h5>
+                    <!-- 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button> -->
-			</div>
-			<div class="modal-body">
-				<p>Use an account to save your progress</p>
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true"><i class="fas fa-sign-in-alt"></i> Sign In</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false"><i class="fas fa-user-plus"></i> Sign Up</a>
-					</li>
-				</ul>
+                </div>
+                <div class="modal-body">
+                    <p>Use an account to save your progress</p>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab"
+                                aria-controls="signin" aria-selected="true"><i class="fas fa-sign-in-alt"></i> Sign
+                                In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab"
+                                aria-controls="signup" aria-selected="false"><i class="fas fa-user-plus"></i> Sign
+                                Up</a>
+                        </li>
+                    </ul>
 
-				<div class="tab-content">
-					<div class="tab-pane show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
 
-						<form id="signin-form">
-							<div class="input-group my-4">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="fas fa-envelope"></i>
-									</span>
-								</div>
-								<input autofocus id="signin-email-input" class="form-control" type="email" placeholder="Email" required>
-							</div>
-							<div class="input-group my-4">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="fas fa-key"></i>
-									</span>
-								</div>
-								<input id="signin-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
-							</div>
-							<!-- <div class="custom-control custom-checkbox">
+                            <form id="signin-form">
+                                <div class="input-group my-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                    <input autofocus id="signin-email-input" class="form-control" type="email"
+                                        placeholder="Email" required>
+                                </div>
+                                <div class="input-group my-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </span>
+                                    </div>
+                                    <input id="signin-password-input" class="form-control" type="password"
+                                        placeholder="Password" required minlength="6">
+                                </div>
+                                <!-- <div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="remember-me-checkbox">
 								<label class="custom-control-label" for="remember-me-checkbox">Remember me</label>
 							</div> -->
-							<button class="btn btn-block"><i class="fas fa-sign-in-alt"></i> Log in</button>
-							<b><span id="signin-error-text"></span></b>
-							<div class="mt-2 text-center">
-								<span id="signin-loader" style="display: none"><i class="fas fa-spinner fa-spin fa-2x"></i></span>
-							</div>
-							<!-- <a href="">Forgot password?</a> -->
-						</form>
+                                <button class="btn btn-block"><i class="fas fa-sign-in-alt"></i> Log in</button>
+                                <b><span id="signin-error-text"></span></b>
+                                <div class="mt-2 text-center">
+                                    <span id="signin-loader" style="display: none"><i
+                                            class="fas fa-spinner fa-spin fa-2x"></i></span>
+                                </div>
+                                <!-- <a href="">Forgot password?</a> -->
+                            </form>
 
 
-					</div>
-					<div class="tab-pane" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                        </div>
+                        <div class="tab-pane" id="signup" role="tabpanel" aria-labelledby="signup-tab">
 
-						<form id="signup-form">
-							<!-- <div class="input-group my-4">
+                            <form id="signup-form">
+                                <!-- <div class="input-group my-4">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="fas fa-user"></i>
@@ -109,152 +123,191 @@
 								</div>
 								<input autofocus id="signup-name-input" class="form-control" type="text" placeholder="Name" required>
 							</div> -->
-							<div class="input-group my-4">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="fas fa-envelope"></i>
-									</span>
-								</div>
-								<input autofocus id="signup-email-input" class="form-control" type="email" placeholder="Email" required>
-							</div>
-							<div class="row my-4">
-								<div class="input-group col-sm-6 align-self-start">
-									<div class="input-group-prepend">
-										<span class="input-group-text">
-											<i class="fas fa-key"></i>
-										</span>
-									</div>
-									<input id="signup-password-input" class="form-control" type="password" placeholder="Password" required minlength="6">
-								</div>
-								<div class="col-12 d-sm-none"><br></div>
-								<div class="input-group col-sm-6 align-self-start">
-									<div class="input-group-prepend">
-										<span class="input-group-text">
-											<i class="fas fa-key"></i>
-										</span>
-									</div>
-									<input id="signup-password-confirm-input" class="form-control" type="password" placeholder="Confirm Password" required minlength="6">
-								</div>
-							</div>
-							<button class="btn btn-block"><i class="fas fa-user-plus"></i> Sign up</button>
-							<b><span id="signup-error-text"></span></b>
-							<div class="mt-2 text-center">
-								<span id="signup-loader" style="display: none"><i class="fas fa-spinner fa-spin fa-2x"></i></span>
-							</div>
-							<!-- <p>By signing up you agree to our <a href="">terms of use</a></p> -->
-						</form>
+                                <div class="input-group my-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                    <input autofocus id="signup-email-input" class="form-control" type="email"
+                                        placeholder="Email" required>
+                                </div>
+                                <div class="row my-4">
+                                    <div class="input-group col-sm-6 align-self-start">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                        </div>
+                                        <input id="signup-password-input" class="form-control" type="password"
+                                            placeholder="Password" required minlength="6">
+                                    </div>
+                                    <div class="col-12 d-sm-none"><br></div>
+                                    <div class="input-group col-sm-6 align-self-start">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                        </div>
+                                        <input id="signup-password-confirm-input" class="form-control" type="password"
+                                            placeholder="Confirm Password" required minlength="6">
+                                    </div>
+                                </div>
+                                <button class="btn btn-block"><i class="fas fa-user-plus"></i> Sign up</button>
+                                <b><span id="signup-error-text"></span></b>
+                                <div class="mt-2 text-center">
+                                    <span id="signup-loader" style="display: none"><i
+                                            class="fas fa-spinner fa-spin fa-2x"></i></span>
+                                </div>
+                                <!-- <p>By signing up you agree to our <a href="">terms of use</a></p> -->
+                            </form>
 
-					</div>
-				</div>
+                        </div>
+                    </div>
 
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-sm" data-dismiss="modal">
-					Continue as Guest
-				</button>
-				<small>(You can sign up later)</small>
-			</div>
-		</div>
-	</div>
-</div>
-
-
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm" data-dismiss="modal">
+                        Continue as Guest
+                    </button>
+                    <small>(You can sign up later)</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-<!-- end signin code -->
 
-<button id="exit-fullscreen-btn" class="btn"><i class="fas fa-times"></i></button>
 
-<div id="title" class="text-center">
-	<span id="title-span"><!-- <i class="fas fa-fish"></i> --> Big Fish</span>
-	<button id="pause-btn" class="btn"><i class="fas fa-pause"></i></button>
-	<button id="volume-btn" class="unlock volume-unlock btn"><i class="fas fa-volume-mute"></i></button>
-	<!-- class="animate__animated animate__swing animate__infinite" -->
-	<div id="out-of-space-banner"><i class="fas fa-exclamation-triangle"></i> aquarium full</div>
-	<button id="fullscreen-btn" class="unlock fullscreen-unlock btn"><i class="fas fa-arrows-alt"></i></button>
-	<p class="description-aquarium"></p>
-</div>
+    <!-- end signin code -->
 
-<hr id="top-hr">
+    <button id="exit-fullscreen-btn" class="btn"><i class="fas fa-times"></i></button>
 
-<div id="info-row" class="row text-center">
-	<div class="col-xl-3 col-sm-6"><i class="fas fa-fish"></i> <span class="num-fish"></span> fish (<span class="num-hungry-fish"></span> hungry)</div>
-	<div class="col-xl-3 col-sm-6"><i class="fas fa-coins"></i> <span class="num-coins"></span> coins (<span class="rate-num-coins"></span> coins/s)</div>
-	<div class="col-xl-3 col-sm-6"><i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span class="rate-num-food"></span> food/s)</div>
-	<div class="unlock aquarium-unlock col-xl-3 col-sm-6"><i class="fas fa-water"></i> <span class="num-space-used"></span> used / <span class="num-space-total"></span> total space</div>
-</div>
+    <div id="title" class="text-center">
+        <span id="title-span">
+            <!-- <i class="fas fa-fish"></i> --> Big Fish
+        </span>
+        <button id="pause-btn" class="btn"><i class="fas fa-pause"></i></button>
+        <button id="volume-btn" class="unlock volume-unlock btn"><i class="fas fa-volume-mute"></i></button>
+        <!-- class="animate__animated animate__swing animate__infinite" -->
+        <div id="out-of-space-banner"><i class="fas fa-exclamation-triangle"></i> aquarium full</div>
+        <button id="fullscreen-btn" class="unlock fullscreen-unlock btn"><i class="fas fa-arrows-alt"></i></button>
+        <p class="description-aquarium"></p>
+    </div>
 
-<canvas id="main-canvas"></canvas>
+    <hr id="top-hr">
 
-<ul class="nav nav-tabs" role="tablist">
-	<li class="nav-item">
-		<a class="nav-link active" id="fish-tab" data-toggle="tab" href="#fish" role="tab" aria-controls="fish" aria-selected="true"><i class="fas fa-fish"></i> Fish</a>
-	</li>
-	<li class="unlock buildings-unlock nav-item">
-		<a class="nav-link" id="buildings-tab" data-toggle="tab" href="#buildings" role="tab" aria-controls="buildings" aria-selected="false"><i class="fas fa-store-alt"></i> Buildings</a>
-	</li>
+    <div id="info-row" class="row text-center">
+        <div class="col-xl-3 col-sm-6"><i class="fas fa-fish"></i> <span class="num-fish"></span> fish (<span
+                class="num-hungry-fish"></span> hungry)</div>
+        <div class="col-xl-3 col-sm-6"><i class="fas fa-coins"></i> <span class="num-coins"></span> coins (<span
+                class="rate-num-coins"></span> coins/s)</div>
+        <div class="col-xl-3 col-sm-6"><i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span
+                class="rate-num-food"></span> food/s)</div>
+        <div class="unlock aquarium-unlock col-xl-3 col-sm-6"><i class="fas fa-water"></i> <span
+                class="num-space-used"></span> used / <span class="num-space-total"></span> total space</div>
+    </div>
 
-	<span id="multiplier-span" class="ml-2"><small id="multiplier-text"></small> <button id="multiplier-info-btn" class="btn btn-sm p-0 m-0 border-0 bg-transparent"><i class="fas fa-info-circle"></i></button></span>
+    <canvas id="main-canvas"></canvas>
 
-	<div id="aquarium-multibar" class="ml-4"></div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="fish-tab" data-toggle="tab" href="#fish" role="tab" aria-controls="fish"
+                aria-selected="true"><i class="fas fa-fish"></i> Fish</a>
+        </li>
+        <li class="unlock buildings-unlock nav-item">
+            <a class="nav-link" id="buildings-tab" data-toggle="tab" href="#buildings" role="tab"
+                aria-controls="buildings" aria-selected="false"><i class="fas fa-store-alt"></i> Buildings</a>
+        </li>
+        <li class="unlock upgrades-unlock nav-item">
+            <a class="nav-link" id="upgrades-tab" data-toggle="tab" href="#upgrades" role="tab" aria-controls="upgrades"
+                aria-selected="false"><i class="fas fa-arrow-square-up"></i> Upgrades</a>
+        </li>
 
-<!-- 	<img class="pixelart pull-right px-1 text-right float-right unlock small-hatchery-own-unlock" src="img/small-hatchery.png" width="64px" height="64px">
+        <span id="multiplier-span" class="ml-2"><small id="multiplier-text"></small> <button id="multiplier-info-btn"
+                class="btn btn-sm p-0 m-0 border-0 bg-transparent"><i class="fas fa-info-circle"></i></button></span>
+
+        <div id="aquarium-multibar" class="ml-4"></div>
+
+        <!-- 	<img class="pixelart pull-right px-1 text-right float-right unlock small-hatchery-own-unlock" src="img/small-hatchery.png" width="64px" height="64px">
 	<img class="pixelart pull-right px-1 text-right float-right unlock medium-hatchery-own-unlock" src="img/medium-hatchery.png" width="64px" height="64px">
 	<img class="pixelart pull-right px-1 text-right float-right unlock big-hatchery-own-unlock" src="img/big-hatchery.png" width="64px" height="64px">
 	<img class="pixelart pull-right px-1 text-right float-right unlock aquarium-factory-own-unlock" src="img/factory.png" width="64px" height="64px"> -->
-</ul>
+    </ul>
 
-<div class="tab-content">
-	<div class="tab-pane show active" id="fish" role="tabpanel" aria-labelledby="fish-tab">
-		<div class="row">
-			<div class="col-md-4 col-sm-3">
-				<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-					
-					<a class="nav-link active" id="v-pills-food-tab" data-toggle="pill" href="#v-pills-food" role="tab" aria-controls="v-pills-food" aria-selected="true"><i class="fas fa-capsules"></i> Food &mdash; <span class="num-food"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+    <div class="tab-content">
+        <div class="tab-pane show active" id="fish" role="tabpanel" aria-labelledby="fish-tab">
+            <div class="row">
+                <div class="col-md-4 col-sm-3">
+                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
 
-					<a class="nav-link" id="v-pills-small-fish-tab" data-toggle="pill" href="#v-pills-small-fish" role="tab" aria-controls="v-pills-small-fish" aria-selected="false"><i class="fas fa-fish"></i> Small Fish &mdash; <span class="num-small-fish"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                        <a class="nav-link active" id="v-pills-food-tab" data-toggle="pill" href="#v-pills-food"
+                            role="tab" aria-controls="v-pills-food" aria-selected="true"><i class="fas fa-capsules"></i>
+                            Food &mdash; <span class="num-food"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
 
-					<a class="unlock medium-fish-unlock nav-link" id="v-pills-medium-fish-tab" data-toggle="pill" href="#v-pills-medium-fish" role="tab" aria-controls="v-pills-medium-fish" aria-selected="false"><i class="fas fa-fish"></i> Medium Fish &mdash; <span class="num-medium-fish"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                        <a class="nav-link" id="v-pills-small-fish-tab" data-toggle="pill" href="#v-pills-small-fish"
+                            role="tab" aria-controls="v-pills-small-fish" aria-selected="false"><i
+                                class="fas fa-fish"></i> Small Fish &mdash; <span class="num-small-fish"></span> <button
+                                class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
 
-					<a class="unlock big-fish-unlock nav-link" id="v-pills-big-fish-tab" data-toggle="pill" href="#v-pills-big-fish" role="tab" aria-controls="v-pills-big-fish" aria-selected="false"><i class="fas fa-fish"></i> Big Fish &mdash; <span class="num-big-fish"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                        <a class="unlock medium-fish-unlock nav-link" id="v-pills-medium-fish-tab" data-toggle="pill"
+                            href="#v-pills-medium-fish" role="tab" aria-controls="v-pills-medium-fish"
+                            aria-selected="false"><i class="fas fa-fish"></i> Medium Fish &mdash; <span
+                                class="num-medium-fish"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
 
-					<!-- <a class="nav-link" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab" aria-controls="v-pills-overview" aria-selected="false">Overview</a> -->
+                        <a class="unlock big-fish-unlock nav-link" id="v-pills-big-fish-tab" data-toggle="pill"
+                            href="#v-pills-big-fish" role="tab" aria-controls="v-pills-big-fish"
+                            aria-selected="false"><i class="fas fa-fish"></i> Big Fish &mdash; <span
+                                class="num-big-fish"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
 
-				</div>
-			</div>
-			<div class="col-md-8 col-sm-9">
-				<div class="tab-content">
-					<div class="tab-pane show active" id="v-pills-food" role="tabpanel" aria-labelledby="v-pills-food-tab">
-						<div class="info-toggle-card card">
-							<div class="card-body">
-								<i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span class="rate-num-food"></span> food/s)
-								<hr>
-								<i class="fas fa-fish"></i> 1 food feeds your small fish for <span class="data-food-seconds-fed"></span>s
-							</div>
-						</div>
-						<div class="accordion" id="food-accordion">
-							<div class="card">
-								<div class="card-header" id="purchase-food-heading">
-									<h2 class="mb-0">
-										<button class="btn" type="button" data-toggle="collapse" data-target="#purchase-food-collapse" aria-expanded="true" aria-controls="purchase-food-collapse">
-										<i class="fas fa-shopping-basket"></i> Purchase Food
-										</button>
-									</h2>
-								</div>
-								<div id="purchase-food-collapse" class="collapse show" aria-labelledby="purchase-food-heading" data-parent="#food-accordion">
-									<div class="card-body">
-										<div class="purchase-food-btns btn-group btn-group-sm" role="group" aria-label="Purchase food buttons">
-											<button class="btn">1 food</button>
-											<button class="btn">10 food</button>
-											<button class="btn">100 food</button>
-											<button class="btn">1000 food</button>
-										</div>
-										<br><span class="data-food-per-purchase"></span> food costs <span class="data-food-cost"></span> coins
-									</div>
-								</div>
-							</div>
-							<!-- <div class="card">
+                        <!-- <a class="nav-link" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab" aria-controls="v-pills-overview" aria-selected="false">Overview</a> -->
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-9">
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="v-pills-food" role="tabpanel"
+                            aria-labelledby="v-pills-food-tab">
+                            <div class="info-toggle-card card">
+                                <div class="card-body">
+                                    <i class="fas fa-capsules"></i> <span class="num-food"></span> food (<span
+                                        class="rate-num-food"></span> food/s)
+                                    <hr>
+                                    <i class="fas fa-fish"></i> 1 food feeds your small fish for <span
+                                        class="data-food-seconds-fed"></span>s
+                                </div>
+                            </div>
+                            <div class="accordion" id="food-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="purchase-food-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn" type="button" data-toggle="collapse"
+                                                data-target="#purchase-food-collapse" aria-expanded="true"
+                                                aria-controls="purchase-food-collapse">
+                                                <i class="fas fa-shopping-basket"></i> Purchase Food
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="purchase-food-collapse" class="collapse show"
+                                        aria-labelledby="purchase-food-heading" data-parent="#food-accordion">
+                                        <div class="card-body">
+                                            <div class="purchase-food-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Purchase food buttons">
+                                                <button class="btn">1 food</button>
+                                                <button class="btn">10 food</button>
+                                                <button class="btn">100 food</button>
+                                                <button class="btn">1000 food</button>
+                                            </div>
+                                            <br><span class="data-food-per-purchase"></span> food costs <span
+                                                class="data-food-cost"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="card">
 								<div class="card-header" id="sell-food-heading">
 									<h2 class="mb-0">
 										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#sell-food-collapse" aria-expanded="false" aria-controls="sell-food-collapse">
@@ -273,305 +326,404 @@
 									</div>
 								</div>
 								</div> -->
-						</div> <!--end accordion-->
-					</div> <!--end pills-->
-					<div class="tab-pane" id="v-pills-small-fish" role="tabpanel" aria-labelledby="v-pills-small-fish-tab">
-						<div class="info-toggle-card card">
-							<div class="card-body">
-								<i class="fas fa-fish"></i> <span class="num-small-fish"></span> small fish (<span class="num-hungry-small-fish"></span> hungry)
-								<hr>
-								<i class="fas fa-coins"></i> makes <span class="data-small-fish-coin-rate"></span> coins/s (<span class="rate-coin-small-fish"></span> coins/s total)<br>
-								<i class="fas fa-capsules"></i> eats <span class="data-small-fish-food-rate"></span> food/s (<span class="rate-food-small-fish"></span> food/s total)<br>
-								<span class="unlock aquarium-unlock"><i class="fas fa-water"></i> uses <span class="data-small-fish-space"></span> space (<span class="num-small-fish-space"></span> space total)<br></span>
-							</div>
-						</div>
-						<div class="accordion" id="small-fish-accordion">
-							<div class="card">
-								<div class="card-header" id="purchase-small-fish-heading">
-									<h2 class="mb-0">
-										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#purchase-small-fish-collapse" aria-expanded="true" aria-controls="purchase-small-fish-collapse">
-										<i class="fas fa-shopping-basket"></i> Purchase Small Fish
-										</button>
-									</h2>
-								</div>
-								<div id="purchase-small-fish-collapse" class="collapse show" aria-labelledby="purchase-small-fish-heading" data-parent="#small-fish-accordion">
-									<div class="card-body">
-										<div class="purchase-small-fish-btns btn-group btn-group-sm" role="group" aria-label="Purchase small fish buttons">
-											<button class="btn">1 small fish</button>
-											<button class="btn">10 small fish</button>
-											<button class="btn">100 small fish</button>
-											<button class="btn">1000 small fish</button>
-										</div>
-										<br><span class="data-small-fish-per-purchase"></span> small fish costs <span class="data-small-fish-cost"></span> coins
-									</div>
-								</div>
-							</div>
-							<div class="unlock sell-small-fish-unlock card">
-								<div class="card-header" id="sell-small-fish-heading">
-									<h2 class="mb-0">
-										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#sell-small-fish-collapse" aria-expanded="false" aria-controls="sell-small-fish-collapse">
-										<i class="fas fa-donate"></i> Sell Small Fish
-										</button>
-									</h2>
-								</div>
-								<div id="sell-small-fish-collapse" class="collapse" aria-labelledby="sell-small-fish-heading" data-parent="#small-fish-accordion">
-									<div class="card-body">
-										<div class="sell-small-fish-btns btn-group btn-group-sm" role="group" aria-label="Sell small fish buttons">
-											<button class="btn lighter">1 small fish</button>
-											<button class="btn lighter">10 small fish</button>
-											<button class="btn lighter">100 small fish</button>
-											<button class="btn lighter">1000 small fish</button>
-										</div>
-										<br>1 small fish sells for <span class="data-small-fish-sell"></span> coins
-									</div>
-								</div>
-							</div>
-						</div> <!--end accordion-->
-					</div> <!--end pills-->
-					<div class="tab-pane" id="v-pills-medium-fish" role="tabpanel" aria-labelledby="v-pills-medium-fish-tab">
-						<!-- created automagically -->
-					</div>
-					<div class="tab-pane" id="v-pills-big-fish" role="tabpanel" aria-labelledby="v-pills-big-fish-tab">
-						<!-- created automagically -->
-					</div>
-					<!-- <div class="tab-pane" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">
+                            </div>
+                            <!--end accordion-->
+                        </div>
+                        <!--end pills-->
+                        <div class="tab-pane" id="v-pills-small-fish" role="tabpanel"
+                            aria-labelledby="v-pills-small-fish-tab">
+                            <div class="info-toggle-card card">
+                                <div class="card-body">
+                                    <i class="fas fa-fish"></i> <span class="num-small-fish"></span> small fish (<span
+                                        class="num-hungry-small-fish"></span> hungry)
+                                    <hr>
+                                    <i class="fas fa-coins"></i> makes <span class="data-small-fish-coin-rate"></span>
+                                    coins/s (<span class="rate-coin-small-fish"></span> coins/s total)<br>
+                                    <i class="fas fa-capsules"></i> eats <span class="data-small-fish-food-rate"></span>
+                                    food/s (<span class="rate-food-small-fish"></span> food/s total)<br>
+                                    <span class="unlock aquarium-unlock"><i class="fas fa-water"></i> uses <span
+                                            class="data-small-fish-space"></span> space (<span
+                                            class="num-small-fish-space"></span> space total)<br></span>
+                                </div>
+                            </div>
+                            <div class="accordion" id="small-fish-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="purchase-small-fish-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn collapsed" type="button" data-toggle="collapse"
+                                                data-target="#purchase-small-fish-collapse" aria-expanded="true"
+                                                aria-controls="purchase-small-fish-collapse">
+                                                <i class="fas fa-shopping-basket"></i> Purchase Small Fish
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="purchase-small-fish-collapse" class="collapse show"
+                                        aria-labelledby="purchase-small-fish-heading"
+                                        data-parent="#small-fish-accordion">
+                                        <div class="card-body">
+                                            <div class="purchase-small-fish-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Purchase small fish buttons">
+                                                <button class="btn">1 small fish</button>
+                                                <button class="btn">10 small fish</button>
+                                                <button class="btn">100 small fish</button>
+                                                <button class="btn">1000 small fish</button>
+                                            </div>
+                                            <br><span class="data-small-fish-per-purchase"></span> small fish costs
+                                            <span class="data-small-fish-cost"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="unlock sell-small-fish-unlock card">
+                                    <div class="card-header" id="sell-small-fish-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn collapsed" type="button" data-toggle="collapse"
+                                                data-target="#sell-small-fish-collapse" aria-expanded="false"
+                                                aria-controls="sell-small-fish-collapse">
+                                                <i class="fas fa-donate"></i> Sell Small Fish
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="sell-small-fish-collapse" class="collapse"
+                                        aria-labelledby="sell-small-fish-heading" data-parent="#small-fish-accordion">
+                                        <div class="card-body">
+                                            <div class="sell-small-fish-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Sell small fish buttons">
+                                                <button class="btn lighter">1 small fish</button>
+                                                <button class="btn lighter">10 small fish</button>
+                                                <button class="btn lighter">100 small fish</button>
+                                                <button class="btn lighter">1000 small fish</button>
+                                            </div>
+                                            <br>1 small fish sells for <span class="data-small-fish-sell"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
+                        </div>
+                        <!--end pills-->
+                        <div class="tab-pane" id="v-pills-medium-fish" role="tabpanel"
+                            aria-labelledby="v-pills-medium-fish-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <div class="tab-pane" id="v-pills-big-fish" role="tabpanel"
+                            aria-labelledby="v-pills-big-fish-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <!-- <div class="tab-pane" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">
 					</div> -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tab-pane" id="buildings" role="tabpanel" aria-labelledby="buildings-tab">
-		<div class="row">
-			<div class="col-md-4 col-sm-3">
-				<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-					
-					<a class="unlock food-farm-unlock nav-link active" id="v-pills-food-farm-tab" data-toggle="pill" href="#v-pills-food-farm" role="tab" aria-controls="v-pills-food-farm" aria-selected="true"><i class="fas fa-farm"></i> Food Farm &mdash; <span class="num-food-farm"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
-					
-					<a class="unlock small-hatchery-unlock nav-link" id="v-pills-small-hatchery-tab" data-toggle="pill" href="#v-pills-small-hatchery" role="tab" aria-controls="v-pills-small-hatchery" aria-selected="false"><i class="fas fa-building"></i> Small Fish Hatchery &mdash; <span class="num-small-hatchery"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
-					
-					<a class="unlock medium-hatchery-unlock nav-link" id="v-pills-medium-hatchery-tab" data-toggle="pill" href="#v-pills-medium-hatchery" role="tab" aria-controls="v-pills-medium-hatchery" aria-selected="false"><i class="fas fa-building"></i> Medium Fish Hatchery &mdash; <span class="num-medium-hatchery"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
-					
-					<a class="unlock big-hatchery-unlock nav-link" id="v-pills-big-hatchery-tab" data-toggle="pill" href="#v-pills-big-hatchery" role="tab" aria-controls="v-pills-big-hatchery" aria-selected="false"><i class="fas fa-building"></i> Big Fish Hatchery &mdash; <span class="num-big-hatchery"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="buildings" role="tabpanel" aria-labelledby="buildings-tab">
+            <div class="row">
+                <div class="col-md-4 col-sm-3">
+                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
 
-					<a class="unlock aquarium-unlock nav-link" id="v-pills-aquarium-tab" data-toggle="pill" href="#v-pills-aquarium" role="tab" aria-controls="v-pills-aquarium" aria-selected="false"><i class="fas fa-water"></i> Aquarium &mdash; <span class="num-aquarium"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                        <a class="unlock food-farm-unlock nav-link active" id="v-pills-food-farm-tab" data-toggle="pill"
+                            href="#v-pills-food-farm" role="tab" aria-controls="v-pills-food-farm"
+                            aria-selected="true"><i class="fas fa-farm"></i> Food Farm &mdash; <span
+                                class="num-food-farm"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
 
-					<a class="unlock bank-unlock nav-link" id="v-pills-bank-tab" data-toggle="pill" href="#v-pills-bank" role="tab" aria-controls="v-pills-bank" aria-selected="false"><i class="fas fa-landmark"></i> Bank &mdash; <span class="num-bank"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+                        <a class="unlock small-hatchery-unlock nav-link" id="v-pills-small-hatchery-tab"
+                            data-toggle="pill" href="#v-pills-small-hatchery" role="tab"
+                            aria-controls="v-pills-small-hatchery" aria-selected="false"><i class="fas fa-building"></i>
+                            Small Fish Hatchery &mdash; <span class="num-small-hatchery"></span> <button
+                                class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
 
-					<a class="unlock aquarium-factory-unlock nav-link" id="v-pills-aquarium-factory-tab" data-toggle="pill" href="#v-pills-aquarium-factory" role="tab" aria-controls="v-pills-aquarium-factory" aria-selected="false"><i class="fas fa-industry-alt"></i> Aquarium Factory &mdash; <span class="num-aquarium-factory"></span> <button class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
-					
-					<!-- <a class="unlock overview-unlock nav-link" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab" aria-controls="v-pills-overview" aria-selected="false"><i class="fas fa-chart-line"></i> Overview</a> -->
+                        <a class="unlock medium-hatchery-unlock nav-link" id="v-pills-medium-hatchery-tab"
+                            data-toggle="pill" href="#v-pills-medium-hatchery" role="tab"
+                            aria-controls="v-pills-medium-hatchery" aria-selected="false"><i
+                                class="fas fa-building"></i> Medium Fish Hatchery &mdash; <span
+                                class="num-medium-hatchery"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
 
-				</div>
-			</div>
-			<div class="col-md-8 col-sm-9">
-				<div class="tab-content">
-					<div class="unlock food-farm-unlock tab-pane show active" id="v-pills-food-farm" role="tabpanel" aria-labelledby="v-pills-food-farm-tab">
-						<div class="info-toggle-card card">
-							<div class="card-body">
-								<i class="fas fa-farm"></i> <span class="num-food-farm"></span> food farm
-								<hr>
-								<i class="fas fa-capsules"></i> 1 food farm makes <span class="data-food-farm-rate"></span> food/s (<span class="rate-food-farm"></span> food/s total)
-							</div>
-						</div>
-						<div class="accordion" id="food-farm-accordion">
-							<div class="card">
-								<div class="card-header" id="purchase-food-farm-heading">
-									<h2 class="mb-0">
-										<button class="btn" type="button" data-toggle="collapse" data-target="#purchase-food-farm-collapse" aria-expanded="true" aria-controls="purchase-food-farm-collapse">
-										<i class="fas fa-shopping-basket"></i> Purchase Food Farms
-										</button>
-									</h2>
-								</div>
-								<div id="purchase-food-farm-collapse" class="collapse show" aria-labelledby="purchase-food-farm-heading" data-parent="#food-farm-accordion">
-									<div class="card-body">
-										<div class="purchase-food-farm-btns btn-group btn-group-sm" role="group" aria-label="Purchase food farm buttons">
-											<button class="btn">1 food farm</button>
-											<button class="btn">10 food farm</button>
-											<button class="btn">100 food farm</button>
-											<button class="btn">1000 food farm</button>
-										</div>
-										<br><span class="data-food-farm-per-purchase"></span> food farm costs <span class="data-food-farm-cost"></span> coins
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header" id="sell-food-farm-heading">
-									<h2 class="mb-0">
-										<button class="btn" type="button" data-toggle="collapse" data-target="#sell-food-farm-collapse" aria-expanded="false" aria-controls="sell-food-farm-collapse">
-										<i class="fas fa-donate"></i> Sell Food Farms
-										</button>
-									</h2>
-								</div>
-								<div id="sell-food-farm-collapse" class="collapse" aria-labelledby="sell-food-farm-heading" data-parent="#food-farm-accordion">
-									<div class="card-body">
-										<div class="sell-food-farm-btns btn-group btn-group-sm" role="group" aria-label="Sell food farm buttons">
-											<button class="btn lighter">1 food farm</button>
-											<button class="btn lighter">10 food farm</button>
-											<button class="btn lighter">100 food farm</button>
-											<button class="btn lighter">1000 food farm</button>
-										</div>
-										<br>1 food farm sells for <span class="data-food-farm-sell"></span> coins
-									</div>
-								</div>
-							</div>
-						</div> <!--end accordion-->
-					</div>
-					<div class="unlock small-hatchery-unlock tab-pane" id="v-pills-small-hatchery" role="tabpanel" aria-labelledby="v-pills-small-hatchery-tab">
-						<div class="info-toggle-card card">
-							<div class="card-body">
-								<i class="fas fa-building"></i> <span class="num-small-hatchery"></span> small hatcheries
-								<hr>
-								<i class="fas fa-fish"></i> makes <span class="data-small-hatchery-rate"></span> small fish/s (<span class="rate-small-hatchery"></span> small fish/s total)<br>
-							</div>
-						</div>
-						<div class="accordion" id="small-hatchery-accordion">
-							<div class="card">
-								<div class="card-header" id="purchase-small-hatchery-heading">
-									<h2 class="mb-0">
-										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#purchase-small-hatchery-collapse" aria-expanded="true" aria-controls="purchase-small-hatchery-collapse">
-										<i class="fas fa-shopping-basket"></i> Purchase Small Fish Hatcheries
-										</button>
-									</h2>
-								</div>
-								<div id="purchase-small-hatchery-collapse" class="collapse show" aria-labelledby="purchase-small-hatchery-heading" data-parent="#small-hatchery-accordion">
-									<div class="card-body">
-										<div class="purchase-small-hatchery-btns btn-group btn-group-sm" role="group" aria-label="Purchase small fish hatchery buttons">
-											<button class="btn">1 small fish hatchery</button>
-											<button class="btn">10 small fish hatcheries</button>
-											<button class="btn">100 small fish hatcheries</button>
-											<button class="btn">1000 small fish hatcheries</button>
-										</div>
-										<br><span class="data-small-hatchery-per-purchase"></span> small fish hatchery costs <span class="data-small-hatchery-cost"></span> coins
-									</div>
-								</div>
-							</div>
-							<div class="unlock small-hatchery-unlock card">
-								<div class="card-header" id="sell-small-hatchery-heading">
-									<h2 class="mb-0">
-										<button class="btn collapsed" type="button" data-toggle="collapse" data-target="#sell-small-hatchery-collapse" aria-expanded="false" aria-controls="sell-small-hatchery-collapse">
-										<i class="fas fa-donate"></i> Sell Small Fish Hatcheries
-										</button>
-									</h2>
-								</div>
-								<div id="sell-small-hatchery-collapse" class="collapse" aria-labelledby="sell-small-hatchery-heading" data-parent="#small-hatchery-accordion">
-									<div class="card-body">
-										<div class="sell-small-hatchery-btns btn-group btn-group-sm" role="group" aria-label="Sell small fish hatchery buttons">
-											<button class="btn lighter">1 small fish hatchery</button>
-											<button class="btn lighter">10 small fish hatcheries</button>
-											<button class="btn lighter">100 small fish hatcheries</button>
-											<button class="btn lighter">1000 small fish hatcheries</button>
-										</div>
-										<br>1 small fish hatchery sells for <span class="data-small-hatchery-sell"></span> coins
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--end accordion-->
-					</div>
-					<div class="tab-pane" id="v-pills-medium-hatchery" role="tabpanel" aria-labelledby="v-pills-medium-hatchery-tab">
-						<!-- created automagically -->
-					</div>
-					<div class="tab-pane" id="v-pills-big-hatchery" role="tabpanel" aria-labelledby="v-pills-big-hatchery-tab">
-						<!-- created automagically -->
-					</div>
-					<div class="tab-pane" id="v-pills-aquarium" role="tabpanel" aria-labelledby="v-pills-aquarium-tab">
-						<!-- created automagically -->
-					</div>
-					<div class="tab-pane" id="v-pills-bank" role="tabpanel" aria-labelledby="v-pills-bank-tab">
-						<!-- created automagically -->
-					</div>
-					<div class="tab-pane" id="v-pills-aquarium-factory" role="tabpanel" aria-labelledby="v-pills-aquarium-factory-tab">
-						<!-- created automagically -->
-					</div>
-					<!-- <div class="tab-pane" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">
+                        <a class="unlock big-hatchery-unlock nav-link" id="v-pills-big-hatchery-tab" data-toggle="pill"
+                            href="#v-pills-big-hatchery" role="tab" aria-controls="v-pills-big-hatchery"
+                            aria-selected="false"><i class="fas fa-building"></i> Big Fish Hatchery &mdash; <span
+                                class="num-big-hatchery"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
+
+                        <a class="unlock aquarium-unlock nav-link" id="v-pills-aquarium-tab" data-toggle="pill"
+                            href="#v-pills-aquarium" role="tab" aria-controls="v-pills-aquarium"
+                            aria-selected="false"><i class="fas fa-water"></i> Aquarium &mdash; <span
+                                class="num-aquarium"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
+
+                        <a class="unlock bank-unlock nav-link" id="v-pills-bank-tab" data-toggle="pill"
+                            href="#v-pills-bank" role="tab" aria-controls="v-pills-bank" aria-selected="false"><i
+                                class="fas fa-landmark"></i> Bank &mdash; <span class="num-bank"></span> <button
+                                class="info-toggle-btn btn btn-sm"><i class="fas fa-info-circle"></i></button></a>
+
+                        <a class="unlock aquarium-factory-unlock nav-link" id="v-pills-aquarium-factory-tab"
+                            data-toggle="pill" href="#v-pills-aquarium-factory" role="tab"
+                            aria-controls="v-pills-aquarium-factory" aria-selected="false"><i
+                                class="fas fa-industry-alt"></i> Aquarium Factory &mdash; <span
+                                class="num-aquarium-factory"></span> <button class="info-toggle-btn btn btn-sm"><i
+                                    class="fas fa-info-circle"></i></button></a>
+
+                        <!-- <a class="unlock overview-unlock nav-link" id="v-pills-overview-tab" data-toggle="pill" href="#v-pills-overview" role="tab" aria-controls="v-pills-overview" aria-selected="false"><i class="fas fa-chart-line"></i> Overview</a> -->
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-9">
+                    <div class="tab-content">
+                        <div class="unlock food-farm-unlock tab-pane show active" id="v-pills-food-farm" role="tabpanel"
+                            aria-labelledby="v-pills-food-farm-tab">
+                            <div class="info-toggle-card card">
+                                <div class="card-body">
+                                    <i class="fas fa-farm"></i> <span class="num-food-farm"></span> food farm
+                                    <hr>
+                                    <i class="fas fa-capsules"></i> 1 food farm makes <span
+                                        class="data-food-farm-rate"></span> food/s (<span class="rate-food-farm"></span>
+                                    food/s total)
+                                </div>
+                            </div>
+                            <div class="accordion" id="food-farm-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="purchase-food-farm-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn" type="button" data-toggle="collapse"
+                                                data-target="#purchase-food-farm-collapse" aria-expanded="true"
+                                                aria-controls="purchase-food-farm-collapse">
+                                                <i class="fas fa-shopping-basket"></i> Purchase Food Farms
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="purchase-food-farm-collapse" class="collapse show"
+                                        aria-labelledby="purchase-food-farm-heading" data-parent="#food-farm-accordion">
+                                        <div class="card-body">
+                                            <div class="purchase-food-farm-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Purchase food farm buttons">
+                                                <button class="btn">1 food farm</button>
+                                                <button class="btn">10 food farm</button>
+                                                <button class="btn">100 food farm</button>
+                                                <button class="btn">1000 food farm</button>
+                                            </div>
+                                            <br><span class="data-food-farm-per-purchase"></span> food farm costs <span
+                                                class="data-food-farm-cost"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="sell-food-farm-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn" type="button" data-toggle="collapse"
+                                                data-target="#sell-food-farm-collapse" aria-expanded="false"
+                                                aria-controls="sell-food-farm-collapse">
+                                                <i class="fas fa-donate"></i> Sell Food Farms
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="sell-food-farm-collapse" class="collapse"
+                                        aria-labelledby="sell-food-farm-heading" data-parent="#food-farm-accordion">
+                                        <div class="card-body">
+                                            <div class="sell-food-farm-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Sell food farm buttons">
+                                                <button class="btn lighter">1 food farm</button>
+                                                <button class="btn lighter">10 food farm</button>
+                                                <button class="btn lighter">100 food farm</button>
+                                                <button class="btn lighter">1000 food farm</button>
+                                            </div>
+                                            <br>1 food farm sells for <span class="data-food-farm-sell"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
+                        </div>
+                        <div class="unlock small-hatchery-unlock tab-pane" id="v-pills-small-hatchery" role="tabpanel"
+                            aria-labelledby="v-pills-small-hatchery-tab">
+                            <div class="info-toggle-card card">
+                                <div class="card-body">
+                                    <i class="fas fa-building"></i> <span class="num-small-hatchery"></span> small
+                                    hatcheries
+                                    <hr>
+                                    <i class="fas fa-fish"></i> makes <span class="data-small-hatchery-rate"></span>
+                                    small fish/s (<span class="rate-small-hatchery"></span> small fish/s total)<br>
+                                </div>
+                            </div>
+                            <div class="accordion" id="small-hatchery-accordion">
+                                <div class="card">
+                                    <div class="card-header" id="purchase-small-hatchery-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn collapsed" type="button" data-toggle="collapse"
+                                                data-target="#purchase-small-hatchery-collapse" aria-expanded="true"
+                                                aria-controls="purchase-small-hatchery-collapse">
+                                                <i class="fas fa-shopping-basket"></i> Purchase Small Fish Hatcheries
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="purchase-small-hatchery-collapse" class="collapse show"
+                                        aria-labelledby="purchase-small-hatchery-heading"
+                                        data-parent="#small-hatchery-accordion">
+                                        <div class="card-body">
+                                            <div class="purchase-small-hatchery-btns btn-group btn-group-sm"
+                                                role="group" aria-label="Purchase small fish hatchery buttons">
+                                                <button class="btn">1 small fish hatchery</button>
+                                                <button class="btn">10 small fish hatcheries</button>
+                                                <button class="btn">100 small fish hatcheries</button>
+                                                <button class="btn">1000 small fish hatcheries</button>
+                                            </div>
+                                            <br><span class="data-small-hatchery-per-purchase"></span> small fish
+                                            hatchery costs <span class="data-small-hatchery-cost"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="unlock small-hatchery-unlock card">
+                                    <div class="card-header" id="sell-small-hatchery-heading">
+                                        <h2 class="mb-0">
+                                            <button class="btn collapsed" type="button" data-toggle="collapse"
+                                                data-target="#sell-small-hatchery-collapse" aria-expanded="false"
+                                                aria-controls="sell-small-hatchery-collapse">
+                                                <i class="fas fa-donate"></i> Sell Small Fish Hatcheries
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="sell-small-hatchery-collapse" class="collapse"
+                                        aria-labelledby="sell-small-hatchery-heading"
+                                        data-parent="#small-hatchery-accordion">
+                                        <div class="card-body">
+                                            <div class="sell-small-hatchery-btns btn-group btn-group-sm" role="group"
+                                                aria-label="Sell small fish hatchery buttons">
+                                                <button class="btn lighter">1 small fish hatchery</button>
+                                                <button class="btn lighter">10 small fish hatcheries</button>
+                                                <button class="btn lighter">100 small fish hatcheries</button>
+                                                <button class="btn lighter">1000 small fish hatcheries</button>
+                                            </div>
+                                            <br>1 small fish hatchery sells for <span
+                                                class="data-small-hatchery-sell"></span> coins
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
+                        </div>
+                        <div class="tab-pane" id="v-pills-medium-hatchery" role="tabpanel"
+                            aria-labelledby="v-pills-medium-hatchery-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <div class="tab-pane" id="v-pills-big-hatchery" role="tabpanel"
+                            aria-labelledby="v-pills-big-hatchery-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <div class="tab-pane" id="v-pills-aquarium" role="tabpanel"
+                            aria-labelledby="v-pills-aquarium-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <div class="tab-pane" id="v-pills-bank" role="tabpanel" aria-labelledby="v-pills-bank-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <div class="tab-pane" id="v-pills-aquarium-factory" role="tabpanel"
+                            aria-labelledby="v-pills-aquarium-factory-tab">
+                            <!-- created automagically -->
+                        </div>
+                        <!-- <div class="tab-pane" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">
 						</div> -->
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="upgrades" role="tabpanel" aria-labelledby="upgrades-tab">
+            <div class="row">
 
-</div>
+            </div>
+        </div>
 
-<!-- <hr> -->
-<div class="mt-4 text-center">
-	<button id="notifications-modal-btn" class="btn m-1 mb-4"><i class="fas fa-history"></i> Notifications</button>
-	<button id="achievement-modal-btn" class="unlock achievement-unlock btn m-1 mb-4"><i class="fas fa-award"></i> Achievements</button>
-	<button id="stats-modal-btn" class="unlock stats-unlock btn m-1 mb-4"><i class="fas fa-sort-amount-up"></i> Stats</button>
-	<button id="insights-modal-btn" class="unlock insights-unlock btn m-1 mb-4"><i class="fas fa-chart-line"></i> Insights</button>
-	<!-- <button class="btn m-1 mb-4"><i class="fas fa-envelope"></i> Notifications</button>
+
+    </div>
+
+    <!-- <hr> -->
+    <div class="mt-4 text-center">
+        <button id="notifications-modal-btn" class="btn m-1 mb-4"><i class="fas fa-history"></i> Notifications</button>
+        <button id="achievement-modal-btn" class="unlock achievement-unlock btn m-1 mb-4"><i class="fas fa-award"></i>
+            Achievements</button>
+        <button id="stats-modal-btn" class="unlock stats-unlock btn m-1 mb-4"><i class="fas fa-sort-amount-up"></i>
+            Stats</button>
+        <button id="insights-modal-btn" class="unlock insights-unlock btn m-1 mb-4"><i class="fas fa-chart-line"></i>
+            Insights</button>
+        <!-- <button class="btn m-1 mb-4"><i class="fas fa-envelope"></i> Notifications</button>
 		<button class="btn m-1 mb-4"><i class="fas fa-bell"></i> Notifications</button>
 		<button class="btn m-1 mb-4"><i class="fas fa-exclamation-circle"></i> Notifications</button>
 		<button class="btn m-1 mb-4"><i class="fas fa-newspaper"></i> Notifications</button> -->
-	<button id="about-modal-btn" class="btn m-1 mb-4"><i class="fas fa-info-circle"></i> About</button>
-	<button id="settings-modal-btn" class="btn m-1 mb-4"><i class="fas fa-cog"></i> Settings</button>
-	<button id="help-modal-btn" class="btn m-1 mb-4"><i class="fas fa-question"></i> Help</button>
-	<button id="fullscreen-aquarium-btn" class="unlock fullscreen-aquarium-unlock btn m-1 mb-4"><i class="fas fa-external-link-alt"></i> Fullscreen Aquarium</button>
-</div>
-<br>
-<div id="default-modal" class="modal" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title"></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body"></div>
-			<div class="modal-footer"></div>
-		</div>
-	</div>
-</div>
+        <button id="about-modal-btn" class="btn m-1 mb-4"><i class="fas fa-info-circle"></i> About</button>
+        <button id="settings-modal-btn" class="btn m-1 mb-4"><i class="fas fa-cog"></i> Settings</button>
+        <button id="help-modal-btn" class="btn m-1 mb-4"><i class="fas fa-question"></i> Help</button>
+        <button id="fullscreen-aquarium-btn" class="unlock fullscreen-aquarium-unlock btn m-1 mb-4"><i
+                class="fas fa-external-link-alt"></i> Fullscreen Aquarium</button>
+    </div>
+    <br>
+    <div id="default-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
 
-<div id="snackbar" class="right"></div>
+    <div id="snackbar" class="right"></div>
 
-<script type="text/javascript">
-	// for loader
-	document.documentElement.scrollTop = document.body.scrollTop = 0;
-</script>
+    <script type="text/javascript">
+        // for loader
+        document.documentElement.scrollTop = document.body.scrollTop = 0;
+    </script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js
 "></script>
 
-<!-- https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.15.0/firebase-app.js"></script>
-<script src="/__/firebase/7.15.0/firebase-analytics.js"></script>
-<script src="/__/firebase/7.15.0/firebase-auth.js"></script>
-<script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
-<script src="/__/firebase/init.js"></script>
+    <!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.15.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.15.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.15.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
 
 
-<script type="module" src="js/ripple.js"></script>
-<script type="module" src="js/chart.js"></script>
-<script type="module" src="js/increasing_cost.js"></script>
-<script type="module" src="js/sprite.js"></script>
-<script type="module" src="js/display.js"></script>
-<script type="module" src="js/game.js"></script>
-<script type="module" src="js/onload.js"></script>
-<script type="module" src="js/modal.js"></script>
-<script type="module" src="js/unlock.js"></script>
-<script type="module" src="js/keyboard.js"></script>
-<script type="module" src="js/util.js"></script>
-<script type="module" src="js/notify.js"></script>
-<script type="module" src="js/setting.js"></script>
-<script type="module" src="js/data.js"></script>
-<script type="module" src="js/number.js"></script>
-<script type="module" src="js/stats.js"></script>
-<script type="module" src="js/description.js"></script>
-<script type="module" src="js/audio.js"></script>
-<script type="module" src="js/multiplier.js"></script>
+    <script type="module" src="js/ripple.js"></script>
+    <script type="module" src="js/chart.js"></script>
+    <script type="module" src="js/increasing_cost.js"></script>
+    <script type="module" src="js/sprite.js"></script>
+    <script type="module" src="js/display.js"></script>
+    <script type="module" src="js/game.js"></script>
+    <script type="module" src="js/onload.js"></script>
+    <script type="module" src="js/modal.js"></script>
+    <script type="module" src="js/unlock.js"></script>
+    <script type="module" src="js/keyboard.js"></script>
+    <script type="module" src="js/util.js"></script>
+    <script type="module" src="js/notify.js"></script>
+    <script type="module" src="js/setting.js"></script>
+    <script type="module" src="js/data.js"></script>
+    <script type="module" src="js/number.js"></script>
+    <script type="module" src="js/stats.js"></script>
+    <script type="module" src="js/description.js"></script>
+    <script type="module" src="js/audio.js"></script>
+    <script type="module" src="js/multiplier.js"></script>
 
-<script type="module" src="js/signin.js"></script>
-<script type="module" src="js/database.js"></script>
+    <script type="module" src="js/signin.js"></script>
+    <script type="module" src="js/database.js"></script>
 
-<script type="text/javascript">
-	setTimeout( ()=> $('#page-loader').css('display', 'none'), 1000);
-</script>
+    <script type="text/javascript">
+        setTimeout(() => $('#page-loader').css('display', 'none'), 1000);
+    </script>
 
 </body>
+
 </html>
