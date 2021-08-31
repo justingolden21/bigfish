@@ -11,6 +11,8 @@ make game playable longer
 
 rework code with eslint and js doc
 use tailwind? replace jquery with umbrella?
+svelte? typescript?
+js doc
 installable pwa
 bug: stats should update live?
 question: does settings store bank input vals?
