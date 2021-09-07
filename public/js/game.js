@@ -25,7 +25,7 @@ const LOG_TIMES = false;
 
 let inventory = {
 	food: 0,
-	coins: DEBUG ? 1e5 : 1,
+	coins: DEBUG ? 1_000_000 : 1,
 	fish: {
 		small: 1,
 		medium: 0,
@@ -100,19 +100,19 @@ const VALS = {
 		fish: {
 			small: 25,
 			medium: 250,
-			big: 2500,
+			big: 2_500,
 		},
 		buildings: {
-			food_farm: 25,
-			small_hatchery: 750,
-			medium_hatchery: 7500,
-			big_hatchery: 75000,
-			aquarium: 2500,
-			bank: 5e5,
-			aquarium_factory: 1e6,
+			food_farm: 10,
+			small_hatchery: 250,
+			medium_hatchery: 2_500,
+			big_hatchery: 25_000,
+			aquarium: 1_000,
+			bank: 100_000,
+			aquarium_factory: 500_000,
 		},
 		upgrades: {
-			cost_divider: 1e4,
+			cost_divider: 1_000,
 		},
 	},
 	rates: {
@@ -158,6 +158,13 @@ function importInventory(inv) {
 	let i = 0;
 	for (let key in inventory) {
 		inventory[key] = inv[i++];
+	}
+
+	// legacy support
+	if (!inventory.upgrades) {
+		inventory.upgrades = {
+			cost_divider: 0,
+		};
 	}
 
 	// formerly just the unlocks object
@@ -347,7 +354,7 @@ function buildingTick() {
 				// sell
 				if (building.endsWith('-fish')) {
 					let type = building.split('-')[0];
-					let num_sold = sellFish(type, num_transaction);
+					let num_sold = sellFish(type, num_transaction, true);
 					rates.coins.bank += Math.floor(
 						(VALS.costs.fish[type] * num_sold) / 2
 					);
@@ -367,7 +374,7 @@ function buildingTick() {
 
 				if (building.endsWith('-fish')) {
 					let type = building.split('-')[0];
-					num_bought = buyFish(type, num_transaction);
+					num_bought = buyFish(type, num_transaction, true);
 					rates.coins.bank -= VALS.costs.fish[type] * num_bought;
 				} else {
 					num_bought = buyBuildings(key_name, num_transaction, true);
@@ -399,6 +406,7 @@ function buildingTick() {
 				}
 			}
 		}
+		display(); // display once rather than for each building and fish type bought and sold
 	}
 
 	if (LOG_TIMES) console.timeLog('building tick');
@@ -635,7 +643,8 @@ $(() => {
 			let amount = parseInt($(evt.target).html().split(' ')[0]);
 			let purchased = buyBuildings(key_name, amount);
 
-			if (purchased != amount) playSoundEffect('error');
+			// if (purchased != amount) playSoundEffect('error');
+			if (purchased == 0) playSoundEffect('error');
 			else playSoundEffect('button');
 		});
 		$(`.sell-${building}-btns .btn`).click((evt) => {
@@ -653,7 +662,7 @@ $(() => {
 		$(`.purchase-${upgrade}`).click((evt) => {
 			let purchased = buyUpgrade(key_name);
 
-			if (purchased) playSoundEffect('error');
+			if (!purchased) playSoundEffect('error');
 			else playSoundEffect('button');
 		});
 
@@ -674,7 +683,8 @@ $(() => {
 			let amount = parseInt($(evt.target).html().split(' ')[0]);
 			let purchased = buyFish(type, amount);
 
-			if (purchased != amount) playSoundEffect('error');
+			// if (purchased != amount) playSoundEffect('error');
+			if (purchased == 0) playSoundEffect('error');
 			else playSoundEffect('button');
 		});
 		$(`.sell-${type}-fish-btns .btn`).click((evt) => {
@@ -687,7 +697,7 @@ $(() => {
 	}
 });
 
-function buyFish(type, amount) {
+function buyFish(type, amount, is_bank = false) {
 	amount = Math.min(amount, maxCanAfford(VALS.costs.fish[type]));
 
 	// make sure they don't lock themselves early
@@ -722,7 +732,7 @@ function buyFish(type, amount) {
 		if (amount_added < amount) {
 			// showSnackbar('Not enough space in aquarium', 'error');
 		}
-		display();
+		if (!is_bank) display();
 		return amount_added;
 	}
 }
@@ -737,7 +747,7 @@ function addFish(type, amount) {
 	return amount_added;
 }
 
-function sellFish(type, amount) {
+function sellFish(type, amount, is_bank = false) {
 	// cannot sell last small fish
 	amount = Math.min(amount, inventory.fish[type] - (type == 'small' ? 1 : 0));
 
@@ -748,7 +758,7 @@ function sellFish(type, amount) {
 		removeFish(type, amount);
 		stats.fish[type].sold += amount;
 		// setOutOfSpaceBannerDisplay(false);
-		display();
+		if (!is_bank) display();
 	}
 
 	return amount;
@@ -830,7 +840,7 @@ function buyBuildings(building_name, amount, is_bank = false) {
 
 		inventory.buildings[building_name] += amount;
 		stats.buildings.purchased += amount;
-		display();
+		if (!is_bank) display();
 	}
 
 	if (building_name == 'aquarium' && amount != 0) {
@@ -862,7 +872,7 @@ function sellBuildings(building_name, amount, is_bank = false) {
 		);
 		inventory.buildings[building_name] -= amount;
 		stats.buildings.sold += amount;
-		display();
+		if (!is_bank) display();
 	}
 
 	return amount;

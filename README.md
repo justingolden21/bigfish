@@ -8,6 +8,8 @@ by [Justin Golden](https://justingolden.me/)
 
 Install: `npm install -g firebase-tools`
 
+Login: `firebase login`
+
 Dev: `firebase serve`
 
 Deploy: `firebase deploy`

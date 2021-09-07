@@ -70,12 +70,12 @@ let achievements = {
 	'Financially Responsible': ['Purchase a hatchery', -1, false],
 	Collector: ['Have at least 1 small, medium, and big hatchery', -1, false],
 	'Something Smells Fishy': ['Have 100 hatcheries', -1, true],
-	Eggcellent: ['Have 100,000 hatcheries', -1, true],
+	Eggcellent: ['Have 10,000 hatcheries', -1, true],
 
 	'Deep Sea Diving': ['Purchase another aquarium', -1, false],
-	'Sea the World': ['Have 1,000 aquariums', -1, true],
-	'Sea World': ['Have 1,000,000 aquariums', -1, true],
-	'Olympic Sized': ['Have 1,000,000,000 aquariums', -1, true],
+	'Sea the World': ['Have 100 aquariums', -1, true],
+	'Sea World': ['Have 1,000 aquariums', -1, true],
+	'Olympic Sized': ['Have 10,000 aquariums', -1, true],
 
 	'Disrupt the Food Chain': ['Run out of small fish', -1, true],
 
@@ -95,11 +95,11 @@ let achievements = {
 	// 'Seafood': ['Have 1,000 big fish eaten', -1, true],
 
 	'Small Banking': ['Buy your first bank', -1, false],
-	'Making Bank': ['Have 1,000 banks', -1, false],
+	'Making Bank': ['Have 100 banks', -1, false],
 	'Big Banking': ['Unlock Big Banking', -1, false],
-	'Fishy Business': ['Have 10,000,000 banks', -1, true],
+	'Fishy Business': ['Have 100,000 banks', -1, true],
 	'Water You Waiting For?': ['Have 100 aquarium factories', -1, true],
-	Watergate: ['Have 100,000 aquarium factories', -1, true],
+	Watergate: ['Have 10,000 aquarium factories', -1, true],
 
 	// 'Wasted Time': ['Play for 1 hour', -1, true],
 	// 'Time Well Spent': ['Play for 10 hours', -1, true],
@@ -225,17 +225,17 @@ function checkUnlocks(inventory) {
 		inventory.buildings.small_hatchery +
 		inventory.buildings.medium_hatchery +
 		inventory.buildings.big_hatchery;
-	if (total_hatcheries >= 1e4) {
+	if (total_hatcheries >= 500) {
 		checkUnlock('bank');
 		checkUnlock('buildings');
 	}
 
-	if (inventory.buildings.aquarium >= 1e4) {
+	if (inventory.buildings.aquarium >= 500) {
 		checkUnlock('aquarium-factory');
 		checkUnlock('buildings');
 	}
 
-	if (inventory.coins > 1e4) {
+	if (inventory.coins > 1_000) {
 		checkUnlock('cost-divider');
 		checkUnlock('upgrades');
 	}
@@ -243,7 +243,9 @@ function checkUnlocks(inventory) {
 	let total_fish =
 		inventory.fish.small + inventory.fish.medium + inventory.fish.big;
 
-	if (total_fish > 1e6) {
+	if (total_fish > 10_000) {
+		checkUnlock('bank');
+		checkUnlock('buildings');
 		checkUnlock('bank-fish', 'Banking with fish');
 	}
 
@@ -293,12 +295,13 @@ function checkUnlocks(inventory) {
 	)
 		checkAchievement('Collector');
 	if (total_hatcheries >= 1e2) checkAchievement('Something Smells Fishy');
-	if (total_hatcheries >= 1e5) checkAchievement('Eggcellent');
+	if (total_hatcheries >= 1e4) checkAchievement('Eggcellent');
 
 	if (inventory.buildings.aquarium > 1) checkAchievement('Deep Sea Diving');
-	if (inventory.buildings.aquarium > 1e3) checkAchievement('Sea the World');
-	if (inventory.buildings.aquarium > 1e6) checkAchievement('Sea World');
-	if (inventory.buildings.aquarium > 1e9) checkAchievement('Olympic Sized');
+	if (inventory.buildings.aquarium > 100) checkAchievement('Sea the World');
+	if (inventory.buildings.aquarium > 1_000) checkAchievement('Sea World');
+	if (inventory.buildings.aquarium > 10_000)
+		checkAchievement('Olympic Sized');
 
 	if (inventory.fish.small == 0) checkAchievement('Disrupt the Food Chain');
 
@@ -329,16 +332,16 @@ function checkUnlocks(inventory) {
 	if (stats.fish.big.eaten >= 1e3) checkAchievement('Seafood');
 
 	if (inventory.buildings.bank >= 1) checkAchievement('Small Banking');
-	if (inventory.buildings.bank >= 1e3) checkAchievement('Making Bank');
-	if (inventory.buildings.bank >= 1e5) {
+	if (inventory.buildings.bank >= 100) checkAchievement('Making Bank');
+	if (inventory.buildings.bank >= 10_000) {
 		checkUnlock('big-banking', 'Big banking');
 		checkAchievement('Big Banking');
 	}
-	if (inventory.buildings.bank >= 1e7) checkAchievement('Fishy Business');
+	if (inventory.buildings.bank >= 100_000) checkAchievement('Fishy Business');
 
 	if (inventory.buildings.aquarium_factory >= 1e2)
 		checkAchievement('Water You Waiting For?');
-	if (inventory.buildings.aquarium_factory >= 1e5)
+	if (inventory.buildings.aquarium_factory >= 10_000)
 		checkAchievement('Watergate');
 
 	if (getCompletedAchievementSize() >= 25) checkAchievement('Over Achiever');
