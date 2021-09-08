@@ -940,25 +940,26 @@ export {
 
 // tests
 if (DEBUG == 2) {
-	$(() => {
-		setTimeout(() => {
-			$('.purchase-food-btns .btn')[3].click();
-			for (let i = 0; i < 10; i++)
-				$('.purchase-small-fish-btns .btn')[3].click();
-			$('.purchase-aquarium-btns .btn')[3].click();
-			$('.purchase-aquarium-factory-btns .btn')[3].click();
-			$('.purchase-medium-fish-btns .btn')[3].click();
-			for (let i = 0; i < 10; i++)
-				$('.purchase-small-hatchery-btns .btn')[3].click();
-			$('.purchase-medium-hatchery-btns .btn')[2].click();
-			$('.purchase-big-hatchery-btns .btn')[2].click();
-
-			$('.purchase-bank-btns .btn')[2].click();
-			// for(let i=0; i<10; i++) $('.purchase-aquarium-factory-btns .btn')[3].click();
-			// for(let i=0; i<10; i++) $('.purchase-medium-hatchery-btns .btn')[3].click();
-			// $('.purchase-bank-btns .btn')[3].click();
-			// $('#buildings-tab').click();
-			// $('#v-pills-bank-tab').click();
-		}, 1000);
-	});
+	// inventory.buildings.aquarium = 1000;
+	// inventory.fish.small = 49_000;
+	// $(() => {
+	// 	setTimeout(() => {
+	// 		$('.purchase-food-btns .btn')[3].click();
+	// 		for (let i = 0; i < 10; i++)
+	// 			$('.purchase-small-fish-btns .btn')[3].click();
+	// 		$('.purchase-aquarium-btns .btn')[1].click();
+	// 		$('.purchase-aquarium-factory-btns .btn')[1].click();
+	// 		$('.purchase-medium-fish-btns .btn')[3].click();
+	// 		for (let i = 0; i < 10; i++)
+	// 			$('.purchase-small-hatchery-btns .btn')[2].click();
+	// 		$('.purchase-medium-hatchery-btns .btn')[1].click();
+	// 		$('.purchase-big-hatchery-btns .btn')[1].click();
+	// 		$('.purchase-bank-btns .btn')[1].click();
+	// 		// for(let i=0; i<10; i++) $('.purchase-aquarium-factory-btns .btn')[3].click();
+	// 		// for(let i=0; i<10; i++) $('.purchase-medium-hatchery-btns .btn')[3].click();
+	// 		// $('.purchase-bank-btns .btn')[3].click();
+	// 		// $('#buildings-tab').click();
+	// 		// $('#v-pills-bank-tab').click();
+	// 	}, 1000);
+	// });
 }

@@ -41,7 +41,7 @@ let unlocks = {
 	fullscreen: false,
 	'fullscreen-aquarium': false,
 	stats: false,
-	// 'insights': false,
+	insights: false,
 	'100-btn': false,
 	'1000-btn': false,
 	'10000-btn': false,
@@ -264,9 +264,6 @@ function checkUnlocks(inventory) {
 	if (total_fish >= 100) {
 		checkUnlock('fullscreen-aquarium', 'Fullscreen Aquarium'); // not plural
 	}
-	// if(total_fish >= 5e4) {
-	// 	checkUnlock('insights');
-	// }
 	if (total_fish >= 100) {
 		checkUnlock('100-btn', 'More Buttons!'); // different unlock name
 	}
@@ -275,6 +272,9 @@ function checkUnlocks(inventory) {
 	}
 	if (total_fish >= 10_000) {
 		checkUnlock('10000-btn', 'The Last of the Buttons!'); // different unlock name
+	}
+	if (total_fish >= 500_000) {
+		checkUnlock('insights');
 	}
 
 	// checks for unlocks that require player own at least one
