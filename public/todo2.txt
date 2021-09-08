@@ -1,20 +1,10 @@
-big fish 3 todo
-
 bug: plays error sound on unlock purchase even if success
 
 unlock 100,1000 btns later, add 10k btns
 
-add warning icon for "each costs more than previous"
+implications for "beating game" after big fish achievement, open modal and say congrats and show playtime
 
-
-increasing cost can be decreased with increasingly expensive upgrades
-
-notify that you would lose if buying fish at exactly 0 coins
-change fullscreen icon
-
-balance increasing costs, needs to increase MUCH slower
-check unlocks
-make game playable longer
+maybe: notify that you would lose if buying fish at exactly 0 coins
 
 rework code with eslint and js doc
 use tailwind? replace jquery with umbrella?
@@ -29,20 +19,13 @@ bug? files being requested twice in network tab dev tools?
 bug: bank description text doesnt account for increasing cost
 
 add 10k btns unlocked later
-unlock banks sooner
-after 100 hatcheries or 10k fish
-double aquarium space? half default building costs again?
 option to play game at 10x tick speed (console hack?)
 
-make it a pwa
 check time login since last time? nah
-divide increasing cost buildings by 8, rebalance unlocks
 
-add more upgrades, achievements for having upgrades?
+future: add more upgrades, achievements for having upgrades?
 
-banks dynamically buying upgrades unlock?
-
-end game achievements are all clumped (achievement for that, olympic, monopoly, thanks for all, big banking, fishy business, watergate), should separate them out more
+late development: banks dynamically buying upgrades unlock?
 
 
 
