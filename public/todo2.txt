@@ -24,6 +24,8 @@ check time login since last time? nah
 
 future: add more upgrades, achievements for having upgrades?
 
+future: update insights? comment it again (from unlock.js)?
+
 late development: banks dynamically buying upgrades unlock?
 
 
