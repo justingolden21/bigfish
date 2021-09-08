@@ -42,6 +42,9 @@ let unlocks = {
 	'fullscreen-aquarium': false,
 	stats: false,
 	// 'insights': false,
+	'100-btn': false,
+	'1000-btn': false,
+	'10000-btn': false,
 };
 
 // enums for indices
@@ -243,7 +246,7 @@ function checkUnlocks(inventory) {
 	let total_fish =
 		inventory.fish.small + inventory.fish.medium + inventory.fish.big;
 
-	if (total_fish > 10_000) {
+	if (total_fish > 50_000) {
 		checkUnlock('bank');
 		checkUnlock('buildings');
 		checkUnlock('bank-fish', 'Banking with fish');
@@ -264,6 +267,15 @@ function checkUnlocks(inventory) {
 	// if(total_fish >= 5e4) {
 	// 	checkUnlock('insights');
 	// }
+	if (total_fish >= 100) {
+		checkUnlock('100-btn', 'More Buttons!'); // different unlock name
+	}
+	if (total_fish >= 1_000) {
+		checkUnlock('1000-btn', 'Even More Buttons!'); // different unlock name
+	}
+	if (total_fish >= 10_000) {
+		checkUnlock('10000-btn', 'The Last of the Buttons!'); // different unlock name
+	}
 
 	// checks for unlocks that require player own at least one
 	let own_unlocks = [

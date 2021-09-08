@@ -1,7 +1,5 @@
 bug: plays error sound on unlock purchase even if success
 
-unlock 100,1000 btns later, add 10k btns
-
 implications for "beating game" after big fish achievement, open modal and say congrats and show playtime
 
 maybe: notify that you would lose if buying fish at exactly 0 coins
@@ -18,7 +16,8 @@ bug? files being requested twice in network tab dev tools?
 
 bug: bank description text doesnt account for increasing cost
 
-add 10k btns unlocked later
+maybe: achievement for unlocking all unlocks?
+
 option to play game at 10x tick speed (console hack?)
 
 check time login since last time? nah
