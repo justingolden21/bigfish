@@ -527,13 +527,13 @@ $(() => {
 	);
 
 	$('#v-pills-aquarium .info-toggle-card .card-body').append(
-		'<br>Each aquarium costs more than the previous<br><div class="progress"></div>'
+		'<br><i class="fas fa-box-up"></i> Each aquarium costs more than the previous<br><div class="progress"></div>'
 	);
 	for (let building of INCREASING_COST_BUILDINGS) {
 		if (building == 'aquarium') continue;
 		let key_name = building.replace('-', '_');
 		$(`#v-pills-${building} .info-toggle-card .card-body`).append(
-			`<br>Each ${building.replace(
+			`<br><i class="fas fa-box-up"></i> Each ${building.replace(
 				'-',
 				' '
 			)} costs more than the previous`
