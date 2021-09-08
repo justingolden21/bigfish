@@ -1,5 +1,12 @@
 big fish 3 todo
 
+bug: plays error sound on unlock purchase even if success
+
+unlock 100,1000 btns later, add 10k btns
+
+add warning icon for "each costs more than previous"
+
+
 increasing cost can be decreased with increasingly expensive upgrades
 
 notify that you would lose if buying fish at exactly 0 coins
@@ -36,3 +43,26 @@ add more upgrades, achievements for having upgrades?
 banks dynamically buying upgrades unlock?
 
 end game achievements are all clumped (achievement for that, olympic, monopoly, thanks for all, big banking, fishy business, watergate), should separate them out more
+
+
+
+SHARK IDEAS
+
+Big fish shark ideas
+
+Start with 1m land
+Food farms use 1 land, sm hatchery uses 1, md 3 lg 5. Aquariums use 10, banks use 50, aquarium factories use 100, hatchery factories and farm factories will use 50
+
+Unlock land stuff at 50% land usage
+
+Sharks eat 1k fish per s, and cost 1m coins (increasing)
+
+Tanks cost 1b coins (increasing)
+
+Each shark with a tank earns 1k land per s
+
+Shark hatcheries cost 1t coins, tank factories cost 1q coins (both increasing cost)
+
+Achievement "shark tank" for your first one, achievement "tank top" for 1k sharks and tanks
+
+Tanks take up 5 land
