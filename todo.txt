@@ -4,6 +4,10 @@ update version num in about modal before commit
 
 ================
 
+speed up game option (fastforward) but limited amount
+regenerates over time at constant rate, has a cap to how much you can hold
+like http://factoryidle.com/
+
 signup enter name optional
 tutorial for top bar
 feed fish individually, fish feeder
