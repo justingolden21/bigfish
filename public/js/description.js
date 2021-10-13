@@ -65,6 +65,7 @@ Enchanted
 Glorious
 Exceptional
 Exemplary
+Breathtaking
 Super
 Magical
 Mythical
