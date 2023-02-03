@@ -45,11 +45,11 @@ function getStatsHTML() {
 	for (let idx in stat_names) {
 		let name = stat_names[idx];
 		if (!unlocks[name]) continue;
-		tmpHTML += `<li class="nav-item">
+		tmpHTML += `<li class="nav-item" role="tab">
 			<a class="nav-link ${onlyIf(
 				'active',
 				!active_set
-			)}" id="stats-${name}-tab" data-toggle="tab" href="#stats-${name}" role="tab" aria-controls="stats-${name}" aria-selected="${
+			)}" id="stats-${name}-tab" data-toggle="tab" href="#stats-${name}" aria-controls="stats-${name}" aria-selected="${
 			idx == 0
 		}">
 				<i class="fas fa-${icons[idx]}"></i> ${prettyStr(name)}

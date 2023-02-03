@@ -203,7 +203,7 @@ $(() => {
 		openModal(
 			`<i class="fas fa-info-circle"></i> About`,
 			`<button class="btn my-2" onclick="window.open('mailto:contact@justingolden.me')"><i class="fas fa-envelope"></i> Contact</button>
-			<p>Big Fish Alpha 0.0.4</p>
+			<p>Big Fish Alpha 0.0.5</p>
 			<p>Made by <a href="https://justingolden.me" target="_blank">Justin Golden</a></p>
 			<p>Check out our <a href="https://discord.gg/aEnKS5e" target="_blank">Discord</a></p>`
 		);

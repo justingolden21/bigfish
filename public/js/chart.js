@@ -139,14 +139,14 @@ class PieChartManager {
 }
 
 const getProgressBar = (amount_full) =>
-	`<div class="progress"><div class="progress-bar" role="progressbar"
+	`<div class="progress"><div class="progress-bar" role="progressbar" aria-label=""
 	style="width: ${amount_full * 100}%" aria-valuenow="${amount_full * 100}"
 	aria-valuemin="0" aria-valuemax="100"></div></div>`;
 
 const getMultiBar = (amounts_full, colors) => {
 	let tmp = '<div class="progress">';
 	for (let idx in amounts_full) {
-		tmp += `<div class="progress-bar" role="progressbar"
+		tmp += `<div class="progress-bar" role="progressbar" aria-label=""
 			style="width: ${amounts_full[idx] * 100}%; background-color: ${colors[idx]}"
 			aria-valuenow="${
 				amounts_full[idx] * 100
