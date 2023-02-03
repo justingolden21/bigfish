@@ -9,6 +9,7 @@ regenerates over time at constant rate, has a cap to how much you can hold
 like http://factoryidle.com/
 
 signup enter name optional
+login if too many attempts, password reset option
 tutorial for top bar
 feed fish individually, fish feeder
 game end achievement
@@ -33,6 +34,8 @@ land? for now buy land with money, then can buy soldier fish to earn land and ea
 
 end game:
 make game winning achievement (1m of each fish no change for 5 seconds, no clicking buttons, "balancing act")
+
+rename cost dividers to "repairs" or "maintenance"
 
 ================
 
@@ -211,6 +214,7 @@ minor:
 major:
 	add filters
 	add land mechanic? TANKS? land shark?
+		consistent costs for buildings but increasing costs for land? Get land through tanks, which are operated by sharks, sharks eat big fish. Have "loan sharks" and "shark tank" achievements
 	add hatchery factories
 	Penguins unlock after 1t fish and eat 1t per sec, polar bears are next level after penguins
 	banks: can enter number of items to buy, toggle for buy every tick or buy once.
@@ -277,6 +281,7 @@ resizing the canvas doesn't redraw the seaweed
 
 other todo:
 make penguin sprites, switch between canvases, penguins are new tab, then snow buildings
+snowflakes increase coin gains by 0.1 per
 
 pricing ideas:
 mobile: 99 cents, with free demo version available, goes on sale for 49 cents
